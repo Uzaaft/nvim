@@ -14,9 +14,6 @@ local mappings = {
     ["[b"] = false,
     ["<S-l>"] = { function() astronvim.nav_buf(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
     ["<S-h>"] = { function() astronvim.nav_buf(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer" },
-    -- navigating wrapped lines
-    j = { "gj", desc = "Navigate down" },
-    k = { "gk", desc = "Navigate down" },
     -- better search
     n = { require("user.utils").better_search "n", desc = "Next search" },
     N = { require("user.utils").better_search "N", desc = "Previous search" },
@@ -112,11 +109,6 @@ local mappings = {
     ["<c-d>X"] = { "<c-r>=strftime('%H:%M')<cr>", desc = "H:M" },
     ["<c-d>F"] = { "<c-r>=strftime('%H:%M:%S')<cr>", desc = "H:M:S" },
     ["<c-d>d"] = { "<c-r>=strftime('%Y/%m/%d %H:%M:%S -')<cr>", desc = "Y/m/d H:M:S -" },
-  },
-  v = {
-    -- navigating wrapped lines
-    j = { "gj", desc = "Navigate down" },
-    k = { "gk", desc = "Navigate down" },
   },
   -- terminal mappings
   t = {
