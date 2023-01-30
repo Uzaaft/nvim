@@ -61,6 +61,12 @@ return {
             },
           },
         },
+        project = {
+          base_dirs = {
+            { vim.fn.getenv "GIT_PATH", max_depth = 4 },
+          },
+          search_by = "path",
+        },
       },
       pickers = {
         find_files = {

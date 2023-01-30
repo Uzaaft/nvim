@@ -44,7 +44,10 @@ local mappings = {
     ["<leader>fB"] = { "<cmd>Telescope bibtex<cr>", desc = "Find BibTeX" },
     ["<leader>fe"] = { "<cmd>Telescope file_browser<cr>", desc = "File explorer" },
     ["<leader>fM"] = { "<cmd>Telescope media_files<cr>", desc = "Find media" },
-    ["<leader>fp"] = { "<cmd>Telescope project<cr>", desc = "Find projects" },
+    ["<leader>fp"] = {
+      function() require("telescope").extensions.project.project { display_type = "full" } end,
+      desc = "Find projects",
+    },
     -- compiler
     ["<leader>m"] = { name = "Compiler" },
     ["<leader>mk"] = {
