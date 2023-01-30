@@ -1,6 +1,13 @@
 local utils = require "user.utils"
 local mappings = {
+  v = {
+    ["<leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
+  },
   n = {
+    ["<leader>r"] = { name = "REPL" },
+    ["<leader>rr"] = { "<Plug>Send", desc = "Send to REPL" },
+    ["<leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },
+    ["<leader>r<cr>"] = { "<cmd>SendHere<cr>", desc = "Set REPL" },
     -- disable default bindings
     ["<C-Down>"] = false,
     ["<C-Left>"] = false,
