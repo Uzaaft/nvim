@@ -75,8 +75,8 @@ return {
       },
     })
   end,
-  config = function(plugin, opts)
-    plugin.default_config(opts)
+  config = function(...)
+    require "plugins.configs.telescope"(...)
     local telescope = require "telescope"
     telescope.load_extension "bibtex"
     telescope.load_extension "file_browser"
