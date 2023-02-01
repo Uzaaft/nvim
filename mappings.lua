@@ -103,6 +103,7 @@ local mappings = {
     ["<leader>rr"] = { "<Plug>Send", desc = "Send to REPL" },
     ["<leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },
     ["<leader>r<cr>"] = { "<cmd>SendHere<cr>", desc = "Set REPL" },
+    ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
   },
   v = {
     ["<leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
