@@ -104,9 +104,17 @@ local mappings = {
     ["<leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },
     ["<leader>r<cr>"] = { "<cmd>SendHere<cr>", desc = "Set REPL" },
     ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
+    ["<leader>s"] = { name = "Search/Replace" },
+    ["<leader>ss"] = { function() require("spectre").open() end, desc = "Spectre" },
+    ["<leader>sw"] = {
+      function() require("spectre").open_visual { select_word = true } end,
+      desc = "Spectre (current word)",
+    },
+    ["<leader>sf"] = { function() require("spectre").open_file_search() end, desc = "Spectre (current file)" },
   },
   v = {
     ["<leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
+    ["<leader>s"] = { function() require("spectre").open_visual() end, desc = "Spectre" },
   },
   i = {
     -- type template string
