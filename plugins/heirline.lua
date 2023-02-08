@@ -7,7 +7,7 @@ return {
     opts.winbar[3] = {
       astronvim.status.component.file_info { -- add file_info to breadcrumbs
         unique_path = {},
-        file_icon = { hl = astronvim.status.hl.file_icon "winbar" },
+        file_icon = { hl = astronvim.status.hl.filetype_color },
         file_modified = false,
         file_read_only = false,
         hl = astronvim.status.hl.get_attributes("winbar", true),
