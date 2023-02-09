@@ -27,14 +27,14 @@ return {
         vim.g.status_diagnostics_enabled_old = vim.g.status_diagnostics_enabled
         vim.g.diagnostics_enabled = false
         vim.g.status_diagnostics_enabled = false
-        vim.diagnostic.config(astronvim.lsp.diagnostics["off"])
+        vim.diagnostic.config(require("core.utils.lsp").diagnostics["off"])
         vim.g.indent_blankline_enabled_old = vim.g.indent_blankline_enabled
         vim.g.indent_blankline_enabled = false
       end,
       on_close = function() -- restore diagnostics and indent blankline
         vim.g.diagnostics_enabled = vim.g.diagnostics_enabled_old
         vim.g.status_diagnostics_enabled = vim.g.status_diagnostics_enabled_old
-        vim.diagnostic.config(astronvim.lsp.diagnostics[vim.g.diagnostics_enabled and "on" or "off"])
+        vim.diagnostic.config(require("core.utils.lsp").diagnostics[vim.g.diagnostics_enabled and "on" or "off"])
         vim.g.indent_blankline_enabled = vim.g.indent_blankline_enabled_old
       end,
     },

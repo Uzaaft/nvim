@@ -1,4 +1,5 @@
 local utils = require "user.utils"
+local astro_utils = require "core.utils"
 local mappings = {
   n = {
     -- disable default bindings
@@ -12,8 +13,14 @@ local mappings = {
     -- better buffer navigation
     ["]b"] = false,
     ["[b"] = false,
-    ["<S-l>"] = { function() astronvim.nav_buf(vim.v.count > 0 and vim.v.count or 1) end, desc = "Next buffer" },
-    ["<S-h>"] = { function() astronvim.nav_buf(-(vim.v.count > 0 and vim.v.count or 1)) end, desc = "Previous buffer" },
+    ["<S-l>"] = {
+      function() require("core.utils.buffer").nav_buf(vim.v.count > 0 and vim.v.count or 1) end,
+      desc = "Next buffer",
+    },
+    ["<S-h>"] = {
+      function() require("core.utils.buffer").nav_buf(-(vim.v.count > 0 and vim.v.count or 1)) end,
+      desc = "Previous buffer",
+    },
     -- better search
     n = { require("user.utils").better_search "n", desc = "Next search" },
     N = { require("user.utils").better_search "N", desc = "Previous search" },
@@ -115,14 +122,14 @@ local mappings = {
     ["<leader>;;"] = {
       function()
         vim.cmd.Codeium(vim.g.codeium_enabled == 0 and "Enable" or "Disable")
-        astronvim.notify("Codeium " .. (vim.g.codeium_enabled == 0 and "Disabled" or "Enabled"))
+        astro_utils.notify("Codeium " .. (vim.g.codeium_enabled == 0 and "Disabled" or "Enabled"))
       end,
       desc = "Toggle Global",
     },
     ["<leader>;b"] = {
       function()
         vim.cmd.Codeium(vim.b.codeium_enabled == 0 and "EnableBuffer" or "DisableBuffer")
-        astronvim.notify("Codeium (buffer) " .. (vim.b.codeium_enabled == 0 and "Disabled" or "Enabled"))
+        astro_utils.notify("Codeium (buffer) " .. (vim.b.codeium_enabled == 0 and "Disabled" or "Enabled"))
       end,
       desc = "Toggle Buffer",
     },

@@ -1,6 +1,6 @@
-M = {}
+local M = {}
 
-function M.quick_notification(msg, type) astronvim.notify(msg, type or "info", { timeout = 0 }) end
+function M.quick_notification(msg, type) require("core.utils").notify(msg, type or "info", { timeout = 0 }) end
 
 function M.vim_opt_toggle(opt, on, off, name)
   if on == nil then on = true end

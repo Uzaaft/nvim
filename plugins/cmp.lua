@@ -18,7 +18,7 @@ return {
       end
     end
 
-    return astronvim.extend_tbl(opts, {
+    return require("core.utils").extend_tbl(opts, {
       sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 1000 },
         { name = "luasnip", priority = 750 },

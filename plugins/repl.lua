@@ -3,7 +3,7 @@ return {
     "jupyter-vim/jupyter-vim",
     ft = { "pyhon", "julia" },
     config = function()
-      astronvim.set_mappings {
+      require("core.utils").set_mappings {
         n = {
           ["<leader>J"] = { "<cmd>JupyterConnect<cr>", desc = "Connect to Jupyter" },
           ["<leader>j"] = { "<Plug>JupyterRunTextObj", desc = "Send to Jupyter" },
