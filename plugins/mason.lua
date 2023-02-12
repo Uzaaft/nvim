@@ -13,7 +13,7 @@ return {
         "jsonls",
         "pyright",
         "sqls",
-        "sumneko_lua",
+        "lua_ls",
         "taplo",
         "texlab",
         "tsserver",
