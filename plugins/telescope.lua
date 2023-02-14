@@ -5,7 +5,7 @@ return {
     "nvim-telescope/telescope-bibtex.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
     "nvim-telescope/telescope-media-files.nvim",
-    "nvim-telescope/telescope-project.nvim",
+    "ahmedkhalf/project.nvim", -- defined in  ./editor.lua
   },
   opts = function(_, opts)
     local telescope = require "telescope"
@@ -61,12 +61,6 @@ return {
             },
           },
         },
-        project = {
-          base_dirs = {
-            { vim.fn.getenv "GIT_PATH", max_depth = 4 },
-          },
-          search_by = "path",
-        },
       },
       pickers = {
         find_files = {
@@ -81,6 +75,6 @@ return {
     telescope.load_extension "bibtex"
     telescope.load_extension "file_browser"
     telescope.load_extension "media_files"
-    telescope.load_extension "project"
+    telescope.load_extension "projects"
   end,
 }

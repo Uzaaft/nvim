@@ -67,6 +67,12 @@ return {
     },
   },
   {
+    "ahmedkhalf/project.nvim",
+    event = "VeryLazy",
+    opt = {},
+    config = function(_, opts) require("project_nvim").setup(opts) end,
+  },
+  {
     "nvim-pack/nvim-spectre",
     cmd = "Spectre",
     opts = function()
