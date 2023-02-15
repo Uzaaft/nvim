@@ -75,6 +75,17 @@ return {
     config = function(_, opts) require("project_nvim").setup(opts) end,
   },
   {
+    "folke/trouble.nvim",
+    cmd = { "TroubleToggle", "Trouble" },
+    opts = {
+      use_diagnostic_signs = true,
+      action_keys = {
+        close = { "q", "<esc>" },
+        cancel = "<c-e>",
+      },
+    },
+  },
+  {
     "nvim-pack/nvim-spectre",
     cmd = "Spectre",
     opts = function()
