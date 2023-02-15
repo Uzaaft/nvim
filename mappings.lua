@@ -149,7 +149,7 @@ local mappings = {
   },
   -- terminal mappings
   t = {
-    ["<C-q>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
+    ["<C-BS>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
     ["<esc><esc>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" },
   },
   x = {
