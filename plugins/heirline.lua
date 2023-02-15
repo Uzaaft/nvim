@@ -17,6 +17,7 @@ return {
         update = "BufEnter",
       },
       status.component.breadcrumbs {
+        icon = { hl = true },
         hl = status.hl.get_attributes("winbar", true),
         prefix = true,
         padding = { left = 0 },
