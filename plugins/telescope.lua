@@ -61,6 +61,12 @@ return {
         find_files = {
           hidden = true,
         },
+        buffers = {
+          mappings = {
+            i = { ["<c-d>"] = actions.delete_buffer },
+            n = { ["d"] = actions.delete_buffer },
+          },
+        },
       },
     })
   end,

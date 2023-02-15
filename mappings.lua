@@ -36,10 +36,11 @@ local mappings = {
     ga = { "<Plug>(EasyAlign)", desc = "Easy Align" },
     -- buffer switching
     ["<Tab>"] = {
-      function() require("telescope.builtin").buffers { previewer = false, sort_lastused = true } end,
+      function()
+        if #vim.t.bufs > 1 then require("telescope.builtin").buffers { previewer = false, sort_lastused = true } end
+      end,
       desc = "Switch Buffers",
     },
-    ["<leader><Tab>"] = { "<cmd>buffer#<cr>", desc = "Switch Buffers" },
     -- vim-sandwich
     ["s"] = "<Nop>",
     ["<leader>n"] = { "<cmd>enew<cr>", desc = "New File" },
