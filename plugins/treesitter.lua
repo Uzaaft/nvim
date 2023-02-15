@@ -1,30 +1,16 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    {
-      "andymass/vim-matchup",
-      init = function()
-        vim.g.matchup_matchparen_deferred = 1
-
-        vim.api.nvim_create_autocmd("FileType", {
-          desc = "Disable matchup for julia",
-          group = vim.api.nvim_create_augroup("julia_matchup", { clear = true }),
-          pattern = "julia",
-          callback = function()
-            vim.g.matchup_matchparen_enabled = 0
-            vim.g.matchup_motion_enabled = 0
-            vim.g.matchup_text_obj_enabled = 0
-          end,
-        })
-      end,
-    },
+    { "andymass/vim-matchup", init = function() vim.g.matchup_matchparen_deferred = 1 end },
     "nvim-treesitter/nvim-treesitter-textobjects",
+    "https://gitlab.com/HiPhish/nvim-ts-rainbow2",
   },
   opts = {
     auto_install = vim.fn.executable "tree-sitter" == 1,
     highlight = { disable = { "help" } },
     indent = { enable = true, disable = { "python" } },
-    matchup = { enable = true, disable = { "julia" } },
+    matchup = { enable = true },
+    rainbow = { enable = true },
     textobjects = {
       select = {
         enable = true,
