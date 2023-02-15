@@ -34,6 +34,12 @@ local mappings = {
     ["<Right>"] = { function() require("smart-splits").resize_right(2) end, desc = "Resize split right" },
     -- Easy-Align
     ga = { "<Plug>(EasyAlign)", desc = "Easy Align" },
+    -- buffer switching
+    ["<Tab>"] = {
+      function() require("telescope.builtin").buffers { previewer = false, sort_lastused = true } end,
+      desc = "Switch Buffers",
+    },
+    ["<leader><Tab>"] = { "<cmd>buffer#<cr>", desc = "Switch Buffers" },
     -- vim-sandwich
     ["s"] = "<Nop>",
     ["<leader>n"] = { "<cmd>enew<cr>", desc = "New File" },
