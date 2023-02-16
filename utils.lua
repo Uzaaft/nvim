@@ -1,14 +1,12 @@
 local M = {}
 
-function M.quick_notification(msg, type) require("core.utils").notify(msg, type or "info", { timeout = 0 }) end
-
 function M.vim_opt_toggle(opt, on, off, name)
   if on == nil then on = true end
   if off == nil then off = false end
   if not name then name = opt end
   local is_off = vim.opt[opt]:get() == off
   vim.opt[opt] = is_off and on or off
-  M.quick_notification(name .. " " .. (is_off and "Enabled" or "Disabled"))
+  require("core.utils").notify(name .. " " .. (is_off and "Enabled" or "Disabled"))
 end
 
 function M.async_run(cmd, on_finish)
@@ -58,7 +56,7 @@ function M.better_search(key)
     if searched then
       pcall(vim.cmd.normal, "zzzv")
     else
-      M.quick_notification(error, "error")
+      require("core.utils").notify(error, "error")
     end
     vim.opt.hlsearch = searched
   end

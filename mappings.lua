@@ -22,8 +22,8 @@ local mappings = {
       desc = "Previous buffer",
     },
     -- better search
-    n = { require("user.utils").better_search "n", desc = "Next search" },
-    N = { require("user.utils").better_search "N", desc = "Previous search" },
+    n = { utils.better_search "n", desc = "Next search" },
+    N = { utils.better_search "N", desc = "Previous search" },
     -- better increment/decrement
     ["-"] = { "<c-x>", desc = "Descrement number" },
     ["+"] = { "<c-a>", desc = "Increment number" },
@@ -37,7 +37,11 @@ local mappings = {
     -- buffer switching
     ["<Tab>"] = {
       function()
-        if #vim.t.bufs > 1 then require("telescope.builtin").buffers { previewer = false, sort_lastused = true } end
+        if #vim.t.bufs > 1 then
+          require("telescope.builtin").buffers { sort_mru = true, ignore_current_buffer = true }
+        else
+          astro_utils.notify "No other buffers open"
+        end
       end,
       desc = "Switch Buffers",
     },
@@ -64,20 +68,14 @@ local mappings = {
       function()
         vim.cmd "silent! write"
         local filename = vim.fn.expand "%:t"
-        utils.async_run(
-          { "compiler", vim.fn.expand "%:p" },
-          function() utils.quick_notification("Compiled " .. filename) end
-        )
+        utils.async_run({ "compiler", vim.fn.expand "%:p" }, function() astro_utils.notify("Compiled " .. filename) end)
       end,
       desc = "Compile",
     },
     ["<leader>ma"] = {
       function()
         vim.notify "Autocompile Started"
-        utils.async_run(
-          { "autocomp", vim.fn.expand "%:p" },
-          function() utils.quick_notification "Autocompile stopped" end
-        )
+        utils.async_run({ "autocomp", vim.fn.expand "%:p" }, function() astro_utils.notify "Autocompile stopped" end)
       end,
       desc = "Auto Compile",
     },
@@ -95,7 +93,7 @@ local mappings = {
           "beamer",
           "-o",
           vim.fn.expand "%:r" .. ".pdf",
-        }, function() utils.quick_notification("Compiled " .. filename) end)
+        }, function() astro_utils.notify("Compiled " .. filename) end)
       end,
       desc = "Compile Beamer",
     },

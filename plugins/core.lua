@@ -4,4 +4,5 @@ return {
 
   { "akinsho/toggleterm.nvim", opts = { terminal_mappings = false } },
   { "folke/which-key.nvim", opts = { window = { border = "none" } } },
+  { "rcarriga/nvim-notify", opts = { timeout = 0 } },
 }
