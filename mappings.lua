@@ -27,6 +27,11 @@ local mappings = {
     -- better increment/decrement
     ["-"] = { "<c-x>", desc = "Descrement number" },
     ["+"] = { "<c-a>", desc = "Increment number" },
+    -- kitty navigation
+    ["<C-j>"] = { "<cmd>KittyNavigateDown<cr>" },
+    ["<C-h>"] = { "<cmd>KittyNavigateLeft<cr>" },
+    ["<C-l>"] = { "<cmd>KittyNavigateRight<cr>" },
+    ["<C-k>"] = { "<cmd>KittyNavigateUp<cr>" },
     -- resize with arrows
     ["<Up>"] = { function() require("smart-splits").resize_up(2) end, desc = "Resize split up" },
     ["<Down>"] = { function() require("smart-splits").resize_down(2) end, desc = "Resize split down" },
