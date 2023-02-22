@@ -3,7 +3,7 @@ return {
   dependencies = {
     { "andymass/vim-matchup", init = function() vim.g.matchup_matchparen_deferred = 1 end },
     "nvim-treesitter/nvim-treesitter-textobjects",
-    "https://gitlab.com/HiPhish/nvim-ts-rainbow2",
+    "HiPhish/nvim-ts-rainbow2",
   },
   opts = {
     auto_install = vim.fn.executable "tree-sitter" == 1,
