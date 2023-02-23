@@ -11,7 +11,7 @@ return {
     local actions = require "telescope.actions"
     local fb_actions = require("telescope").extensions.file_browser.actions
     local hop = telescope.extensions.hop
-    return require("core.utils").extend_tbl(opts, {
+    return require("astronvim.utils").extend_tbl(opts, {
       defaults = {
         selection_caret = "  ",
         layout_config = {

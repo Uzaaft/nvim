@@ -18,7 +18,7 @@ return {
       end
     end
 
-    return require("core.utils").extend_tbl(opts, {
+    return require("astronvim.utils").extend_tbl(opts, {
       window = {
         completion = {
           winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:Visual,Search:None",

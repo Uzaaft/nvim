@@ -6,7 +6,7 @@ function M.vim_opt_toggle(opt, on, off, name)
   if not name then name = opt end
   local is_off = vim.opt[opt]:get() == off
   vim.opt[opt] = is_off and on or off
-  require("core.utils").notify(name .. " " .. (is_off and "Enabled" or "Disabled"))
+  require("astronvim.utils").notify(name .. " " .. (is_off and "Enabled" or "Disabled"))
 end
 
 function M.async_run(cmd, on_finish)
@@ -56,7 +56,7 @@ function M.better_search(key)
     if searched then
       pcall(vim.cmd.normal, "zzzv")
     else
-      require("core.utils").notify(error, "error")
+      require("astronvim.utils").notify(error, "error")
     end
     vim.opt.hlsearch = searched
   end

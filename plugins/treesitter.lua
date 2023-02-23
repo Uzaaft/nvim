@@ -1,7 +1,10 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = {
-    { "andymass/vim-matchup", init = function() vim.g.matchup_matchparen_deferred = 1 end },
+    {
+      "andymass/vim-matchup",
+      init = function() vim.g.matchup_matchparen_deferred = 1 end,
+    },
     "nvim-treesitter/nvim-treesitter-textobjects",
     "mrjones2014/nvim-ts-rainbow",
   },
