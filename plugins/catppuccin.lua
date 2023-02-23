@@ -5,7 +5,6 @@ return {
     dim_inactive = { enabled = true, percentage = 0.25 },
     integrations = {
       nvimtree = false,
-      ts_rainbow = false,
       aerial = true,
       dap = { enabled = true, enable_ui = true },
       mason = true,
@@ -15,7 +14,6 @@ return {
       semantic_tokens = true,
       symbols_outline = true,
       telescope = true,
-      ts_rainbow2 = true,
       which_key = true,
     },
   },
