@@ -5,22 +5,6 @@ vim.api.nvim_create_autocmd("VimLeave", {
   callback = function() vim.fn.jobstart { "autocomp", vim.fn.expand "%:p", "stop" } end,
 })
 
--- close some filetypes with <q>
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = {
-    "qf",
-    "help",
-    "man",
-    "notify",
-    "spectre_panel",
-  },
-  group = vim.api.nvim_create_augroup("misc_q_close", { clear = true }),
-  callback = function(event)
-    vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true, nowait = true })
-  end,
-})
-
 -- text like documents enable wrap and spell
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown", "text", "plaintex" },
