@@ -55,15 +55,6 @@ return {
     },
   },
   {
-    "ethanholz/nvim-lastplace",
-    event = "BufRead",
-    opts = {
-      lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
-      lastplace_ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" },
-      lastplace_open_folds = true,
-    },
-  },
-  {
     "ahmedkhalf/project.nvim",
     event = "VeryLazy",
     opts = {
