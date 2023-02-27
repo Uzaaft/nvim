@@ -69,7 +69,7 @@ local mappings = {
     ["<leader><cr>"] = { '<esc>/<++><cr>"_c4l', desc = "Next Template" },
     ["<leader>."] = { "<cmd>cd %:p:h<cr>", desc = "Set CWD" },
     -- neogen
-    ["<leader>a"] = { name = "Annotate" },
+    ["<leader>a"] = { name = "󰏫 Annotate" },
     ["<leader>a<cr>"] = {
       function() require("neogen").generate() end,
       desc = "Current",
@@ -98,7 +98,7 @@ local mappings = {
       desc = "Find projects",
     },
     -- compiler
-    ["<leader>m"] = { name = "Compiler" },
+    ["<leader>m"] = { name = "󱁤 Compiler" },
     ["<leader>mk"] = {
       function()
         vim.cmd "silent! write"
@@ -148,12 +148,12 @@ local mappings = {
     },
     ["<leader>mt"] = { "<cmd>TexlabBuild<cr>", desc = "LaTeX" },
     ["<leader>mf"] = { "<cmd>TexlabForward<cr>", desc = "Forward Search" },
-    ["<leader>r"] = { name = "REPL" },
+    ["<leader>r"] = { name = " REPL" },
     ["<leader>rr"] = { "<Plug>Send", desc = "Send to REPL" },
     ["<leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },
     ["<leader>r<cr>"] = { "<cmd>SendHere<cr>", desc = "Set REPL" },
     ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
-    ["<leader>s"] = { name = "Search/Replace" },
+    ["<leader>s"] = { name = "󰛔 Search/Replace" },
     ["<leader>ss"] = {
       function() require("spectre").open() end,
       desc = "Spectre",
@@ -166,12 +166,12 @@ local mappings = {
       function() require("spectre").open_file_search() end,
       desc = "Spectre (current file)",
     },
-    ["<leader>x"] = { name = "Trouble" },
+    ["<leader>x"] = { name = "裂Trouble" },
     ["<leader>xx"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
     ["<leader>xX"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
     ["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
     ["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
-    ["<leader>;"] = { name = "AI Assistant" },
+    ["<leader>;"] = { name = "󰧑 AI Assistant" },
     ["<leader>;;"] = {
       function()
         vim.cmd.Codeium(vim.g.codeium_enabled == 0 and "Enable" or "Disable")
@@ -199,7 +199,7 @@ local mappings = {
     ["<C-CR>"] = { "<++>", desc = "Insert template string" },
     ["<S-Tab>"] = { "<C-V><Tab>", desc = "Tab character" },
     -- date/time input
-    ["<c-d>"] = { name = "Date/Time" },
+    ["<c-d>"] = { name = "󰃰 Date/Time" },
     ["<c-d>n"] = { "<c-r>=strftime('%Y-%m-%d')<cr>", desc = "Y-m-d" },
     ["<c-d>x"] = { "<c-r>=strftime('%m/%d/%y')<cr>", desc = "m/d/y" },
     ["<c-d>f"] = { "<c-r>=strftime('%B %d, %Y')<cr>", desc = "B d, Y" },
