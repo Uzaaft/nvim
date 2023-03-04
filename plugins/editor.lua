@@ -39,7 +39,7 @@ return {
   {
     "arsham/indent-tools.nvim",
     dependencies = { "arsham/arshlib.nvim" },
-    init = function() table.insert(astronvim.file_plugins, "indent-tools.nvim") end,
+    event = "User AstroFile",
     config = function() require("indent-tools").config {} end,
   },
   {
@@ -91,16 +91,7 @@ return {
       }
     end,
   },
-  {
-    "junegunn/vim-easy-align",
-    init = function() table.insert(astronvim.file_plugins, "vim-easy-align") end,
-  },
-  {
-    "machakann/vim-sandwich",
-    init = function() table.insert(astronvim.file_plugins, "vim-sandwich") end,
-  },
-  {
-    "wakatime/vim-wakatime",
-    init = function() table.insert(astronvim.file_plugins, "vim-wakatime") end,
-  },
+  { "junegunn/vim-easy-align", event = "User AstroFile" },
+  { "machakann/vim-sandwich", event = "User AstroFile" },
+  { "wakatime/vim-wakatime", event = "User AstroFile" },
 }

@@ -1,6 +1,6 @@
 return {
   "sindrets/diffview.nvim",
-  init = function() table.insert(astronvim.git_plugins, "diffview.nvim") end,
+  event = "User AstroGitFile",
   config = function()
     local actions = require "diffview.actions"
     local utils = require "astronvim.utils" --  astronvim utils
