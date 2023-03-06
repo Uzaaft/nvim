@@ -12,6 +12,7 @@ return {
         "marksman",
         "neocmake",
         "jsonls",
+        "julials",
         "pyright",
         "sqls",
         "lua_ls",
