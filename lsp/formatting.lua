@@ -1,5 +1,1 @@
-return {
-  disabled = {
-    "lua_ls",
-  },
-}
+return { disabled = { "lua_ls" } }
