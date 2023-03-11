@@ -33,22 +33,10 @@ local mappings = {
     ["<C-l>"] = { "<cmd>KittyNavigateRight<cr>" },
     ["<C-k>"] = { "<cmd>KittyNavigateUp<cr>" },
     -- resize with arrows
-    ["<Up>"] = {
-      function() require("smart-splits").resize_up(2) end,
-      desc = "Resize split up",
-    },
-    ["<Down>"] = {
-      function() require("smart-splits").resize_down(2) end,
-      desc = "Resize split down",
-    },
-    ["<Left>"] = {
-      function() require("smart-splits").resize_left(2) end,
-      desc = "Resize split left",
-    },
-    ["<Right>"] = {
-      function() require("smart-splits").resize_right(2) end,
-      desc = "Resize split right",
-    },
+    ["<Up>"] = { function() require("smart-splits").resize_up(2) end, desc = "Resize split up" },
+    ["<Down>"] = { function() require("smart-splits").resize_down(2) end, desc = "Resize split down" },
+    ["<Left>"] = { function() require("smart-splits").resize_left(2) end, desc = "Resize split left" },
+    ["<Right>"] = { function() require("smart-splits").resize_right(2) end, desc = "Resize split right" },
     -- Easy-Align
     ga = { "<Plug>(EasyAlign)", desc = "Easy Align" },
     -- buffer switching
@@ -69,36 +57,18 @@ local mappings = {
     ["<leader><cr>"] = { '<esc>/<++><cr>"_c4l', desc = "Next Template" },
     ["<leader>."] = { "<cmd>cd %:p:h<cr>", desc = "Set CWD" },
     -- neogen
-    ["<leader>a"] = { name = "󰏫 Annotate" },
-    ["<leader>a<cr>"] = {
-      function() require("neogen").generate() end,
-      desc = "Current",
-    },
-    ["<leader>ac"] = {
-      function() require("neogen").generate { type = "class" } end,
-      desc = "Class",
-    },
-    ["<leader>af"] = {
-      function() require("neogen").generate { type = "func" } end,
-      desc = "Function",
-    },
-    ["<leader>at"] = {
-      function() require("neogen").generate { type = "type" } end,
-      desc = "Type",
-    },
-    ["<leader>aF"] = {
-      function() require("neogen").generate { type = "file" } end,
-      desc = "File",
-    },
+    ["<leader>a"] = { desc = "󰏫 Annotate" },
+    ["<leader>a<cr>"] = { function() require("neogen").generate() end, desc = "Current" },
+    ["<leader>ac"] = { function() require("neogen").generate { type = "class" } end, desc = "Class" },
+    ["<leader>af"] = { function() require("neogen").generate { type = "func" } end, desc = "Function" },
+    ["<leader>at"] = { function() require("neogen").generate { type = "type" } end, desc = "Type" },
+    ["<leader>aF"] = { function() require("neogen").generate { type = "file" } end, desc = "File" },
     -- telescope plugin mappings
     ["<leader>fB"] = { "<cmd>Telescope bibtex<cr>", desc = "Find BibTeX" },
     ["<leader>fe"] = { "<cmd>Telescope file_browser<cr>", desc = "File explorer" },
-    ["<leader>fp"] = {
-      function() require("telescope").extensions.projects.projects {} end,
-      desc = "Find projects",
-    },
+    ["<leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
     -- compiler
-    ["<leader>m"] = { name = "󱁤 Compiler" },
+    ["<leader>m"] = { desc = "󱁤 Compiler" },
     ["<leader>mk"] = {
       function()
         vim.cmd "silent! write"
@@ -142,36 +112,27 @@ local mappings = {
       end,
       desc = "Present Output",
     },
-    ["<leader>ml"] = {
-      function() utils.toggle_qf() end,
-      desc = "Logs",
-    },
+    ["<leader>ml"] = { function() utils.toggle_qf() end, desc = "Logs" },
     ["<leader>mt"] = { "<cmd>TexlabBuild<cr>", desc = "LaTeX" },
     ["<leader>mf"] = { "<cmd>TexlabForward<cr>", desc = "Forward Search" },
-    ["<leader>r"] = { name = " REPL" },
+    ["<leader>r"] = { desc = " REPL" },
     ["<leader>rr"] = { "<Plug>Send", desc = "Send to REPL" },
     ["<leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },
     ["<leader>r<cr>"] = { "<cmd>SendHere<cr>", desc = "Set REPL" },
     ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
-    ["<leader>s"] = { name = "󰛔 Search/Replace" },
-    ["<leader>ss"] = {
-      function() require("spectre").open() end,
-      desc = "Spectre",
-    },
+    ["<leader>s"] = { desc = "󰛔 Search/Replace" },
+    ["<leader>ss"] = { function() require("spectre").open() end, desc = "Spectre" },
+    ["<leader>sf"] = { function() require("spectre").open_file_search() end, desc = "Spectre (current file)" },
     ["<leader>sw"] = {
       function() require("spectre").open_visual { select_word = true } end,
       desc = "Spectre (current word)",
     },
-    ["<leader>sf"] = {
-      function() require("spectre").open_file_search() end,
-      desc = "Spectre (current file)",
-    },
-    ["<leader>x"] = { name = "裂Trouble" },
+    ["<leader>x"] = { desc = "裂Trouble" },
     ["<leader>xx"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
     ["<leader>xX"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
     ["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
     ["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
-    ["<leader>;"] = { name = "󰧑 AI Assistant" },
+    ["<leader>;"] = { desc = "󰧑 AI Assistant" },
     ["<leader>;;"] = {
       function()
         vim.cmd.Codeium(vim.g.codeium_enabled == 0 and "Enable" or "Disable")
@@ -189,17 +150,14 @@ local mappings = {
   },
   v = {
     ["<leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
-    ["<leader>s"] = {
-      function() require("spectre").open_visual() end,
-      desc = "Spectre",
-    },
+    ["<leader>s"] = { function() require("spectre").open_visual() end, desc = "Spectre" },
   },
   i = {
     -- type template string
     ["<C-CR>"] = { "<++>", desc = "Insert template string" },
     ["<S-Tab>"] = { "<C-V><Tab>", desc = "Tab character" },
     -- date/time input
-    ["<c-t>"] = { name = "󰃰 Date/Time" },
+    ["<c-t>"] = { desc = "󰃰 Date/Time" },
     ["<c-t>n"] = { "<c-r>=strftime('%Y-%m-%d')<cr>", desc = "Y-m-d" },
     ["<c-t>x"] = { "<c-r>=strftime('%m/%d/%y')<cr>", desc = "m/d/y" },
     ["<c-t>f"] = { "<c-r>=strftime('%B %d, %Y')<cr>", desc = "B d, Y" },
