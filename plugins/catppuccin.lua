@@ -8,6 +8,7 @@ return {
       ts_rainbow = false,
       aerial = true,
       dap = { enabled = true, enable_ui = true },
+      headlines = true,
       mason = true,
       neotree = true,
       notify = true,
