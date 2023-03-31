@@ -69,6 +69,12 @@ return {
     config = function(_, opts) require("project_nvim").setup(opts) end,
   },
   {
+    "folke/todo-comments.nvim",
+    event = "User AstroFile",
+    cmd = { "TodoTrouble", "TodoTelescope", "TodoLocList", "TodoQuickFix" },
+    opts = {},
+  },
+  {
     "folke/trouble.nvim",
     cmd = { "TroubleToggle", "Trouble" },
     opts = {
