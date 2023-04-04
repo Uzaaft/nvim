@@ -63,6 +63,13 @@ local mappings = {
     ["<leader>fe"] = { "<cmd>Telescope file_browser<cr>", desc = "File explorer" },
     ["<leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
     ["<leader>fT"] = { "<cmd>TodoTelescope<cr>", desc = "Find TODOs" },
+    -- octo plugin mappings
+    ["<leader>G"] = { name = " GitHub" },
+    ["<leader>Gi"] = { "<cmd>Octo issue list<cr>", desc = "Open Issues" },
+    ["<leader>GI"] = { "<cmd>Octo issue search<cr>", desc = "Search Issues" },
+    ["<leader>Gp"] = { "<cmd>Octo pr list<cr>", desc = "Open PRs" },
+    ["<leader>GP"] = { "<cmd>Octo pr search<cr>", desc = "Search PRs" },
+    ["<leader>Gr"] = { "<cmd>Octo repo list<cr>", desc = "Open Repository" },
     -- compiler
     ["<leader>m"] = { desc = "󱁤 Compiler" },
     ["<leader>mk"] = {
