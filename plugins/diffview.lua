@@ -1,7 +1,7 @@
 return {
   "sindrets/diffview.nvim",
   event = "User AstroGitFile",
-  config = function()
+  opts = function()
     local actions = require "diffview.actions"
     local utils = require "astronvim.utils" --  astronvim utils
 
@@ -48,7 +48,8 @@ return {
       return out
     end
 
-    require("diffview").setup {
+    return {
+      enhanced_diff_hl = true,
       view = {
         merge_tool = { layout = "diff3_mixed" },
       },
