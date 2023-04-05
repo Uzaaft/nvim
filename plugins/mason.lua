@@ -14,7 +14,6 @@ return {
         "jsonls",
         "julials",
         "pyright",
-        "sqls",
         "lua_ls",
         "taplo",
         "texlab",

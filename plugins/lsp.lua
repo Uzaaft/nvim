@@ -1,5 +1,4 @@
 return {
-  "nanotee/sqls.nvim",
   {
     "jose-elias-alvarez/typescript.nvim",
     init = function() table.insert(astronvim.lsp.skip_setup, "tsserver") end,
