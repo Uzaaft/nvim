@@ -11,7 +11,7 @@ return {
       type = "pwa-node",
       request = "attach",
       name = "Attach",
-      processId = function(...) return require("dap.utils").pick_process(...) end,
+      processId = require("dap.utils").pick_process,
       cwd = "${workspaceFolder}",
     }
 
