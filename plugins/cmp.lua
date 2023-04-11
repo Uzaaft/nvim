@@ -21,8 +21,7 @@ return {
     return require("astronvim.utils").extend_tbl(opts, {
       window = {
         completion = {
-          winhighlight = "Normal:Pmenu,FloatBorder:Pmenu,CursorLine:Visual,Search:None",
-          border = "none",
+          border = "rounded",
           col_offset = -1,
           side_padding = 0,
         },
