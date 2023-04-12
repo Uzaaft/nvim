@@ -4,7 +4,7 @@ return {
     list = true, -- show whitespace characters
     listchars = { tab = "│→", extends = "⟩", precedes = "⟨", trail = "·", nbsp = "␣" },
     showbreak = "↪ ",
-    showtabline = 0,
+    showtabline = 1,
     spellfile = vim.fn.expand "~/.config/nvim/lua/user/spell/en.utf-8.add",
     swapfile = false,
     thesaurus = vim.fn.expand "~/.config/nvim/lua/user/spell/mthesaur.txt",
