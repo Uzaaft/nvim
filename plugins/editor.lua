@@ -37,6 +37,16 @@ return {
     },
   },
   {
+    "echasnovski/mini.move",
+    keys = {
+      { "<M-l>", mode = { "n", "v" } },
+      { "<M-k>", mode = { "n", "v" } },
+      { "<M-j>", mode = { "n", "v" } },
+      { "<M-h>", mode = { "n", "v" } },
+    },
+    config = function(_, opts) require("mini.move").setup(opts) end,
+  },
+  {
     "arsham/indent-tools.nvim",
     dependencies = { "arsham/arshlib.nvim" },
     event = "User AstroFile",
