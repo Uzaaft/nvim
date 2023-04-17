@@ -17,9 +17,7 @@ return {
   {
     "mrjones2014/smart-splits.nvim",
     build = "./kitty/install-kittens.bash",
-    opts = {
-      wrap_at_edge = false,
-    },
+    opts = function(_, opts) opts.at_edge = require("smart-splits.types").AtEdgeBehavior.stop end,
   },
   {
     "lewis6991/gitsigns.nvim",
