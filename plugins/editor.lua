@@ -113,7 +113,6 @@ return {
       }
     end,
   },
-  { "willothy/flatten.nvim", lazy = false, priority = 1001, opts = { window = { open = "vsplit" } } },
   { "junegunn/vim-easy-align", event = "User AstroFile" },
   { "machakann/vim-sandwich", event = "User AstroFile" },
   { "wakatime/vim-wakatime", event = "User AstroFile" },
