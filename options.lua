@@ -10,4 +10,7 @@ return {
     thesaurus = vim.fn.expand "~/.config/nvim/lua/user/spell/mthesaur.txt",
     wrap = true, -- soft wrap lines
   },
+  g = {
+    resession_enabled = true,
+  },
 }
