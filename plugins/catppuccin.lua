@@ -17,7 +17,6 @@ return {
       semantic_tokens = true,
       symbols_outline = true,
       telescope = true,
-      ts_rainbow2 = true,
       which_key = true,
     },
   },
