@@ -11,6 +11,7 @@ return {
       headlines = true,
       mason = true,
       neotree = true,
+      noice = true,
       notify = true,
       octo = true,
       sandwich = true,
