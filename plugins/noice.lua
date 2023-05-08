@@ -16,7 +16,10 @@ return {
     event = "VeryLazy",
     opts = {
       cmdline = { view = "cmdline" },
-      messages = { view_search = false },
+      messages = {
+        view = "mini",
+        view_search = false,
+      },
       lsp = {
         progress = { enabled = false },
         hover = { enabled = false },
