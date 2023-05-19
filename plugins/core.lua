@@ -3,6 +3,7 @@ local get_icon = require("astronvim.utils").get_icon
 return {
   { "goolord/alpha-nvim", enabled = false },
   { "max397574/better-escape.nvim", enabled = false },
+  { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
   {
     "akinsho/toggleterm.nvim",
