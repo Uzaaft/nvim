@@ -1,6 +1,7 @@
 return {
   {
     "lvimuser/lsp-inlayhints.nvim",
+    branch = "anticonceal",
     init = function()
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("LspAttach_inlayhints", {}),
@@ -19,9 +20,7 @@ return {
         end,
       })
     end,
-    opts = {
-      inlay_hints = { highlight = "Comment" },
-    },
+    opts = { inlay_hints = { highlight = "Comment" } },
   },
   {
     "jose-elias-alvarez/typescript.nvim",
