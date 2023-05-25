@@ -8,6 +8,7 @@ return {
   },
   opts = function(_, opts)
     local cmp = require "cmp"
+    local compare = require "cmp.config.compare"
     local luasnip = require "luasnip"
 
     local function has_words_before()
@@ -32,6 +33,15 @@ return {
         { name = "calc", priority = 650 },
         { name = "path", priority = 500 },
         { name = "buffer", priority = 250 },
+      },
+      sorting = {
+        comparators = {
+          compare.locality,
+          compare.recently_used,
+          compare.score,
+          compare.offset,
+          compare.order,
+        },
       },
       mapping = {
         -- tab complete
