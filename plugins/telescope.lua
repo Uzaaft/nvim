@@ -60,6 +60,11 @@ return {
       pickers = {
         find_files = {
           hidden = true,
+          find_command = function(cfg)
+            local find_command = { "rg", "--files", "--color", "never" }
+            if not cfg.no_ignore then vim.list_extend(find_command, { "--glob", "!**/.git/**" }) end
+            return find_command
+          end,
         },
         buffers = {
           path_display = { "smart" },
