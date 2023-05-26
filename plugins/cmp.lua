@@ -53,20 +53,20 @@ return {
           end
         end, { "i", "s" }),
         -- <C-n> and <C-p> for navigating snippets
-        ["<C-n>"] = function()
+        ["<C-n>"] = cmp.mapping(function()
           if luasnip.jumpable(1) then luasnip.jump(1) end
-        end,
-        ["<C-p>"] = function()
+        end, { "i", "s" }),
+        ["<C-p>"] = cmp.mapping(function()
           if luasnip.jumpable(-1) then luasnip.jump(-1) end
-        end,
+        end, { "i", "s" }),
         -- <C-j> for starting completion
-        ["<C-j>"] = function()
+        ["<C-j>"] = cmp.mapping(function()
           if cmp.visible() then
             cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
           else
             cmp.complete()
           end
-        end,
+        end, { "i", "s" }),
       },
       experimental = { ghost_text = true },
     })
