@@ -23,6 +23,7 @@ return {
     custom_highlights = function(colors)
       return {
         -- disable italics  for treesitter highlights
+        TabLineFill = { link = "StatusLine" },
         ["@parameter"] = { style = {} },
         ["@type.builtin"] = { style = {} },
         ["@namespace"] = { style = {} },
