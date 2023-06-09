@@ -59,6 +59,10 @@ local mappings = {
     ["<leader>at"] = { function() require("neogen").generate { type = "type" } end, desc = "Type" },
     ["<leader>aF"] = { function() require("neogen").generate { type = "file" } end, desc = "File" },
     -- telescope plugin mappings
+    ["<leader>fx"] = {
+      function() require("telescope").extensions.live_grep_args.live_grep_args() end,
+      desc = "Find words (args)",
+    },
     ["<leader>fB"] = { "<cmd>Telescope bibtex<cr>", desc = "Find BibTeX" },
     ["<leader>fe"] = { "<cmd>Telescope file_browser<cr>", desc = "File explorer" },
     ["<leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
