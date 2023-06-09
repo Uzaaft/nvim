@@ -1,6 +1,8 @@
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
+    { "nvim-telescope/telescope-fzf-native.nvim", enabled = false },
+    "nvim-telescope/telescope-fzy-native.nvim",
     "nvim-telescope/telescope-hop.nvim",
     "nvim-telescope/telescope-bibtex.nvim",
     "nvim-telescope/telescope-file-browser.nvim",
@@ -79,6 +81,7 @@ return {
   config = function(...)
     require "plugins.configs.telescope"(...)
     local telescope = require "telescope"
+    telescope.load_extension "fzy_native"
     telescope.load_extension "bibtex"
     telescope.load_extension "file_browser"
     telescope.load_extension "projects"
