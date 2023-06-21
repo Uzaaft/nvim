@@ -114,6 +114,13 @@ return {
     end,
   },
   { "junegunn/vim-easy-align", event = "User AstroFile" },
-  { "machakann/vim-sandwich", event = "User AstroFile" },
+  {
+    "machakann/vim-sandwich",
+    keys = {
+      { "sa", desc = "Add surrounding", mode = { "n", "v" } },
+      { "sd", desc = "Delete surrounding" },
+      { "sr", desc = "Replace surrounding" },
+    },
+  },
   { "wakatime/vim-wakatime", event = "User AstroFile" },
 }
