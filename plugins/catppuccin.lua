@@ -13,7 +13,6 @@ return {
       neotree = true,
       noice = true,
       notify = true,
-      octo = true,
       sandwich = true,
       semantic_tokens = true,
       symbols_outline = true,
