@@ -4,8 +4,15 @@ return {
   opts = {
     dim_inactive = { enabled = true, percentage = 0.25 },
     integrations = {
+      alpha = false,
+      dashboard = false,
       nvimtree = false,
       ts_rainbow = false,
+      barbecue = false,
+      indent_blankline = false,
+      navic = false,
+      dropbar = false,
+
       aerial = true,
       dap = { enabled = true, enable_ui = true },
       headlines = true,
