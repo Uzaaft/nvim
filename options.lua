@@ -11,7 +11,6 @@ return {
     wrap = true, -- soft wrap lines
   },
   g = {
-    inlay_hints_enabled = true,
     resession_enabled = true,
   },
 }
