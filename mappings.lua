@@ -121,7 +121,7 @@ local mappings = {
     ["<leader>r<cr>"] = { "<cmd>SendHere<cr>", desc = "Set REPL" },
     ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
     ["<leader>s"] = { desc = "󰛔 Search/Replace" },
-    ["<leader>ss"] = { function() require("spectre").open() end, desc = "Spectre" },
+    ["<leader>ss"] = { function() require("spectre").toggle() end, desc = "Toggle Spectre" },
     ["<leader>sf"] = { function() require("spectre").open_file_search() end, desc = "Spectre (current file)" },
     ["<leader>sw"] = {
       function() require("spectre").open_visual { select_word = true } end,
