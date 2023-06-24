@@ -17,6 +17,7 @@ return {
     local hop = telescope.extensions.hop
     return require("astronvim.utils").extend_tbl(opts, {
       defaults = {
+        results_title = "",
         selection_caret = "  ",
         layout_config = {
           width = 0.90,

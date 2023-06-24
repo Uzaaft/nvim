@@ -23,7 +23,7 @@ return {
       sandwich = true,
       semantic_tokens = true,
       symbols_outline = true,
-      telescope = true,
+      telescope = { enabled = true, style = "nvchad" },
       which_key = true,
     },
     custom_highlights = {
