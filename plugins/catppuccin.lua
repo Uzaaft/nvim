@@ -17,6 +17,7 @@ return {
       dap = { enabled = true, enable_ui = true },
       headlines = true,
       mason = true,
+      native_lsp = { enabled = true, inlay_hints = { background = false } },
       neotree = true,
       noice = true,
       notify = true,
@@ -29,6 +30,7 @@ return {
     custom_highlights = {
       -- disable italics  for treesitter highlights
       TabLineFill = { link = "StatusLine" },
+      LspInlayHint = { style = { "italic" } },
       ["@parameter"] = { style = {} },
       ["@type.builtin"] = { style = {} },
       ["@namespace"] = { style = {} },
