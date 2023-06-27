@@ -167,9 +167,6 @@ local mappings = {
     -- better increment/decrement
     ["+"] = { "g<C-a>", desc = "Increment number" },
     ["-"] = { "g<C-x>", desc = "Descrement number" },
-    -- line text-objects
-    ["il"] = { "g_o^", desc = "Inside line text object" },
-    ["al"] = { "$o^", desc = "Around line text object" },
     -- Easy-Align
     ga = { "<Plug>(EasyAlign)", desc = "Easy Align" },
     -- vim-sandwich
