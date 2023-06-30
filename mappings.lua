@@ -133,21 +133,6 @@ local mappings = {
     ["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
     ["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
     ["<leader>xT"] = { "<cmd>TodoTrouble<cr>", desc = "TODOs (Trouble)" },
-    ["<leader>;"] = { desc = "󰧑 AI Assistant" },
-    ["<leader>;;"] = {
-      function()
-        vim.cmd.Codeium(vim.g.codeium_enabled == 0 and "Enable" or "Disable")
-        astro_utils.notify("Codeium " .. (vim.g.codeium_enabled == 0 and "Disabled" or "Enabled"))
-      end,
-      desc = "Toggle Global",
-    },
-    ["<leader>;b"] = {
-      function()
-        vim.cmd.Codeium(vim.b.codeium_enabled == 0 and "EnableBuffer" or "DisableBuffer")
-        astro_utils.notify("Codeium (buffer) " .. (vim.b.codeium_enabled == 0 and "Disabled" or "Enabled"))
-      end,
-      desc = "Toggle Buffer",
-    },
   },
   v = {
     ["<leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
