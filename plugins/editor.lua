@@ -119,24 +119,17 @@ return {
   },
   { "junegunn/vim-easy-align", event = "User AstroFile" },
   {
-    "machakann/vim-sandwich",
-    cmd = "SandwichHighlightToggle",
+    "echasnovski/mini.surround",
     keys = {
       { "sa", desc = "Add surrounding", mode = { "n", "v" } },
       { "sd", desc = "Delete surrounding" },
+      { "sf", desc = "Find right surrounding" },
+      { "sF", desc = "Find left surrounding" },
+      { "sh", desc = "Highlight surrounding" },
       { "sr", desc = "Replace surrounding" },
+      { "sn", desc = "Update `MiniSurround.config.n_lines`" },
     },
-    config = function()
-      local function set_hl(enabled) vim.fn["operator#sandwich#set"]("all", "all", "highlight", enabled and 3 or 0) end
-      vim.api.nvim_create_user_command("SandwichHighlightToggle", function()
-        vim.g.sandwich_highlighting = not vim.g.sandwich_highlighting
-        set_hl(vim.g.sandwich_highlighting)
-        require("astronvim.utils").notify(
-          ("Surround highlights %s"):format(vim.g.sandwich_highlighting and "on" or "off")
-        )
-      end, { desc = "Toggle highlighting for vim-sandwich" })
-      set_hl(false)
-    end,
+    opts = { n_lines = 200 },
   },
   { "wakatime/vim-wakatime", event = "User AstroFile" },
 }

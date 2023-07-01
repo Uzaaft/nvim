@@ -45,8 +45,6 @@ local mappings = {
       end,
       desc = "Switch Buffers",
     },
-    -- vim-sandwich
-    ["s"] = "<Nop>",
     ["<leader>n"] = { "<cmd>enew<cr>", desc = "New File" },
     ["<leader>N"] = { "<cmd>tabnew<cr>", desc = "New Tab" },
     ["<leader><cr>"] = { '<esc>/<++><cr>"_c4l', desc = "Next Template" },
@@ -154,8 +152,6 @@ local mappings = {
     ["-"] = { "g<C-x>", desc = "Descrement number" },
     -- Easy-Align
     ga = { "<Plug>(EasyAlign)", desc = "Easy Align" },
-    -- vim-sandwich
-    ["s"] = "<Nop>",
   },
   o = {
     -- line text-objects
