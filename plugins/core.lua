@@ -11,9 +11,6 @@ return {
   { "akinsho/toggleterm.nvim", opts = {
     terminal_mappings = false,
   } },
-  { "echasnovski/mini.ai", opts = {
-    search_method = "cover",
-  } },
   { "rcarriga/nvim-notify", opts = {
     timeout = 0,
   } },
