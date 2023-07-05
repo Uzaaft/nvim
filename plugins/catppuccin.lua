@@ -8,6 +8,7 @@ return {
       dashboard = false,
       nvimtree = false,
       ts_rainbow = false,
+      ts_rainbow2 = false,
       barbecue = false,
       indent_blankline = false,
       navic = false,
