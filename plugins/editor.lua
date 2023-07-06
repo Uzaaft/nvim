@@ -74,14 +74,6 @@ return {
     opts = {},
   },
   {
-    "ahmedkhalf/project.nvim",
-    event = "VeryLazy",
-    opts = {
-      ignore_lsp = { "lua_ls", "julials" },
-    },
-    config = function(_, opts) require("project_nvim").setup(opts) end,
-  },
-  {
     "folke/todo-comments.nvim",
     event = "User AstroFile",
     cmd = { "TodoTrouble", "TodoTelescope", "TodoLocList", "TodoQuickFix" },
