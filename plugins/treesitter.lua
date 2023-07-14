@@ -7,7 +7,6 @@ return {
     },
     opts = {
       auto_install = vim.fn.executable "tree-sitter" == 1,
-      highlight = { disable = { "help" } },
       matchup = { enable = true },
     },
   },
