@@ -17,13 +17,7 @@ return {
     end
 
     return require("astronvim.utils").extend_tbl(opts, {
-      window = {
-        completion = {
-          border = "rounded",
-          col_offset = -1,
-          side_padding = 0,
-        },
-      },
+      window = { completion = { col_offset = -1, side_padding = 0 } },
       sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 1000 },
         { name = "luasnip", priority = 750 },
