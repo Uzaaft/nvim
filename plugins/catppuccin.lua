@@ -19,6 +19,7 @@ return {
       headlines = true,
       mason = true,
       native_lsp = { enabled = true, inlay_hints = { background = false } },
+      neogit = true,
       neotree = true,
       noice = true,
       notify = true,

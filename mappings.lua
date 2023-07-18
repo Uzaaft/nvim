@@ -65,6 +65,8 @@ local mappings = {
     ["<leader>fe"] = { "<cmd>Telescope file_browser<cr>", desc = "File explorer" },
     ["<leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
     ["<leader>fT"] = { "<cmd>TodoTelescope<cr>", desc = "Find TODOs" },
+    -- neogit
+    ["<leader>gG"] = { function() require("neogit").open() end, desc = "Neogit" },
     -- compiler
     ["<leader>m"] = { desc = "󱁤 Compiler" },
     ["<leader>mk"] = {
