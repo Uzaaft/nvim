@@ -6,6 +6,7 @@ return {
     integrations = {
       alpha = false,
       dashboard = false,
+      flash = false,
       nvimtree = false,
       ts_rainbow = false,
       ts_rainbow2 = false,
