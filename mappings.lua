@@ -160,7 +160,7 @@ local mappings = {
     ["il"] = { ":normal vil<cr>", desc = "Inside line text object" },
     ["al"] = { ":normal val<cr>", desc = "Around line text object" },
   },
-  ia = vim.fn.has "nvim-0.10" and {
+  ia = vim.fn.has "nvim-0.10" == 1 and {
     mktemp = { function() return "<++>" end, desc = "Insert <++>", expr = true },
     ldate = { function() return os.date "%Y/%m/%d %H:%M:%S -" end, desc = "Y/m/d H:M:S -", expr = true },
     ndate = { function() return os.date "%Y-%m-%d" end, desc = "Y-m-d", expr = true },
