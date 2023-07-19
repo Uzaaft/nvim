@@ -1,9 +1,11 @@
-vim.api.nvim_create_autocmd("VimLeave", {
-  desc = "Stop running auto compiler on leave",
-  group = vim.api.nvim_create_augroup("quit_autocomp", { clear = true }),
-  pattern = "*",
-  callback = function() vim.fn.jobstart { "autocomp", vim.fn.expand "%:p", "stop" } end,
-})
+if vim.fn.executable "autocomp" == 1 then
+  vim.api.nvim_create_autocmd("VimLeave", {
+    desc = "Stop running auto compiler on leave",
+    group = vim.api.nvim_create_augroup("quit_autocomp", { clear = true }),
+    pattern = "*",
+    callback = function() vim.fn.jobstart { "autocomp", vim.fn.expand "%:p", "stop" } end,
+  })
+end
 
 vim.api.nvim_create_autocmd("FileType", {
   desc = "Enable wrap and spell for text like documents",
