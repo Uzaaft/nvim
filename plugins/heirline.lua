@@ -4,9 +4,10 @@ return {
     local status = require "astronvim.utils.status"
     opts.statusline[3] = status.component.file_info { filetype = {}, filename = false }
 
-    opts.winbar[1][1] = status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } }
+    local path_func = status.provider.filename { modify = ":.:h", fallback = "" }
+    opts.winbar[1][1] = status.component.separated_path { path_func = path_func }
     opts.winbar[2] = {
-      status.component.separated_path { path_func = status.provider.filename { modify = ":.:h" } },
+      status.component.separated_path { path_func = path_func },
       status.component.file_info { -- add file_info to breadcrumbs
         file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
         file_modified = false,
