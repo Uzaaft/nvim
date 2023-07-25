@@ -20,7 +20,7 @@ return {
     local fb_actions = require("telescope").extensions.file_browser.actions
     local lga_actions = require "telescope-live-grep-args.actions"
     local hop = telescope.extensions.hop
-    return require("astronvim.utils").extend_tbl(opts, {
+    return require("astrocore.utils").extend_tbl(opts, {
       defaults = {
         results_title = "",
         selection_caret = "  ",
@@ -96,7 +96,7 @@ return {
     })
   end,
   config = function(...)
-    require "plugins.configs.telescope"(...)
+    require "astronvim.plugins.configs.telescope"(...)
     local telescope = require "telescope"
     telescope.load_extension "fzy_native"
     telescope.load_extension "live_grep_args"

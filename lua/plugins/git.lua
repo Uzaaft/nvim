@@ -7,7 +7,7 @@ return {
       event = "User AstroGitFile",
       opts = function()
         local actions = require "diffview.actions"
-        local utils = require "astronvim.utils" --  astronvim utils
+        local utils = require "astrocore.utils" --  astronvim utils
 
         local prefix = "<leader>D"
 
@@ -127,7 +127,7 @@ return {
     },
   },
   opts = function()
-    local get_icon = require("astronvim.utils").get_icon
+    local get_icon = require("astrocore.utils").get_icon
     local fold_signs = { get_icon "FoldClosed", get_icon "FoldOpened" }
     return {
       disable_builtin_notifications = true,

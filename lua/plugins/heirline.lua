@@ -1,7 +1,7 @@
 return {
   "rebelot/heirline.nvim",
   opts = function(_, opts)
-    local status = require "astronvim.utils.status"
+    local status = require "astroui.status"
     opts.statusline[3] = status.component.file_info { filetype = {}, filename = false }
 
     local path_func = status.provider.filename { modify = ":.:h", fallback = "" }

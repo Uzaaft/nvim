@@ -16,7 +16,7 @@ return {
       return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
     end
 
-    return require("astronvim.utils").extend_tbl(opts, {
+    return require("astrocore.utils").extend_tbl(opts, {
       window = { completion = { col_offset = -1, side_padding = 0 } },
       sources = cmp.config.sources {
         { name = "nvim_lsp", priority = 1000 },

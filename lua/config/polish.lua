@@ -1,3 +1,31 @@
+local function yaml_ft(path, bufnr)
+  -- get content of buffer as string
+  local content = vim.filetype.getlines(bufnr)
+  if type(content) == "table" then content = table.concat(content, "\n") end
+
+  -- check if file is in roles, tasks, or handlers folder
+  local path_regex = vim.regex "(tasks\\|roles\\|handlers)/"
+  if path_regex and path_regex:match_str(path) then return "yaml.ansible" end
+  -- check for known ansible playbook text and if found, return yaml.ansible
+  local regex = vim.regex "hosts:\\|tasks:"
+  if regex and regex:match_str(content) then return "yaml.ansible" end
+
+  -- return yaml if nothing else
+  return "yaml"
+end
+
+vim.filetype.add {
+  extension = {
+    qmd = "markdown",
+    yml = yaml_ft,
+    yaml = yaml_ft,
+  },
+  pattern = {
+    ["/tmp/neomutt.*"] = "markdown",
+  },
+}
+
+-- Auto Commands
 if vim.fn.executable "autocomp" == 1 then
   vim.api.nvim_create_autocmd("VimLeave", {
     desc = "Stop running auto compiler on leave",
@@ -28,7 +56,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 if vim.env.KITTY_LISTEN_ON then
-  local cmd = require("astronvim.utils").cmd
+  local cmd = require("astrocore.utils").cmd
 
   for _, color in ipairs(vim.fn.split(cmd { "kitty", "@", "get-colors" } or "", "\n")) do
     local orig_bg = color:match "^background%s+(#[0-9a-fA-F]+)$"
@@ -41,7 +69,7 @@ if vim.env.KITTY_LISTEN_ON then
         pattern = "AstroColorScheme",
         group = augroup,
         callback = function()
-          local bg_color = require("astronvim.utils").get_hlgroup("Normal").bg
+          local bg_color = require("astrocore.utils").get_hlgroup("Normal").bg
           if not bg_color or bg_color == "NONE" then
             bg_color = orig_bg
           elseif type(bg_color) == "number" then
