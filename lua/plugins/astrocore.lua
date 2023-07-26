@@ -29,22 +29,10 @@ return {
         ["-"] = { "<c-x>", desc = "Descrement number" },
         ["+"] = { "<c-a>", desc = "Increment number" },
         -- resize with arrows
-        ["<Up>"] = {
-          function() require("smart-splits").resize_up(2) end,
-          desc = "Resize split up",
-        },
-        ["<Down>"] = {
-          function() require("smart-splits").resize_down(2) end,
-          desc = "Resize split down",
-        },
-        ["<Left>"] = {
-          function() require("smart-splits").resize_left(2) end,
-          desc = "Resize split left",
-        },
-        ["<Right>"] = {
-          function() require("smart-splits").resize_right(2) end,
-          desc = "Resize split right",
-        },
+        ["<Up>"] = { function() require("smart-splits").resize_up(2) end, desc = "Resize split up" },
+        ["<Down>"] = { function() require("smart-splits").resize_down(2) end, desc = "Resize split down" },
+        ["<Left>"] = { function() require("smart-splits").resize_left(2) end, desc = "Resize split left" },
+        ["<Right>"] = { function() require("smart-splits").resize_right(2) end, desc = "Resize split right" },
         -- Easy-Align
         ga = { "<Plug>(EasyAlign)", desc = "Easy Align" },
         -- buffer switching
@@ -64,43 +52,22 @@ return {
         ["<leader>."] = { "<cmd>cd %:p:h<cr>", desc = "Set CWD" },
         -- neogen
         ["<leader>a"] = { desc = "󰏫 Annotate" },
-        ["<leader>a<cr>"] = {
-          function() require("neogen").generate() end,
-          desc = "Current",
-        },
-        ["<leader>ac"] = {
-          function() require("neogen").generate { type = "class" } end,
-          desc = "Class",
-        },
-        ["<leader>af"] = {
-          function() require("neogen").generate { type = "func" } end,
-          desc = "Function",
-        },
-        ["<leader>at"] = {
-          function() require("neogen").generate { type = "type" } end,
-          desc = "Type",
-        },
-        ["<leader>aF"] = {
-          function() require("neogen").generate { type = "file" } end,
-          desc = "File",
-        },
+        ["<leader>a<cr>"] = { function() require("neogen").generate() end, desc = "Current" },
+        ["<leader>ac"] = { function() require("neogen").generate { type = "class" } end, desc = "Class" },
+        ["<leader>af"] = { function() require("neogen").generate { type = "func" } end, desc = "Function" },
+        ["<leader>at"] = { function() require("neogen").generate { type = "type" } end, desc = "Type" },
+        ["<leader>aF"] = { function() require("neogen").generate { type = "file" } end, desc = "File" },
         -- telescope plugin mappings
+        ["<leader>fB"] = { "<cmd>Telescope bibtex<cr>", desc = "Find BibTeX" },
+        ["<leader>fe"] = { "<cmd>Telescope file_browser<cr>", desc = "File explorer" },
+        ["<leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
+        ["<leader>fT"] = { "<cmd>TodoTelescope<cr>", desc = "Find TODOs" },
         ["<leader>fx"] = {
           function() require("telescope").extensions.live_grep_args.live_grep_args() end,
           desc = "Find words (args)",
         },
-        ["<leader>fB"] = { "<cmd>Telescope bibtex<cr>", desc = "Find BibTeX" },
-        ["<leader>fe"] = { "<cmd>Telescope file_browser<cr>", desc = "File explorer" },
-        ["<leader>fp"] = {
-          function() require("telescope").extensions.projects.projects {} end,
-          desc = "Find projects",
-        },
-        ["<leader>fT"] = { "<cmd>TodoTelescope<cr>", desc = "Find TODOs" },
         -- neogit
-        ["<leader>gG"] = {
-          function() require("neogit").open() end,
-          desc = "Neogit",
-        },
+        ["<leader>gG"] = { function() require("neogit").open() end, desc = "Neogit" },
         -- compiler
         ["<leader>m"] = { desc = "󱁤 Compiler" },
         ["<leader>mk"] = {
@@ -123,10 +90,6 @@ return {
             )
           end,
           desc = "Auto Compile",
-        },
-        ["<leader>mv"] = {
-          function() vim.fn.jobstart { "opout", vim.fn.expand "%:p" } end,
-          desc = "View Output",
         },
         ["<leader>mb"] = {
           function()
@@ -152,10 +115,8 @@ return {
           end,
           desc = "Present Output",
         },
-        ["<leader>ml"] = {
-          function() require("config.utils").toggle_qf() end,
-          desc = "Logs",
-        },
+        ["<leader>ml"] = { function() require("config.utils").toggle_qf() end, desc = "Logs" },
+        ["<leader>mv"] = { function() vim.fn.jobstart { "opout", vim.fn.expand "%:p" } end, desc = "View Output" },
         ["<leader>mt"] = { "<cmd>TexlabBuild<cr>", desc = "LaTeX" },
         ["<leader>mf"] = { "<cmd>TexlabForward<cr>", desc = "Forward Search" },
         ["<leader>r"] = { desc = " REPL" },
@@ -164,14 +125,8 @@ return {
         ["<leader>r<cr>"] = { "<cmd>SendHere<cr>", desc = "Set REPL" },
         ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
         ["<leader>s"] = { desc = "󰛔 Search/Replace" },
-        ["<leader>ss"] = {
-          function() require("spectre").toggle() end,
-          desc = "Toggle Spectre",
-        },
-        ["<leader>sf"] = {
-          function() require("spectre").open_file_search() end,
-          desc = "Spectre (current file)",
-        },
+        ["<leader>ss"] = { function() require("spectre").toggle() end, desc = "Toggle Spectre" },
+        ["<leader>sf"] = { function() require("spectre").open_file_search() end, desc = "Spectre (current file)" },
         ["<leader>sw"] = {
           function() require("spectre").open_visual { select_word = true } end,
           desc = "Spectre (current word)",
@@ -185,17 +140,11 @@ return {
       },
       v = {
         ["<leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
-        ["<leader>s"] = {
-          function() require("spectre").open_visual() end,
-          desc = "Spectre",
-        },
+        ["<leader>s"] = { function() require("spectre").open_visual() end, desc = "Spectre" },
       },
       i = {
         -- signature help, fails silently so attach always
-        ["<C-l>"] = {
-          function() vim.lsp.buf.signature_help() end,
-          desc = "Signature help",
-        },
+        ["<C-l>"] = { function() vim.lsp.buf.signature_help() end, desc = "Signature help" },
         ["<S-Tab>"] = { "<C-V><Tab>", desc = "Tab character" },
       },
       -- terminal mappings
@@ -216,41 +165,13 @@ return {
         ["al"] = { ":normal val<cr>", desc = "Around line text object" },
       },
       ia = vim.fn.has "nvim-0.10" == 1 and {
-        mktemp = {
-          function() return "<++>" end,
-          desc = "Insert <++>",
-          expr = true,
-        },
-        ldate = {
-          function() return os.date "%Y/%m/%d %H:%M:%S -" end,
-          desc = "Y/m/d H:M:S -",
-          expr = true,
-        },
-        ndate = {
-          function() return os.date "%Y-%m-%d" end,
-          desc = "Y-m-d",
-          expr = true,
-        },
-        xdate = {
-          function() return os.date "%m/%d/%y" end,
-          desc = "m/d/y",
-          expr = true,
-        },
-        fdate = {
-          function() return os.date "%B %d, %Y" end,
-          desc = "B d, Y",
-          expr = true,
-        },
-        Xdate = {
-          function() return os.date "%H:%M" end,
-          desc = "H:M",
-          expr = true,
-        },
-        Fdate = {
-          function() return os.date "%H:%M:%S" end,
-          desc = "H:M:S",
-          expr = true,
-        },
+        mktemp = { function() return "<++>" end, desc = "Insert <++>", expr = true },
+        ldate = { function() return os.date "%Y/%m/%d %H:%M:%S -" end, desc = "Y/m/d H:M:S -", expr = true },
+        ndate = { function() return os.date "%Y-%m-%d" end, desc = "Y-m-d", expr = true },
+        xdate = { function() return os.date "%m/%d/%y" end, desc = "m/d/y", expr = true },
+        fdate = { function() return os.date "%B %d, %Y" end, desc = "B d, Y", expr = true },
+        Xdate = { function() return os.date "%H:%M" end, desc = "H:M", expr = true },
+        Fdate = { function() return os.date "%H:%M:%S" end, desc = "H:M:S", expr = true },
       } or nil,
     },
   },
