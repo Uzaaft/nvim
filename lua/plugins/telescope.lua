@@ -20,7 +20,7 @@ return {
     local fb_actions = require("telescope").extensions.file_browser.actions
     local lga_actions = require "telescope-live-grep-args.actions"
     local hop = telescope.extensions.hop
-    return require("astrocore.utils").extend_tbl(opts, {
+    return require("astrocore").extend_tbl(opts, {
       defaults = {
         results_title = "",
         selection_caret = "  ",

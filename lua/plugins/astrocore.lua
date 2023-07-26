@@ -53,7 +53,7 @@ return {
             if #vim.t.bufs > 1 then
               require("telescope.builtin").buffers { sort_mru = true, ignore_current_buffer = true }
             else
-              require("astrocore.utils").notify "No other buffers open"
+              require("astrocore").notify "No other buffers open"
             end
           end,
           desc = "Switch Buffers",
@@ -109,7 +109,7 @@ return {
             local filename = vim.fn.expand "%:t"
             require("config.utils").async_run(
               { "compiler", vim.fn.expand "%:p" },
-              function() require("astrocore.utils").notify("Compiled " .. filename) end
+              function() require("astrocore").notify("Compiled " .. filename) end
             )
           end,
           desc = "Compile",
@@ -119,7 +119,7 @@ return {
             vim.notify "Autocompile Started"
             require("config.utils").async_run(
               { "autocomp", vim.fn.expand "%:p" },
-              function() require("astrocore.utils").notify "Autocompile stopped" end
+              function() require("astrocore").notify "Autocompile stopped" end
             )
           end,
           desc = "Auto Compile",
@@ -141,7 +141,7 @@ return {
               "beamer",
               "-o",
               vim.fn.expand "%:r" .. ".pdf",
-            }, function() require("astrocore.utils").notify("Compiled " .. filename) end)
+            }, function() require("astrocore").notify("Compiled " .. filename) end)
           end,
           desc = "Compile Beamer",
         },

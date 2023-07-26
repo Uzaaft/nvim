@@ -7,11 +7,11 @@ return {
       event = "User AstroGitFile",
       opts = function()
         local actions = require "diffview.actions"
-        local utils = require "astrocore.utils" --  astronvim utils
+        local astro = require "astrocore" --  astronvim utils
 
         local prefix = "<leader>D"
 
-        utils.set_mappings {
+        astro.set_mappings {
           n = {
             [prefix] = { name = " Diff View" },
             [prefix .. "<cr>"] = { "<cmd>DiffviewOpen<cr>", desc = "Open DiffView" },
@@ -24,7 +24,7 @@ return {
           local out = {}
           local i = 1
           for lhs, def in
-            pairs(utils.extend_tbl(maps, {
+            pairs(astro.extend_tbl(maps, {
               [prefix .. "q"] = { "<cmd>DiffviewClose<cr>", desc = "Quit Diffview" }, -- Toggle the file panel.
               ["]D"] = { actions.select_next_entry, desc = "Next Difference" }, -- Open the diff for the next file
               ["[D"] = { actions.select_prev_entry, desc = "Previous Difference" }, -- Open the diff for the previous file

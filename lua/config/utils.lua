@@ -6,7 +6,7 @@ function M.vim_opt_toggle(opt, on, off, name)
   if not name then name = opt end
   local is_off = vim.opt[opt]:get() == off
   vim.opt[opt] = is_off and on or off
-  require("astrocore.utils").notify(name .. " " .. (is_off and "Enabled" or "Disabled"))
+  require("astrocore").notify(name .. " " .. (is_off and "Enabled" or "Disabled"))
 end
 
 function M.async_run(cmd, on_finish)
@@ -52,7 +52,7 @@ end
 function M.better_search(key)
   local searched, error =
     pcall(vim.cmd.normal, { args = { (vim.v.count > 0 and vim.v.count or "") .. key }, bang = true })
-  if not searched and type(error) == "string" then require("astrocore.utils").notify(error, vim.log.levels.ERROR) end
+  if not searched and type(error) == "string" then require("astrocore").notify(error, vim.log.levels.ERROR) end
 end
 
 return M

@@ -1,8 +1,8 @@
 return {
   "AstroNvim/astroui",
   opts = function(_, opts)
-    local utils = require "astrocore.utils"
-    local get_hlgroup = utils.get_hlgroup
+    local astro = require "astrocore"
+    local get_hlgroup = astro.get_hlgroup
 
     local nontext = get_hlgroup "NonText"
     local normal = get_hlgroup "Normal"
@@ -11,7 +11,7 @@ return {
     local green = get_hlgroup("String").fg
     local red = get_hlgroup("Error").fg
 
-    return utils.extend_tbl(opts, {
+    return astro.extend_tbl(opts, {
       colorscheme = "catppuccin",
       highlights = {
         init = {

@@ -56,7 +56,7 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 if vim.env.KITTY_LISTEN_ON then
-  local cmd = require("astrocore.utils").cmd
+  local cmd = require("astrocore").cmd
 
   for _, color in ipairs(vim.fn.split(cmd { "kitty", "@", "get-colors" } or "", "\n")) do
     local orig_bg = color:match "^background%s+(#[0-9a-fA-F]+)$"
@@ -69,7 +69,7 @@ if vim.env.KITTY_LISTEN_ON then
         pattern = "AstroColorScheme",
         group = augroup,
         callback = function()
-          local bg_color = require("astrocore.utils").get_hlgroup("Normal").bg
+          local bg_color = require("astrocore").get_hlgroup("Normal").bg
           if not bg_color or bg_color == "NONE" then
             bg_color = orig_bg
           elseif type(bg_color) == "number" then
