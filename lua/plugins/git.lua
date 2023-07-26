@@ -127,7 +127,7 @@ return {
     },
   },
   opts = function()
-    local get_icon = require("astrocore.utils").get_icon
+    local get_icon = require("astroui").get_icon
     local fold_signs = { get_icon "FoldClosed", get_icon "FoldOpened" }
     return {
       disable_builtin_notifications = true,
