@@ -2,7 +2,13 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      { "andymass/vim-matchup", init = function() vim.g.matchup_matchparen_deferred = 1 end },
+      {
+        "andymass/vim-matchup",
+        init = function()
+          vim.g.matchup_matchparen_offscreen = { method = "popup", fullwidth = 1 }
+          vim.g.matchup_matchparen_deferred = 1
+        end,
+      },
       {
         "HiPhish/rainbow-delimiters.nvim",
         opts = function()
