@@ -46,7 +46,10 @@ return {
       },
       diagnostics = { update_in_insert = false },
       formatting = { format_on_save = { ignore_filetypes = { "julia" } } },
-      skip_setup = { "tsserver", "clangd" },
+      setup_handlers = {
+        tsserver = false,
+        clangd = false,
+      },
     },
   },
   {
