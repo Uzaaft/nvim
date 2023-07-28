@@ -10,6 +10,7 @@ local USE_STABLE = false -- use stable releases of AstroNvim
 
 local spec = {
   { "AstroNvim/AstroNvim", branch = "v4", version = USE_STABLE and "*" or nil, import = "astronvim.plugins" },
+  -- { "AstroNvim/AstroNvim", dev = true, import = "astronvim.plugins" },
 }
 if USE_STABLE then table.insert(spec, { import = "astronvim.lazy_snapshot" }) end
 
