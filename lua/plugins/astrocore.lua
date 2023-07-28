@@ -143,8 +143,6 @@ return {
         ["<leader>s"] = { function() require("spectre").open_visual() end, desc = "Spectre" },
       },
       i = {
-        -- signature help, fails silently so attach always
-        ["<C-l>"] = { function() vim.lsp.buf.signature_help() end, desc = "Signature help" },
         ["<S-Tab>"] = { "<C-V><Tab>", desc = "Tab character" },
       },
       -- terminal mappings

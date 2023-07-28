@@ -50,6 +50,15 @@ return {
         tsserver = false,
         clangd = false,
       },
+      mappings = {
+        i = {
+          ["<C-l>"] = {
+            function() vim.lsp.buf.signature_help() end,
+            desc = "Signature help",
+            cond = "textDocument/signatureHelp",
+          },
+        },
+      },
     },
   },
   {
