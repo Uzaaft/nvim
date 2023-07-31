@@ -5,11 +5,11 @@ return {
     config = function()
       require("astrocore").set_mappings {
         n = {
-          ["<leader>J"] = { "<cmd>JupyterConnect<cr>", desc = "Connect to Jupyter" },
-          ["<leader>j"] = { "<Plug>JupyterRunTextObj", desc = "Send to Jupyter" },
+          ["<Leader>J"] = { "<Cmd>JupyterConnect<CR>", desc = "Connect to Jupyter" },
+          ["<Leader>j"] = { "<Plug>JupyterRunTextObj", desc = "Send to Jupyter" },
         },
         v = {
-          ["<leader>j"] = { "<Plug>JupyterRunVisual", desc = "Send to Jupyter" },
+          ["<Leader>j"] = { "<Plug>JupyterRunVisual", desc = "Send to Jupyter" },
         },
       }
     end,

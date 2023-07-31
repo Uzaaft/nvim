@@ -26,8 +26,8 @@ return {
         n = { function() require("config.utils").better_search "n" end, desc = "Next search" },
         N = { function() require("config.utils").better_search "N" end, desc = "Previous search" },
         -- better increment/decrement
-        ["-"] = { "<c-x>", desc = "Descrement number" },
-        ["+"] = { "<c-a>", desc = "Increment number" },
+        ["-"] = { "<C-x>", desc = "Descrement number" },
+        ["+"] = { "<C-a>", desc = "Increment number" },
         -- resize with arrows
         ["<Up>"] = { function() require("smart-splits").resize_up(2) end, desc = "Resize split up" },
         ["<Down>"] = { function() require("smart-splits").resize_down(2) end, desc = "Resize split down" },
@@ -46,31 +46,31 @@ return {
           end,
           desc = "Switch Buffers",
         },
-        ["<leader>n"] = { "<cmd>enew<cr>", desc = "New File" },
-        ["<leader>N"] = { "<cmd>tabnew<cr>", desc = "New Tab" },
-        ["<leader><cr>"] = { '<esc>/<++><cr>"_c4l', desc = "Next Template" },
-        ["<leader>."] = { "<cmd>cd %:p:h<cr>", desc = "Set CWD" },
+        ["<Leader>n"] = { "<Cmd>enew<CR>", desc = "New File" },
+        ["<Leader>N"] = { "<Cmd>tabnew<CR>", desc = "New Tab" },
+        ["<Leader><CR>"] = { '<Esc>/<++><CR>"_c4l', desc = "Next Template" },
+        ["<Leader>."] = { "<Cmd>cd %:p:h<CR>", desc = "Set CWD" },
         -- neogen
-        ["<leader>a"] = { desc = "󰏫 Annotate" },
-        ["<leader>a<cr>"] = { function() require("neogen").generate() end, desc = "Current" },
-        ["<leader>ac"] = { function() require("neogen").generate { type = "class" } end, desc = "Class" },
-        ["<leader>af"] = { function() require("neogen").generate { type = "func" } end, desc = "Function" },
-        ["<leader>at"] = { function() require("neogen").generate { type = "type" } end, desc = "Type" },
-        ["<leader>aF"] = { function() require("neogen").generate { type = "file" } end, desc = "File" },
+        ["<Leader>a"] = { desc = "󰏫 Annotate" },
+        ["<Leader>a<CR>"] = { function() require("neogen").generate() end, desc = "Current" },
+        ["<Leader>ac"] = { function() require("neogen").generate { type = "class" } end, desc = "Class" },
+        ["<Leader>af"] = { function() require("neogen").generate { type = "func" } end, desc = "Function" },
+        ["<Leader>at"] = { function() require("neogen").generate { type = "type" } end, desc = "Type" },
+        ["<Leader>aF"] = { function() require("neogen").generate { type = "file" } end, desc = "File" },
         -- telescope plugin mappings
-        ["<leader>fB"] = { "<cmd>Telescope bibtex<cr>", desc = "Find BibTeX" },
-        ["<leader>fe"] = { "<cmd>Telescope file_browser<cr>", desc = "File explorer" },
-        ["<leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
-        ["<leader>fT"] = { "<cmd>TodoTelescope<cr>", desc = "Find TODOs" },
-        ["<leader>fx"] = {
+        ["<Leader>fB"] = { "<Cmd>Telescope bibtex<CR>", desc = "Find BibTeX" },
+        ["<Leader>fe"] = { "<Cmd>Telescope file_browser<CR>", desc = "File explorer" },
+        ["<Leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
+        ["<Leader>fT"] = { "<Cmd>TodoTelescope<CR>", desc = "Find TODOs" },
+        ["<Leader>fx"] = {
           function() require("telescope").extensions.live_grep_args.live_grep_args() end,
           desc = "Find words (args)",
         },
         -- neogit
-        ["<leader>gG"] = { function() require("neogit").open() end, desc = "Neogit" },
+        ["<Leader>gG"] = { function() require("neogit").open() end, desc = "Neogit" },
         -- compiler
-        ["<leader>m"] = { desc = "󱁤 Compiler" },
-        ["<leader>mk"] = {
+        ["<Leader>m"] = { desc = "󱁤 Compiler" },
+        ["<Leader>mk"] = {
           function()
             vim.cmd "silent! write"
             local filename = vim.fn.expand "%:t"
@@ -81,7 +81,7 @@ return {
           end,
           desc = "Compile",
         },
-        ["<leader>ma"] = {
+        ["<Leader>ma"] = {
           function()
             vim.notify "Autocompile Started"
             require("config.utils").async_run(
@@ -91,7 +91,7 @@ return {
           end,
           desc = "Auto Compile",
         },
-        ["<leader>mb"] = {
+        ["<Leader>mb"] = {
           function()
             local filename = vim.fn.expand "%:t"
             require("config.utils").async_run({
@@ -108,39 +108,39 @@ return {
           end,
           desc = "Compile Beamer",
         },
-        ["<leader>mp"] = {
+        ["<Leader>mp"] = {
           function()
             local pdf_path = vim.fn.expand "%:r" .. ".pdf"
             if vim.fn.filereadable(pdf_path) == 1 then vim.fn.jobstart { "pdfpc", pdf_path } end
           end,
           desc = "Present Output",
         },
-        ["<leader>ml"] = { function() require("config.utils").toggle_qf() end, desc = "Logs" },
-        ["<leader>mv"] = { function() vim.fn.jobstart { "opout", vim.fn.expand "%:p" } end, desc = "View Output" },
-        ["<leader>mt"] = { "<cmd>TexlabBuild<cr>", desc = "LaTeX" },
-        ["<leader>mf"] = { "<cmd>TexlabForward<cr>", desc = "Forward Search" },
-        ["<leader>r"] = { desc = " REPL" },
-        ["<leader>rr"] = { "<Plug>Send", desc = "Send to REPL" },
-        ["<leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },
-        ["<leader>r<cr>"] = { "<cmd>SendHere<cr>", desc = "Set REPL" },
-        ["<leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
-        ["<leader>s"] = { desc = "󰛔 Search/Replace" },
-        ["<leader>ss"] = { function() require("spectre").toggle() end, desc = "Toggle Spectre" },
-        ["<leader>sf"] = { function() require("spectre").open_file_search() end, desc = "Spectre (current file)" },
-        ["<leader>sw"] = {
+        ["<Leader>ml"] = { function() require("config.utils").toggle_qf() end, desc = "Logs" },
+        ["<Leader>mv"] = { function() vim.fn.jobstart { "opout", vim.fn.expand "%:p" } end, desc = "View Output" },
+        ["<Leader>mt"] = { "<Cmd>TexlabBuild<CR>", desc = "LaTeX" },
+        ["<Leader>mf"] = { "<Cmd>TexlabForward<CR>", desc = "Forward Search" },
+        ["<Leader>r"] = { desc = " REPL" },
+        ["<Leader>rr"] = { "<Plug>Send", desc = "Send to REPL" },
+        ["<Leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },
+        ["<Leader>r<CR>"] = { "<Cmd>SendHere<CR>", desc = "Set REPL" },
+        ["<Leader>z"] = { "<Cmd>ZenMode<CR>", desc = "Zen Mode" },
+        ["<Leader>s"] = { desc = "󰛔 Search/Replace" },
+        ["<Leader>ss"] = { function() require("spectre").toggle() end, desc = "Toggle Spectre" },
+        ["<Leader>sf"] = { function() require("spectre").open_file_search() end, desc = "Spectre (current file)" },
+        ["<Leader>sw"] = {
           function() require("spectre").open_visual { select_word = true } end,
           desc = "Spectre (current word)",
         },
-        ["<leader>x"] = { desc = "󰒡 Trouble" },
-        ["<leader>xx"] = { "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document Diagnostics (Trouble)" },
-        ["<leader>xX"] = { "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace Diagnostics (Trouble)" },
-        ["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", desc = "Location List (Trouble)" },
-        ["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", desc = "Quickfix List (Trouble)" },
-        ["<leader>xT"] = { "<cmd>TodoTrouble<cr>", desc = "TODOs (Trouble)" },
+        ["<Leader>x"] = { desc = "󰒡 Trouble" },
+        ["<Leader>xx"] = { "<Cmd>TroubleToggle document_diagnostics<CR>", desc = "Document Diagnostics (Trouble)" },
+        ["<Leader>xX"] = { "<Cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Workspace Diagnostics (Trouble)" },
+        ["<Leader>xl"] = { "<Cmd>TroubleToggle loclist<CR>", desc = "Location List (Trouble)" },
+        ["<Leader>xq"] = { "<Cmd>TroubleToggle quickfix<CR>", desc = "Quickfix List (Trouble)" },
+        ["<Leader>xT"] = { "<Cmd>TodoTrouble<CR>", desc = "TODOs (Trouble)" },
       },
       v = {
-        ["<leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
-        ["<leader>s"] = { function() require("spectre").open_visual() end, desc = "Spectre" },
+        ["<Leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
+        ["<Leader>s"] = { function() require("spectre").open_visual() end, desc = "Spectre" },
       },
       i = {
         ["<S-Tab>"] = { "<C-V><Tab>", desc = "Tab character" },
@@ -148,7 +148,7 @@ return {
       -- terminal mappings
       t = {
         ["<C-BS>"] = { "<C-\\><C-n>", desc = "Terminal normal mode" },
-        ["<esc><esc>"] = { "<C-\\><C-n>:q<cr>", desc = "Terminal quit" },
+        ["<Esc><Esc>"] = { "<C-\\><C-n>:q<CR>", desc = "Terminal quit" },
       },
       x = {
         -- better increment/decrement
@@ -159,8 +159,8 @@ return {
       },
       o = {
         -- line text-objects
-        ["il"] = { ":normal vil<cr>", desc = "Inside line text object" },
-        ["al"] = { ":normal val<cr>", desc = "Around line text object" },
+        ["il"] = { ":normal vil<CR>", desc = "Inside line text object" },
+        ["al"] = { ":normal val<CR>", desc = "Around line text object" },
       },
       ia = vim.fn.has "nvim-0.10" == 1 and {
         mktemp = { function() return "<++>" end, desc = "Insert <++>", expr = true },

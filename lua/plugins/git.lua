@@ -9,14 +9,14 @@ return {
         local actions = require "diffview.actions"
         local astro = require "astrocore" --  astronvim utils
 
-        local prefix = "<leader>D"
+        local prefix = "<Leader>D"
 
         astro.set_mappings {
           n = {
             [prefix] = { name = " Diff View" },
-            [prefix .. "<cr>"] = { "<cmd>DiffviewOpen<cr>", desc = "Open DiffView" },
-            [prefix .. "h"] = { "<cmd>DiffviewFileHistory %<cr>", desc = "Open DiffView File History" },
-            [prefix .. "H"] = { "<cmd>DiffviewFileHistory<cr>", desc = "Open DiffView Branch History" },
+            [prefix .. "<CR>"] = { "<Cmd>DiffviewOpen<CR>", desc = "Open DiffView" },
+            [prefix .. "h"] = { "<Cmd>DiffviewFileHistory %<CR>", desc = "Open DiffView File History" },
+            [prefix .. "H"] = { "<Cmd>DiffviewFileHistory<CR>", desc = "Open DiffView Branch History" },
           },
         }
 
@@ -25,15 +25,15 @@ return {
           local i = 1
           for lhs, def in
             pairs(astro.extend_tbl(maps, {
-              [prefix .. "q"] = { "<cmd>DiffviewClose<cr>", desc = "Quit Diffview" }, -- Toggle the file panel.
+              [prefix .. "q"] = { "<Cmd>DiffviewClose<CR>", desc = "Quit Diffview" }, -- Toggle the file panel.
               ["]D"] = { actions.select_next_entry, desc = "Next Difference" }, -- Open the diff for the next file
               ["[D"] = { actions.select_prev_entry, desc = "Previous Difference" }, -- Open the diff for the previous file
               ["[C"] = { actions.prev_conflict, desc = "Next Conflict" }, -- In the merge_tool: jump to the previous conflict
               ["]C"] = { actions.next_conflict, desc = "Previous Conflict" }, -- In the merge_tool: jump to the next conflict
               ["Cl"] = { actions.cycle_layout, desc = "Cycle Diff Layout" }, -- Cycle through available layouts.
               ["Ct"] = { actions.listing_style, desc = "Cycle Tree Style" }, -- Cycle through available layouts.
-              ["<leader>e"] = { actions.toggle_files, desc = "Toggle Explorer" }, -- Toggle the file panel.
-              ["<leader>o"] = { actions.focus_files, desc = "Focus Explorer" }, -- Bring focus to the file panel
+              ["<Leader>e"] = { actions.toggle_files, desc = "Toggle Explorer" }, -- Toggle the file panel.
+              ["<Leader>o"] = { actions.focus_files, desc = "Focus Explorer" }, -- Bring focus to the file panel
             }))
           do
             local opts
@@ -87,14 +87,14 @@ return {
               Cf = { actions.toggle_flatten_dirs, desc = "Flatten" }, -- Flatten empty subdirectories in tree listing style.
               R = actions.refresh_files, -- Update stats and entries in the file list.
               ["-"] = actions.toggle_stage_entry, -- Stage / unstage the selected entry.
-              ["<down>"] = actions.next_entry,
-              ["<up>"] = actions.prev_entry,
-              ["<cr>"] = actions.select_entry, -- Open the diff for the selected entry.
+              ["<Down>"] = actions.next_entry,
+              ["<Up>"] = actions.prev_entry,
+              ["<CR>"] = actions.select_entry, -- Open the diff for the selected entry.
               ["<2-LeftMouse>"] = actions.select_entry,
-              ["<c-b>"] = actions.scroll_view(-0.25), -- Scroll the view up
-              ["<c-f>"] = actions.scroll_view(0.25), -- Scroll the view down
-              ["<tab>"] = actions.select_next_entry,
-              ["<s-tab>"] = actions.select_prev_entry,
+              ["<C-b>"] = actions.scroll_view(-0.25), -- Scroll the view up
+              ["<C-f>"] = actions.scroll_view(0.25), -- Scroll the view down
+              ["<Tab>"] = actions.select_next_entry,
+              ["<S-tab>"] = actions.select_prev_entry,
             },
             file_history_panel = build_keymaps {
               j = actions.next_entry,
@@ -105,20 +105,20 @@ return {
               zR = { actions.open_all_folds, desc = "Open all folds" },
               zM = { actions.close_all_folds, desc = "Close all folds" },
               ["?"] = { actions.options, desc = "Options" }, -- Open the option panel
-              ["<down>"] = actions.next_entry,
-              ["<up>"] = actions.prev_entry,
-              ["<cr>"] = actions.select_entry,
+              ["<Down>"] = actions.next_entry,
+              ["<Up>"] = actions.prev_entry,
+              ["<CR>"] = actions.select_entry,
               ["<2-LeftMouse>"] = actions.select_entry,
               ["<C-A-d>"] = actions.open_in_diffview, -- Open the entry under the cursor in a diffview
-              ["<c-b>"] = actions.scroll_view(-0.25),
-              ["<c-f>"] = actions.scroll_view(0.25),
-              ["<tab>"] = actions.select_next_entry,
-              ["<s-tab>"] = actions.select_prev_entry,
+              ["<C-b>"] = actions.scroll_view(-0.25),
+              ["<C-f>"] = actions.scroll_view(0.25),
+              ["<Tab>"] = actions.select_next_entry,
+              ["<S-Tab>"] = actions.select_prev_entry,
             },
             option_panel = {
               q = actions.close,
               o = actions.select_entry,
-              ["<cr>"] = actions.select_entry,
+              ["<CR>"] = actions.select_entry,
               ["<2-LeftMouse"] = actions.select_entry,
             },
           },

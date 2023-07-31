@@ -85,8 +85,8 @@ return {
     opts = {
       use_diagnostic_signs = true,
       action_keys = {
-        close = { "q", "<esc>" },
-        cancel = "<c-e>",
+        close = { "q", "<Esc>" },
+        cancel = "<C-e>",
       },
     },
   },
@@ -94,7 +94,7 @@ return {
     "nvim-pack/nvim-spectre",
     cmd = "Spectre",
     opts = function()
-      local prefix = "<leader>s"
+      local prefix = "<Leader>s"
       return {
         open_cmd = "new",
         mapping = {
