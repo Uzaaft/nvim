@@ -7,8 +7,8 @@ vim.opt.list = true -- show whitespace characters
 vim.opt.listchars = { tab = "│→", extends = "⟩", precedes = "⟨", trail = "·", nbsp = "␣" }
 vim.opt.showbreak = "↪ "
 vim.opt.showtabline = (vim.t.bufs and #vim.t.bufs > 1) and 2 or 1
-vim.opt.spellfile = vim.fn.expand("~/.config/nvim/spell/en.utf-8.add")
+vim.opt.spellfile = vim.fn.expand "~/.config/nvim/spell/en.utf-8.add"
 vim.opt.splitkeep = "screen"
 vim.opt.swapfile = false
-vim.opt.thesaurus = vim.fn.expand("~/.config/nvim/spell/mthesaur.txt")
+vim.opt.thesaurus = vim.fn.expand "~/.config/nvim/spell/mthesaur.txt"
 vim.opt.wrap = true -- soft wrap lines
