@@ -20,39 +20,11 @@ return {
             },
           },
         },
-        tsserver = {
-          settings = {
-            typescript = {
-              inlayHints = {
-                includeInlayEnumMemberValueHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-              },
-            },
-            javascript = {
-              inlayHints = {
-                includeInlayEnumMemberValueHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayParameterNameHints = "all",
-                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-              },
-            },
-          },
-        },
       },
       diagnostics = { update_in_insert = false },
       formatting = { format_on_save = { ignore_filetypes = { "julia" } } },
       handlers = {
-        tsserver = false,
+        tsserver = false, -- handled by typescript-tools.nvim
       },
       mappings = {
         i = {
@@ -66,8 +38,25 @@ return {
     },
   },
   {
-    "jose-elias-alvarez/typescript.nvim",
+    "pmizio/typescript-tools.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-    opts = function() return { server = require("astrolsp").lsp_opts "tsserver" } end,
+    opts = function()
+      return require("astrocore").extend_tbl(require("astrolsp").lsp_opts "tsserver", {
+        settings = {
+          tsserver_path = require("mason-registry").get_package("typescript-language-server"):get_install_path()
+            .. "/node_modules/typescript/lib/tsserver.js",
+          tsserver_file_preferences = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+          },
+        },
+      })
+    end,
   },
 }
