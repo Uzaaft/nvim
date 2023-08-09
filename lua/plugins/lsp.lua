@@ -1,10 +1,14 @@
 return {
+  "p00f/clangd_extensions.nvim",
   {
     "AstroNvim/astrolsp",
     ---@type AstroLSPOpts
     opts = {
       config = {
-        clangd = { capabilities = { offsetEncoding = "utf-8" } },
+        clangd = {
+          capabilities = { offsetEncoding = "utf-8" },
+          on_attach = function() pcall(require, "clangd_extensions") end,
+        },
         julials = { autostart = false },
         lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
         taplo = { evenBetterToml = { schema = { catalogs = { "https://www.schemastore.org/api/json/catalog.json" } } } },
@@ -49,7 +53,6 @@ return {
       formatting = { format_on_save = { ignore_filetypes = { "julia" } } },
       handlers = {
         tsserver = false,
-        clangd = false,
       },
       mappings = {
         i = {
@@ -66,15 +69,5 @@ return {
     "jose-elias-alvarez/typescript.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     opts = function() return { server = require("astrolsp").lsp_opts "tsserver" } end,
-  },
-  {
-    "p00f/clangd_extensions.nvim",
-    ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-    opts = function()
-      return {
-        server = require("astrolsp").lsp_opts "clangd",
-        extensions = { autoSetHints = false },
-      }
-    end,
   },
 }
