@@ -27,6 +27,7 @@ return {
     "jay-babu/mason-null-ls.nvim",
     opts = {
       ensure_installed = {
+        "ansiblelint",
         "shellcheck",
         "stylua",
         "black",
