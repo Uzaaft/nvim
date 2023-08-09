@@ -1,28 +1,26 @@
 return {
   "AstroNvim/astroui",
-  ---@param opts AstroUIOpts
-  opts = function(_, opts)
-    local astro = require "astrocore"
-    local get_hlgroup = astro.get_hlgroup
-
-    local nontext = get_hlgroup "NonText"
-    local normal = get_hlgroup "Normal"
-    local fg, bg = normal.fg, normal.bg
-    local bg_alt = get_hlgroup("Visual").bg
-    local green = get_hlgroup("String").fg
-    local red = get_hlgroup("Error").fg
-
-    ---@type AstroUIOpts
-    local extension = {
-      colorscheme = "catppuccin",
-      highlights = {
-        init = {
+  ---@type AstroUIOpts
+  opts = {
+    colorscheme = "catppuccin",
+    highlights = {
+      init = function()
+        local get_hlgroup = require("astrocore").get_hlgroup
+        return {
           CursorLineFold = { link = "CursorLineNr" }, -- highlight fold indicator as well as line number
-          GitSignsCurrentLineBlame = { fg = nontext.fg, italic = true }, -- italicize git blame virtual text
+          GitSignsCurrentLineBlame = { fg = get_hlgroup("NonText").fg, italic = true }, -- italicize git blame virtual text
           HighlightURL = { underline = true }, -- always underline URLs
           OctoEditable = { fg = "NONE", bg = "NONE" }, -- use treesitter for octo.nvim highlighting
-        },
-        astrodark = {
+        }
+      end,
+      astrodark = function()
+        local get_hlgroup = require("astrocore").get_hlgroup
+        local normal = get_hlgroup "Normal"
+        local fg, bg = normal.fg, normal.bg
+        local bg_alt = get_hlgroup("Visual").bg
+        local green = get_hlgroup("String").fg
+        local red = get_hlgroup("Error").fg
+        return {
           TelescopeBorder = { fg = bg_alt, bg = bg },
           TelescopeNormal = { bg = bg },
           TelescopePreviewBorder = { fg = bg, bg = bg },
@@ -35,9 +33,8 @@ return {
           TelescopeResultsBorder = { fg = bg, bg = bg },
           TelescopeResultsNormal = { bg = bg },
           TelescopeResultsTitle = { fg = bg, bg = bg },
-        },
-      },
-    }
-    return astro.extend_tbl(opts, extension)
-  end,
+        }
+      end,
+    },
+  },
 }
