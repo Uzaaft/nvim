@@ -1,14 +1,10 @@
 return {
-  "p00f/clangd_extensions.nvim",
   {
     "AstroNvim/astrolsp",
     ---@type AstroLSPOpts
     opts = {
       config = {
-        clangd = {
-          capabilities = { offsetEncoding = "utf-8" },
-          on_attach = function() pcall(require, "clangd_extensions") end,
-        },
+        clangd = { capabilities = { offsetEncoding = "utf-8" } },
         julials = { autostart = false },
         lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
         taplo = { evenBetterToml = { schema = { catalogs = { "https://www.schemastore.org/api/json/catalog.json" } } } },
@@ -23,9 +19,6 @@ return {
       },
       diagnostics = { update_in_insert = false },
       formatting = { format_on_save = { ignore_filetypes = { "julia" } } },
-      handlers = {
-        tsserver = false, -- handled by typescript-tools.nvim
-      },
       mappings = {
         i = {
           ["<C-l>"] = {
@@ -38,8 +31,28 @@ return {
     },
   },
   {
+    "p00f/clangd_extensions.nvim",
+    init = function()
+      local augroup = vim.api.nvim_create_augroup("clangd_extensions", { clear = true })
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = augroup,
+        desc = "Load clangd_extensions with clangd",
+        callback = function(args)
+          if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "clangd" then
+            require "clangd_extensions"
+            vim.api.nvim_del_augroup_by_id(augroup)
+          end
+        end,
+      })
+    end,
+  },
+  {
     "pmizio/typescript-tools.nvim",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    dependencies = {
+      "AstroNvim/astrolsp",
+      opts = { handlers = { tsserver = false } },
+    },
     opts = function()
       return require("astrocore").extend_tbl(require("astrolsp").lsp_opts "tsserver", {
         settings = {
