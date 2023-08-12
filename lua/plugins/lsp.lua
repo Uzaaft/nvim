@@ -1,5 +1,3 @@
-if true then return {} end -- REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 return {
   "AstroNvim/astrolsp",
@@ -37,33 +35,70 @@ return {
     },
     -- customize language server configuration options passed to `lspconfig`
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
-    },
-    -- customize how language servers are attached
-    setup_handlers = {
-      -- a function without a key is simply the default handler, functions take two parameters, the server name and the configured options table for that server
-      -- function(server, opts) require("lspconfig")[server].setup(opts) end
-
-      -- the key is the server that is being setup with `lspconfig`
-      -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
-      -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      julials = { autostart = false },
+      lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
+      taplo = { evenBetterToml = { schema = { catalogs = { "https://www.schemastore.org/api/json/catalog.json" } } } },
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            completion = {
+              postfix = {
+                enable = false,
+              },
+            },
+          },
+        },
+      },
     },
     -- mappings to be set up on attaching of a language server
     mappings = {
       n = {
         gl = { function() vim.diagnostic.open_float() end, desc = "Hover diagnostics" },
-        -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
-        -- gD = {
-        --   function() vim.lsp.buf.declaration() end,
-        --   desc = "Declaration of current symbol",
-        --   cond = "textDocument/declaration",
-        -- },
-        -- ["<leader>uY"] = {
-        --   function() require("astrolsp.toggles").buffer_semantic_tokens() end,
-        --   desc = "Toggle LSP semantic highlight (buffer)",
-        --   cond = function(client) return client.server_capabilities.semanticTokensProvider and vim.lsp.semantic_tokens end,
         -- },
       },
     },
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    dependencies = {
+      "AstroNvim/astrolsp",
+      opts = { handlers = { tsserver = false } },
+    },
+    opts = function()
+      return require("astrocore").extend_tbl(require("astrolsp").lsp_opts "tsserver", {
+        settings = {
+          tsserver_path = require("mason-registry").get_package("typescript-language-server"):get_install_path()
+            .. "/node_modules/typescript/lib/tsserver.js",
+          tsserver_file_preferences = {
+            includeInlayEnumMemberValueHints = true,
+            includeInlayFunctionLikeReturnTypeHints = true,
+            includeInlayFunctionParameterTypeHints = true,
+            includeInlayParameterNameHints = "all",
+            includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+            includeInlayPropertyDeclarationTypeHints = true,
+            includeInlayVariableTypeHints = true,
+            includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+          },
+        },
+      })
+    end,
+  },
+  {
+    "p00f/clangd_extensions.nvim",
+    init = function()
+      local augroup = vim.api.nvim_create_augroup("clangd_extensions", { clear = true })
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = augroup,
+        desc = "Load clangd_extensions with clangd",
+        callback = function(args)
+          if assert(vim.lsp.get_client_by_id(args.data.client_id)).name == "clangd" then
+            require "clangd_extensions"
+            vim.api.nvim_del_augroup_by_id(augroup)
+          end
+        end,
+      })
+    end,
   },
 }
