@@ -1,8 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    { "nvim-telescope/telescope-fzf-native.nvim", enabled = false },
-    "nvim-telescope/telescope-fzy-native.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
     "nvim-telescope/telescope-hop.nvim",
     "nvim-telescope/telescope-bibtex.nvim",
@@ -98,7 +96,6 @@ return {
   config = function(...)
     require "astronvim.plugins.configs.telescope"(...)
     local telescope = require "telescope"
-    telescope.load_extension "fzy_native"
     telescope.load_extension "live_grep_args"
     telescope.load_extension "bibtex"
     telescope.load_extension "file_browser"
