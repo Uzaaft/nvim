@@ -8,6 +8,28 @@ return {
       event = "VeryLazy",
       opts = { ignore_lsp = { "lua_ls", "julials" } },
     },
+    {
+      "AstroNvim/astrocore",
+      opts = {
+        mappings = {
+          n = {
+            ["<Leader>fB"] = { "<Cmd>Telescope bibtex<CR>", desc = "Find BibTeX" },
+            ["<Leader>fp"] = { "<Cmd>Telescope projects<CR>", desc = "Find projects" },
+            -- buffer switching
+            ["<Tab>"] = {
+              function()
+                if #vim.t.bufs > 1 then
+                  require("telescope.builtin").buffers { sort_mru = true, ignore_current_buffer = true }
+                else
+                  require("astrocore").notify "No other buffers open"
+                end
+              end,
+              desc = "Switch Buffers",
+            },
+          },
+        },
+      },
+    },
   },
   opts = {
     defaults = {
