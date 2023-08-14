@@ -1,18 +1,11 @@
 return {
-  --{ "Comment.nvim", enabled = false },
   { "goolord/alpha-nvim", enabled = false },
   { "max397574/better-escape.nvim", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
 
-  { "mfussenegger/nvim-dap", dependencies = {
-    { "theHamsta/nvim-dap-virtual-text", config = true },
-  } },
-  { "akinsho/toggleterm.nvim", opts = {
-    terminal_mappings = false,
-  } },
-  { "rcarriga/nvim-notify", opts = {
-    timeout = 0,
-  } },
+  { "mfussenegger/nvim-dap", dependencies = { { "theHamsta/nvim-dap-virtual-text", config = true } } },
+  { "akinsho/toggleterm.nvim", opts = { terminal_mappings = false } },
+  { "rcarriga/nvim-notify", opts = { timeout = 0 } },
   {
     "mrjones2014/smart-splits.nvim",
     build = "./kitty/install-kittens.bash",
@@ -31,9 +24,7 @@ return {
     opts = {
       filesystem = {
         hijack_netrw_behavior = "open_default",
-        filtered_items = {
-          always_show = { ".github", ".gitignore" },
-        },
+        filtered_items = { always_show = { ".github", ".gitignore" } },
       },
     },
   },

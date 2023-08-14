@@ -9,6 +9,14 @@ return {
         lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
         taplo = { evenBetterToml = { schema = { catalogs = { "https://www.schemastore.org/api/json/catalog.json" } } } },
         texlab = {
+          on_attach = function(_, bufnr)
+            require("astrocore").set_mappings({
+              n = {
+                ["<Leader>lB"] = { "<Cmd>TexlabBuild<CR>", desc = "LaTeX Build" },
+                ["<Leader>lF"] = { "<Cmd>TexlabForward<CR>", desc = "LaTeX Forward Search" },
+              },
+            }, { buffer = bufnr })
+          end,
           settings = {
             texlab = {
               build = { onSave = true },

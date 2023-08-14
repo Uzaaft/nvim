@@ -1,7 +1,39 @@
+local function better_search(key)
+  return function()
+    local searched, error =
+      pcall(vim.cmd.normal, { args = { (vim.v.count > 0 and vim.v.count or "") .. key }, bang = true })
+    if not searched and type(error) == "string" then require("astrocore").notify(error, vim.log.levels.ERROR) end
+  end
+end
+
 return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
   opts = {
+    autocmds = {
+      auto_spell = {
+        {
+          event = "FileType",
+          desc = "Enable wrap and spell for text like documents",
+          pattern = { "gitcommit", "markdown", "text", "plaintex" },
+          callback = function()
+            vim.opt_local.wrap = true
+            vim.opt_local.spell = true
+          end,
+        },
+      },
+      autohide_tabline = {
+        {
+          event = "User",
+          desc = "Auto hide tabline",
+          pattern = "AstroBufsUpdated",
+          callback = function()
+            local new_showtabline = #vim.t.bufs > 1 and 2 or 1
+            if new_showtabline ~= vim.opt.showtabline:get() then vim.opt.showtabline = new_showtabline end
+          end,
+        },
+      },
+    },
     mappings = {
       n = {
         -- disable default bindings
@@ -24,8 +56,8 @@ return {
           desc = "Previous buffer",
         },
         -- better search
-        n = { function() require("config.utils").better_search "n" end, desc = "Next search" },
-        N = { function() require("config.utils").better_search "N" end, desc = "Previous search" },
+        n = { better_search "n", desc = "Next search" },
+        N = { better_search "N", desc = "Previous search" },
         -- better increment/decrement
         ["-"] = { "<C-x>", desc = "Descrement number" },
         ["+"] = { "<C-a>", desc = "Increment number" },
@@ -62,63 +94,8 @@ return {
         ["<Leader>fB"] = { "<Cmd>Telescope bibtex<CR>", desc = "Find BibTeX" },
         ["<Leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
         ["<Leader>fT"] = { "<Cmd>TodoTelescope<CR>", desc = "Find TODOs" },
-        ["<Leader>fx"] = {
-          function() require("telescope").extensions.live_grep_args.live_grep_args() end,
-          desc = "Find words (args)",
-        },
         -- neogit
         ["<Leader>gG"] = { function() require("neogit").open() end, desc = "Neogit" },
-        -- compiler
-        ["<Leader>m"] = { desc = "󱁤 Compiler" },
-        ["<Leader>mk"] = {
-          function()
-            vim.cmd "silent! write"
-            local filename = vim.fn.expand "%:t"
-            require("config.utils").async_run(
-              { "compiler", vim.fn.expand "%:p" },
-              function() require("astrocore").notify("Compiled " .. filename) end
-            )
-          end,
-          desc = "Compile",
-        },
-        ["<Leader>ma"] = {
-          function()
-            vim.notify "Autocompile Started"
-            require("config.utils").async_run(
-              { "autocomp", vim.fn.expand "%:p" },
-              function() require("astrocore").notify "Autocompile stopped" end
-            )
-          end,
-          desc = "Auto Compile",
-        },
-        ["<Leader>mb"] = {
-          function()
-            local filename = vim.fn.expand "%:t"
-            require("config.utils").async_run({
-              "pandoc",
-              vim.fn.expand "%",
-              "--pdf-engine=xelatex",
-              "--variable",
-              "urlcolor=blue",
-              "-t",
-              "beamer",
-              "-o",
-              vim.fn.expand "%:r" .. ".pdf",
-            }, function() require("astrocore").notify("Compiled " .. filename) end)
-          end,
-          desc = "Compile Beamer",
-        },
-        ["<Leader>mp"] = {
-          function()
-            local pdf_path = vim.fn.expand "%:r" .. ".pdf"
-            if vim.fn.filereadable(pdf_path) == 1 then vim.fn.jobstart { "pdfpc", pdf_path } end
-          end,
-          desc = "Present Output",
-        },
-        ["<Leader>ml"] = { function() require("config.utils").toggle_qf() end, desc = "Logs" },
-        ["<Leader>mv"] = { function() vim.fn.jobstart { "opout", vim.fn.expand "%:p" } end, desc = "View Output" },
-        ["<Leader>mt"] = { "<Cmd>TexlabBuild<CR>", desc = "LaTeX" },
-        ["<Leader>mf"] = { "<Cmd>TexlabForward<CR>", desc = "Forward Search" },
         ["<Leader>r"] = { desc = " REPL" },
         ["<Leader>rr"] = { "<Plug>Send", desc = "Send to REPL" },
         ["<Leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },

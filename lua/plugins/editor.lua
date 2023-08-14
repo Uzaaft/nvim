@@ -68,12 +68,6 @@ return {
     },
   },
   {
-    "lukas-reineke/headlines.nvim",
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    ft = "markdown",
-    opts = {},
-  },
-  {
     "folke/todo-comments.nvim",
     event = "User AstroFile",
     cmd = { "TodoTrouble", "TodoTelescope", "TodoLocList", "TodoQuickFix" },
@@ -93,21 +87,18 @@ return {
   {
     "nvim-pack/nvim-spectre",
     cmd = "Spectre",
-    opts = function()
-      local prefix = "<Leader>s"
-      return {
-        open_cmd = "new",
-        mapping = {
-          send_to_qf = { map = prefix .. "q" },
-          replace_cmd = { map = prefix .. "c" },
-          show_option_menu = { map = prefix .. "o" },
-          run_current_replace = { map = prefix .. "C" },
-          run_replace = { map = prefix .. "R" },
-          change_view_mode = { map = prefix .. "v" },
-          resume_last_search = { map = prefix .. "l" },
-        },
-      }
-    end,
+    opts = {
+      open_cmd = "new",
+      mapping = {
+        send_to_qf = { map = "<Leader>sq" },
+        replace_cmd = { map = "<Leader>sc" },
+        show_option_menu = { map = "<Leader>so" },
+        run_current_replace = { map = "<Leader>sC" },
+        run_replace = { map = "<Leader>sR" },
+        change_view_mode = { map = "<Leader>sv" },
+        resume_last_search = { map = "<Leader>sl" },
+      },
+    },
   },
   { "junegunn/vim-easy-align", event = "User AstroFile" },
   {
