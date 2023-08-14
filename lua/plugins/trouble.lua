@@ -1,3 +1,4 @@
+local prefix = "<Leader>x"
 return {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },
@@ -6,11 +7,11 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<Leader>x"] = { desc = "󰒡 Trouble" },
-          ["<Leader>xx"] = { "<Cmd>TroubleToggle document_diagnostics<CR>", desc = "Document Diagnostics (Trouble)" },
-          ["<Leader>xX"] = { "<Cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Workspace Diagnostics (Trouble)" },
-          ["<Leader>xl"] = { "<Cmd>TroubleToggle loclist<CR>", desc = "Location List (Trouble)" },
-          ["<Leader>xq"] = { "<Cmd>TroubleToggle quickfix<CR>", desc = "Quickfix List (Trouble)" },
+          [prefix] = { desc = "󰒡 Trouble" },
+          [prefix .. "x"] = { "<Cmd>TroubleToggle document_diagnostics<CR>", desc = "Document Diagnostics (Trouble)" },
+          [prefix .. "X"] = { "<Cmd>TroubleToggle workspace_diagnostics<CR>", desc = "Workspace Diagnostics (Trouble)" },
+          [prefix .. "l"] = { "<Cmd>TroubleToggle loclist<CR>", desc = "Location List (Trouble)" },
+          [prefix .. "q"] = { "<Cmd>TroubleToggle quickfix<CR>", desc = "Quickfix List (Trouble)" },
         },
       },
     },

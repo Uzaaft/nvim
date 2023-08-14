@@ -1,3 +1,4 @@
+local prefix = "<Leader>r"
 return {
   "mtikekar/nvim-send-to-term",
   init = function() vim.g.send_disable_mapping = true end,
@@ -8,13 +9,13 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<Leader>r"] = { desc = " REPL" },
-          ["<Leader>rr"] = { "<Plug>Send", desc = "Send to REPL" },
-          ["<Leader>rl"] = { "<Plug>SendLine", desc = "Send line to REPL" },
-          ["<Leader>r<CR>"] = { "<Cmd>SendHere<CR>", desc = "Set REPL" },
+          [prefix] = { desc = " REPL" },
+          [prefix .. "r"] = { "<Plug>Send", desc = "Send to REPL" },
+          [prefix .. "l"] = { "<Plug>SendLine", desc = "Send line to REPL" },
+          [prefix .. "<CR>"] = { "<Cmd>SendHere<CR>", desc = "Set REPL" },
         },
         v = {
-          ["<Leader>r"] = { "<Plug>Send", desc = "Send to REPL" },
+          [prefix] = { "<Plug>Send", desc = "Send to REPL" },
         },
       },
     },

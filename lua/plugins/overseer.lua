@@ -1,3 +1,4 @@
+local prefix = "<Leader>m"
 return {
   "stevearc/overseer.nvim",
   cmd = {
@@ -50,13 +51,13 @@ return {
       },
       mappings = {
         n = {
-          ["<Leader>m"] = { desc = "󱁤 Compiler" },
-          ["<Leader>mr"] = { "<Cmd>OverseerRun<CR>", desc = "Overseer Run" },
-          ["<Leader>mk"] = { "<Cmd>Compile<CR>", desc = "Compile" },
-          ["<Leader>ma"] = { "<Cmd>AutoCompile<CR>", desc = "Auto Compile" },
-          ["<Leader>mp"] = { "<Cmd>Present<CR>", desc = "Present file output" },
-          ["<Leader>mt"] = { "<Cmd>OverseerToggle<CR>", desc = "Overseer Toggle" },
-          ["<Leader>mv"] = { "<Cmd>OpOut<CR>", desc = "View Output" },
+          [prefix] = { desc = "󱁤 Compiler" },
+          [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Overseer Run" },
+          [prefix .. "k"] = { "<Cmd>Compile<CR>", desc = "Compile" },
+          [prefix .. "a"] = { "<Cmd>AutoCompile<CR>", desc = "Auto Compile" },
+          [prefix .. "p"] = { "<Cmd>Present<CR>", desc = "Present file output" },
+          [prefix .. "t"] = { "<Cmd>OverseerToggle<CR>", desc = "Overseer Toggle" },
+          [prefix .. "v"] = { "<Cmd>OpOut<CR>", desc = "View Output" },
         },
       },
     },

@@ -1,3 +1,4 @@
+local prefix = "<Leader>s"
 return {
   "nvim-pack/nvim-spectre",
   cmd = "Spectre",
@@ -6,16 +7,16 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<Leader>s"] = { desc = "󰛔 Search/Replace" },
-          ["<Leader>ss"] = { function() require("spectre").toggle() end, desc = "Toggle Spectre" },
-          ["<Leader>sf"] = { function() require("spectre").open_file_search() end, desc = "Spectre (current file)" },
-          ["<Leader>sw"] = {
+          [prefix] = { desc = "󰛔 Search/Replace" },
+          [prefix .. "s"] = { function() require("spectre").toggle() end, desc = "Toggle Spectre" },
+          [prefix .. "f"] = { function() require("spectre").open_file_search() end, desc = "Spectre (current file)" },
+          [prefix .. "w"] = {
             function() require("spectre").open_visual { select_word = true } end,
             desc = "Spectre (current word)",
           },
         },
         v = {
-          ["<Leader>s"] = { function() require("spectre").open_visual() end, desc = "Spectre" },
+          [prefix] = { function() require("spectre").open_visual() end, desc = "Spectre" },
         },
       },
     },

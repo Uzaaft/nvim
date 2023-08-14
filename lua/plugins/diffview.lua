@@ -1,26 +1,27 @@
+local prefix = "<Leader>D"
 return {
   "sindrets/diffview.nvim",
-  event = "User AstroGitFile",
+  cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+  dependencies = {
+    "AstroNvim/astrocore",
+    opts = {
+      mappings = {
+        n = {
+          [prefix] = { name = " Diff View" },
+          [prefix .. "<CR>"] = { "<Cmd>DiffviewOpen<CR>", desc = "Open DiffView" },
+          [prefix .. "h"] = { "<Cmd>DiffviewFileHistory %<CR>", desc = "Open DiffView File History" },
+          [prefix .. "H"] = { "<Cmd>DiffviewFileHistory<CR>", desc = "Open DiffView Branch History" },
+        },
+      },
+    },
+  },
   opts = function()
     local actions = require "diffview.actions"
-    local astro = require "astrocore" --  astronvim utils
-
-    local prefix = "<Leader>D"
-
-    astro.set_mappings {
-      n = {
-        [prefix] = { name = " Diff View" },
-        [prefix .. "<CR>"] = { "<Cmd>DiffviewOpen<CR>", desc = "Open DiffView" },
-        [prefix .. "h"] = { "<Cmd>DiffviewFileHistory %<CR>", desc = "Open DiffView File History" },
-        [prefix .. "H"] = { "<Cmd>DiffviewFileHistory<CR>", desc = "Open DiffView Branch History" },
-      },
-    }
-
     local build_keymaps = function(maps)
       local out = {}
       local i = 1
       for lhs, def in
-        pairs(astro.extend_tbl(maps, {
+        pairs(require("astrocore").extend_tbl(maps, {
           [prefix .. "q"] = { "<Cmd>DiffviewClose<CR>", desc = "Quit Diffview" }, -- Toggle the file panel.
           ["]D"] = { actions.select_next_entry, desc = "Next Difference" }, -- Open the diff for the next file
           ["[D"] = { actions.select_prev_entry, desc = "Previous Difference" }, -- Open the diff for the previous file
@@ -50,9 +51,7 @@ return {
 
     return {
       enhanced_diff_hl = true,
-      view = {
-        merge_tool = { layout = "diff3_mixed" },
-      },
+      view = { merge_tool = { layout = "diff3_mixed" } },
       hooks = { diff_buf_read = function(bufnr) vim.b[bufnr].view_activated = false end },
       keymaps = {
         disable_defaults = true,

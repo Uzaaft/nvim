@@ -1,3 +1,4 @@
+local prefix = "<Leader>a"
 return {
   "danymat/neogen",
   cmd = "Neogen",
@@ -6,12 +7,12 @@ return {
     opts = {
       mappings = {
         n = {
-          ["<Leader>a"] = { desc = "󰏫 Annotate" },
-          ["<Leader>a<CR>"] = { function() require("neogen").generate() end, desc = "Current" },
-          ["<Leader>ac"] = { function() require("neogen").generate { type = "class" } end, desc = "Class" },
-          ["<Leader>af"] = { function() require("neogen").generate { type = "func" } end, desc = "Function" },
-          ["<Leader>at"] = { function() require("neogen").generate { type = "type" } end, desc = "Type" },
-          ["<Leader>aF"] = { function() require("neogen").generate { type = "file" } end, desc = "File" },
+          [prefix] = { desc = "󰏫 Annotate" },
+          [prefix .. "<CR>"] = { function() require("neogen").generate() end, desc = "Current" },
+          [prefix .. "c"] = { function() require("neogen").generate { type = "class" } end, desc = "Class" },
+          [prefix .. "f"] = { function() require("neogen").generate { type = "func" } end, desc = "Function" },
+          [prefix .. "t"] = { function() require("neogen").generate { type = "type" } end, desc = "Type" },
+          [prefix .. "F"] = { function() require("neogen").generate { type = "file" } end, desc = "File" },
         },
       },
     },

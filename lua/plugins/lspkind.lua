@@ -15,6 +15,5 @@ return {
       Package = "",
       String = "",
     }
-    return opts
   end,
 }
