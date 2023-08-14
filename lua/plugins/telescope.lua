@@ -2,9 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
     "nvim-telescope/telescope-live-grep-args.nvim",
-    "nvim-telescope/telescope-hop.nvim",
     "nvim-telescope/telescope-bibtex.nvim",
-    "nvim-telescope/telescope-file-browser.nvim",
     {
       "jay-babu/project.nvim",
       name = "project_nvim",
@@ -15,9 +13,7 @@ return {
   opts = function(_, opts)
     local telescope = require "telescope"
     local actions = require "telescope.actions"
-    local fb_actions = require("telescope").extensions.file_browser.actions
     local lga_actions = require "telescope-live-grep-args.actions"
-    local hop = telescope.extensions.hop
     return require("astrocore").extend_tbl(opts, {
       defaults = {
         results_title = "",
@@ -40,30 +36,9 @@ return {
             },
           },
         },
-        mappings = {
-          i = {
-            ["<C-h>"] = hop.hop,
-            ["<C-space>"] = function(prompt_bufnr)
-              hop._hop_loop(
-                prompt_bufnr,
-                { callback = actions.toggle_selection, loop_callback = actions.send_selected_to_qflist }
-              )
-            end,
-          },
-        },
       },
       extensions = {
         bibtex = { context = true, context_fallback = false },
-        file_browser = {
-          mappings = {
-            i = {
-              ["<C-z>"] = fb_actions.toggle_hidden,
-            },
-            n = {
-              z = fb_actions.toggle_hidden,
-            },
-          },
-        },
         live_grep_args = {
           auto_quoting = true, -- enable/disable auto-quoting
           mappings = { -- extend mappings
@@ -98,7 +73,6 @@ return {
     local telescope = require "telescope"
     telescope.load_extension "live_grep_args"
     telescope.load_extension "bibtex"
-    telescope.load_extension "file_browser"
     telescope.load_extension "projects"
   end,
 }

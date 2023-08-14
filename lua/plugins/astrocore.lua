@@ -60,7 +60,6 @@ return {
         ["<Leader>aF"] = { function() require("neogen").generate { type = "file" } end, desc = "File" },
         -- telescope plugin mappings
         ["<Leader>fB"] = { "<Cmd>Telescope bibtex<CR>", desc = "Find BibTeX" },
-        ["<Leader>fe"] = { "<Cmd>Telescope file_browser<CR>", desc = "File explorer" },
         ["<Leader>fp"] = { function() require("telescope").extensions.projects.projects {} end, desc = "Find projects" },
         ["<Leader>fT"] = { "<Cmd>TodoTelescope<CR>", desc = "Find TODOs" },
         ["<Leader>fx"] = {
