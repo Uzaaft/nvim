@@ -23,6 +23,5 @@ return {
         padding = { left = 0 },
       },
     }
-    return opts
   end,
 }
