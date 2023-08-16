@@ -13,7 +13,7 @@ return {
     "OverseerInfo",
     "OverseerBuild",
     "OverseerQuickAction",
-    "OverseerTaskAction ",
+    "OverseerTaskAction",
     "OverseerClearCache",
   },
   dependencies = {
@@ -51,12 +51,14 @@ return {
       },
       mappings = {
         n = {
-          [prefix] = { desc = "󱁤 Compiler" },
-          [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Overseer Run" },
+          [prefix] = { desc = "󱁤 Compilation" },
+          [prefix .. "a"] = { "<Cmd>OverseerQuickAction<CR>", desc = "Quick Action" },
+          [prefix .. "i"] = { "<Cmd>OverseerInfo<CR>", desc = "Overseer Info" },
           [prefix .. "k"] = { "<Cmd>Compile<CR>", desc = "Compile" },
-          [prefix .. "a"] = { "<Cmd>AutoCompile<CR>", desc = "Auto Compile" },
+          [prefix .. "K"] = { "<Cmd>AutoCompile<CR>", desc = "Auto Compile" },
+          [prefix .. "<CR>"] = { "<Cmd>OverseerToggle<CR>", desc = "Overseer" },
           [prefix .. "p"] = { "<Cmd>Present<CR>", desc = "Present file output" },
-          [prefix .. "t"] = { "<Cmd>OverseerToggle<CR>", desc = "Overseer Toggle" },
+          [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Run" },
           [prefix .. "v"] = { "<Cmd>OpOut<CR>", desc = "View Output" },
         },
       },
@@ -65,7 +67,8 @@ return {
   opts = {
     setup = {
       task_list = {
-        direction = "right",
+        strategy = "toggleterm",
+        direction = "bottom",
         bindings = {
           ["<C-l>"] = false,
           ["<C-h>"] = false,
