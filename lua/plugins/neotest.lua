@@ -2,33 +2,10 @@ local prefix = "<Leader>T"
 return {
   "nvim-neotest/neotest",
   dependencies = {
-    "mrcjkb/neotest-haskell",
-    "nvim-neotest/neotest-go",
-    "nvim-neotest/neotest-python",
-    "stevanmilic/neotest-scala",
-  },
-  ft = {
-    "go",
-    "haskell",
-    "python",
-    "scala",
-  },
-  opts = function()
-    return {
-      adapters = {
-        require "neotest-go",
-        require "neotest-haskell",
-        require "neotest-python",
-        require "neotest-scala",
-      },
-    }
-  end,
-  config = function(plugin, opts)
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = plugin.ft,
-      desc = "Set up Neotest bindings for valid buffers",
-      callback = function(args)
-        require("astrocore").set_mappings({
+    {
+      "AstroNvim/astrocore",
+      opts = {
+        mappings = {
           n = {
             [prefix] = { desc = "󰗇 Tests" },
             [prefix .. "t"] = { function() require("neotest").run.run() end, desc = "Run test" },
@@ -47,9 +24,25 @@ return {
             ["]T"] = { function() require("neotest").jump.next() end, desc = "Next test" },
             ["[T"] = { function() require("neotest").jump.prev() end, desc = "previous test" },
           },
-        }, { buffer = args.buf })
-      end,
-    })
+        },
+      },
+    },
+    "mrcjkb/neotest-haskell",
+    "nvim-neotest/neotest-go",
+    "nvim-neotest/neotest-python",
+    "stevanmilic/neotest-scala",
+  },
+  opts = function()
+    return {
+      adapters = {
+        require "neotest-go",
+        require "neotest-haskell",
+        require "neotest-python",
+        require "neotest-scala",
+      },
+    }
+  end,
+  config = function(_, opts)
     vim.diagnostic.config({
       virtual_text = {
         format = function(diagnostic)
