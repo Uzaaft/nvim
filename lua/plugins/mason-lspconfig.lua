@@ -6,6 +6,7 @@ return {
       "clangd",
       "cssls",
       "gopls",
+      "hls",
       "html",
       "intelephense",
       "marksman",

@@ -5,6 +5,7 @@ return {
       "bash",
       "cppdbg",
       "delve",
+      "haskell",
       "js",
       "php",
       "python",

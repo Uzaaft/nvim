@@ -2,12 +2,14 @@ local prefix = "<Leader>T"
 return {
   "nvim-neotest/neotest",
   dependencies = {
+    "mrcjkb/neotest-haskell",
     "nvim-neotest/neotest-go",
     "nvim-neotest/neotest-python",
     "stevanmilic/neotest-scala",
   },
   ft = {
     "go",
+    "haskell",
     "python",
     "scala",
   },
@@ -15,6 +17,7 @@ return {
     return {
       adapters = {
         require "neotest-go",
+        require "neotest-haskell",
         require "neotest-python",
         require "neotest-scala",
       },
