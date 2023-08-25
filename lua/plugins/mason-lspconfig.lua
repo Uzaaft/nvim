@@ -13,7 +13,6 @@ return {
       "neocmake",
       "jsonls",
       "julials",
-      "pyright",
       "lua_ls",
       "taplo",
       "texlab",
