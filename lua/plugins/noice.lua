@@ -39,24 +39,6 @@ local opts = {
       },
     },
   },
-  views = {
-    cmdline_popup = {
-      border = {
-        style = "none",
-        padding = { 1, 2 },
-      },
-      win_options = {
-        winblend = 5,
-        winhighlight = {
-          Normal = "NormalFloat",
-          FloatBorder = "NoiceCmdlinePopupBorder",
-          IncSearch = "",
-          Search = "",
-        },
-        cursorline = false,
-      },
-    },
-  },
   popupmenu = {
     enabled = true,
   },
