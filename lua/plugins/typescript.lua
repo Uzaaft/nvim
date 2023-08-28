@@ -4,6 +4,7 @@ return {
   opts = function()
     return require("astrocore").extend_tbl(require("astrolsp").lsp_opts "tsserver", {
       settings = {
+        expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
         tsserver_path = require("mason-registry").get_package("typescript-language-server"):get_install_path()
           .. "/node_modules/typescript/lib/tsserver.js",
         tsserver_file_preferences = {
