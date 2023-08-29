@@ -32,5 +32,7 @@ return {
     name = { "env", ".env", "venv", ".venv" },
     notify_user_on_activate = false,
     parents = 0,
+    anaconda_base_path = vim.env.XDG_DATA_HOME .. "/mambaforge",
+    anaconda_envs_path = vim.env.XDG_DATA_HOME .. "/mambaforge/envs",
   },
 }
