@@ -20,7 +20,7 @@ return {
             name = "heirline_virtual_env",
             callback = function()
               if require("astrocore").is_available "venv-selector.nvim" then
-                vim.defer_fn(function() vim.cmd.VenvSelect() end, 100)
+                vim.schedule(function() vim.cmd.VenvSelect() end)
               end
             end,
           },
@@ -28,11 +28,16 @@ return {
       end,
     },
   },
-  opts = {
-    name = { "env", ".env", "venv", ".venv" },
-    notify_user_on_activate = false,
-    parents = 0,
-    anaconda_base_path = vim.env.XDG_DATA_HOME .. "/mambaforge",
-    anaconda_envs_path = vim.env.XDG_DATA_HOME .. "/mambaforge/envs",
-  },
+  opts = function()
+    local opts = {
+      name = { "env", ".env", "venv", ".venv" },
+      notify_user_on_activate = false,
+      parents = 0,
+    }
+    if vim.env.MAMBA_HOME then
+      opts.anaconda_base_path = vim.env.MAMBA_HOME
+      opts.anaconda_envs_path = vim.env.MAMBA_HOME .. "/envs"
+    end
+    return opts
+  end,
 }
