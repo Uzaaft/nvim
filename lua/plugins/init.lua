@@ -1,17 +1,31 @@
-if true then return {} end -- REMOVE THIS LINE TO ACTIVATE THIS FILE
-
--- AstroCore allows you easy access to customize the default options provided in AstroNvim
 return {
-  "AstroNvim/astrocore",
-  ---@type AstroCoreOpts
-  opts = {
-    -- modify core features of AstroNvim
-    features = {
-      max_file = { size = 1024 * 100, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
-      autopairs = true, -- enable autopairs at start
-      cmp = true, -- enable completion at start
-      highlighturl = true, -- highlight URLs at start
-      notifications = true, -- enable notifications at start
-    },
+  -- disable core plugins
+  { "echasnovski/mini.indentscope", enabled = false },
+  { "max397574/better-escape.nvim", enabled = false },
+
+  -- Very small specs not worth their own files
+  { "akinsho/toggleterm.nvim", opts = { terminal_mappings = false } },
+  { "rcarriga/nvim-notify", opts = { timeout = 0 } },
+  { "wakatime/vim-wakatime", event = "User AstroFile" },
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+      require("peek").setup()
+      -- refer to `configuration to change defaults`
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    ft = "markdown",
+  },
+  {
+    "barrett-ruth/import-cost.nvim",
+    build = "sh install.sh yarn",
+    config = true,
   },
 }
