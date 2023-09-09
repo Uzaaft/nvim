@@ -1,8 +1,13 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    event = { "InsertEnter" },
     dependencies = {
-      { "js-everts/cmp-tailwind-colors", opts = {} },
+      {
+        "js-everts/cmp-tailwind-colors",
+        event = "VeryLazy",
+        opts = {},
+      },
     },
     opts = function(_, opts)
       local format_kinds = opts.formatting.format
