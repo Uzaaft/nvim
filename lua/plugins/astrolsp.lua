@@ -23,6 +23,7 @@ return {
         single_file_support = true,
         settings = {
           python = {
+            pythonPath = vim.env.VIRTUAL_ENV and vim.env.VIRTUAL_ENV .. "/bin/python",
             analysis = {
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
