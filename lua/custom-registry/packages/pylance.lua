@@ -19,6 +19,7 @@ return Pkg.new {
     ctx.spawn.rm { "pylance.vsix", "cookies.txt" }
     ctx.spawn.sed {
       "-i",
+      "''",
       [[0,/\(if(\!process\[[^] ]*\]\[[^] ]*\])return\!0x\)1/ s//\10/]],
       "extension/dist/server.bundle.js",
     }
