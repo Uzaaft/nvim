@@ -72,7 +72,7 @@ local opts = {
       ["aL"] = { ":<C-u>normal! $v0<CR>", desc = "Around line text object" },
     },
     ia = vim.fn.has "nvim-0.10" == 1 and {
-      mktemp = { function() return "<++>" end, desc = "Insert <++>", expr = true },
+      mktmpl = { function() return "<++>" end, desc = "Insert <++>", expr = true },
       ldate = { function() return os.date "%Y/%m/%d %H:%M:%S -" end, desc = "Y/m/d H:M:S -", expr = true },
       ndate = { function() return os.date "%Y-%m-%d" end, desc = "Y-m-d", expr = true },
       xdate = { function() return os.date "%m/%d/%y" end, desc = "m/d/y", expr = true },
