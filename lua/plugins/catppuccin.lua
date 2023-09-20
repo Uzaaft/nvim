@@ -23,6 +23,7 @@ return {
       symbols_outline = true,
       telescope = { enabled = true, style = "nvchad" },
       treesitter = true,
+      ufo = true,
       which_key = true,
     },
     custom_highlights = {
