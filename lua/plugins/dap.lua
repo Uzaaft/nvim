@@ -2,12 +2,13 @@ return {
   "mfussenegger/nvim-dap",
   dependencies = {
     "rcarriga/nvim-dap-ui",
+    { "theHamsta/nvim-dap-virtual-text", config = true },
     "mxsdev/nvim-dap-vscode-js",
     -- build debugger from source
     {
       "microsoft/vscode-js-debug",
       version = "1.x",
-      build = "npm i && npm run compile vsDebugServerBundle && rm -rf out && mv dist out",
+      build = "npm i && npm run compile vsDebugServerBundle && rm -rf out && mv -f dist out",
     },
   },
   config = function()
