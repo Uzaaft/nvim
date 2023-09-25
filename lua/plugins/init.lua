@@ -28,4 +28,31 @@ return {
     build = "sh install.sh yarn",
     config = true,
   },
+  {
+    "vuki656/package-info.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {},
+    event = "BufRead package.json",
+  },
+  {
+    "dmmulroy/tsc.nvim",
+    opts = {},
+  },
+  {
+    "smjonas/inc-rename.nvim",
+    opts = {},
+  },
+  {
+    "AstroNvim/astrolsp",
+    opts = {
+      mappings = {
+        n = {
+          ["<leader>lr"] = {
+            ":IncRename ",
+            desc = "IncRename",
+          },
+        },
+      },
+    },
+  },
 }
