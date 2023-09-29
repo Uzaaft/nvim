@@ -19,7 +19,7 @@ spec = vim.list_extend(spec, {
 })
 
 require("lazy").setup(spec, {
-  -- dev = { patterns = { "AstroNvim" } }, -- toggle comment for dev mode
+  -- dev = { patterns = { "AstroNvim", "lazy.nvim" } }, -- toggle comment for dev mode
   defaults = { lazy = true },
   diff = { cmd = "terminal_git" },
   install = { colorscheme = { "catppuccin", "astrodark", "habamax" } },
