@@ -19,9 +19,7 @@ return {
           on_click = {
             name = "heirline_virtual_env",
             callback = function()
-              if require("astrocore").is_available "venv-selector.nvim" then
-                vim.schedule(function() vim.cmd.VenvSelect() end)
-              end
+              vim.schedule(function() vim.cmd.VenvSelect() end)
             end,
           },
         }

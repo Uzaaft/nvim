@@ -17,7 +17,7 @@ return {
     return {
       disable_builtin_notifications = true,
       telescope_sorter = function() return require("telescope").extensions.fzy_native.native_fzy_sorter() end,
-      integrations = { telescope = true, diffview = require("astrocore").is_available "diffview.nvim" },
+      integrations = { telescope = true },
       signs = { section = fold_signs, item = fold_signs },
     }
   end,
