@@ -14,3 +14,4 @@
 --     ["~/%.config/foo/.*"] = "fooscript",
 --   },
 -- }
+vim.api.nvim_command "command! NpmScripts lua require('config.telescope-package').script_picker()"
