@@ -23,16 +23,9 @@ return {
       },
     },
   },
+
   {
     "echasnovski/mini.surround",
-    dependencies = {
-      { "machakann/vim-sandwich", enabled = false },
-      {
-        "catppuccin/nvim",
-        optional = true,
-        opts = { integrations = { mini = true } },
-      },
-    },
     keys = {
       { "sa", desc = "Add surrounding", mode = { "n", "v" } },
       { "sd", desc = "Delete surrounding" },
