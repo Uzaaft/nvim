@@ -2,6 +2,7 @@ local cmp = require "cmp"
 
 return {
   "hrsh7th/cmp-cmdline",
+  event = { "CmdlineEnter" },
   opts = {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
