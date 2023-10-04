@@ -8,8 +8,6 @@ return {
   opts = function()
     return require("astrocore").extend_tbl(require("astrolsp").lsp_opts "tsserver", {
       settings = {
-        tsserver_path = require("mason-registry").get_package("typescript-language-server"):get_install_path()
-          .. "/node_modules/typescript/lib/tsserver.js",
         tsserver_file_preferences = {
           includeInlayEnumMemberValueHints = true,
           includeInlayFunctionLikeReturnTypeHints = true,
