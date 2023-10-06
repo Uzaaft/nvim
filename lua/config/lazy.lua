@@ -10,24 +10,19 @@ vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 local USE_STABLE = false -- use stable releases of AstroNvim
 local LOCAL_ASTRO = false -- use local development of AstroNvim
 
-local spec =
-  { { "AstroNvim/AstroNvim", branch = "v4", version = USE_STABLE and "*" or nil, import = "astronvim.plugins" } }
-if USE_STABLE then table.insert(spec, { import = "astronvim.lazy_snapshot" }) end
-
--- Customize plugins
-spec = vim.list_extend(spec, {
-  -- { "AstroNvim/astrocommunity" },
-  -- { import = "astrocommunity.pack.lua" },
-  { import = "plugins" },
-})
-
 -- Customize dev patterns
 local dev_patterns = {}
 
 if LOCAL_ASTRO then table.insert(dev_patterns, "AstroNvim") end
 if vim.env.LAZY then table.insert(dev_patterns, "lazy.nvim") end
 
-require("lazy").setup(spec, {
+require("lazy").setup({
+  { "AstroNvim/AstroNvim", branch = "v4", version = USE_STABLE and "^4" or nil, import = "astronvim.plugins" },
+  { import = "astronvim.lazy_snapshot", cond = USE_STABLE },
+  -- { "AstroNvim/astrocommunity" },
+  -- { import = "astrocommunity.pack.lua" },
+  { import = "plugins" },
+}, {
   dev = { patterns = dev_patterns },
   defaults = { lazy = true },
   diff = { cmd = "terminal_git" },
