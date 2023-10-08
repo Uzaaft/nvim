@@ -2,13 +2,24 @@ return {
   -- disable core plugins
   { "echasnovski/mini.indentscope", enabled = false },
   { "max397574/better-escape.nvim", enabled = false },
-
   -- Very small specs not worth their own files
   { "akinsho/toggleterm.nvim", opts = { terminal_mappings = false } },
-  { "rcarriga/nvim-notify", opts = { timeout = 0 } },
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      timeout = 1000,
+      background_colour = "#000000",
+      render = "wrapped-compact",
+      stages = "slide",
+      fps = 144,
+      max_width = 70,
+    },
+  },
   { "wakatime/vim-wakatime", event = "User AstroFile" },
   {
-    "toppair/peek.nvim",
+    "saimo/peek.nvim",
+    -- Disable this plugin until I figure out how to make it work with my setup.
+    enabled = true,
     event = { "VeryLazy" },
     build = "deno task --quiet build:fast",
     config = function()
@@ -39,10 +50,6 @@ return {
     opts = {},
   },
   {
-    "smjonas/inc-rename.nvim",
-    opts = {},
-  },
-  {
     "AstroNvim/astrolsp",
     opts = {
       mappings = {
@@ -54,5 +61,23 @@ return {
         },
       },
     },
+  },
+  {
+    "b0o/SchemaStore.nvim",
+    -- Loaded by jsonls when needed.
+    version = false,
+  },
+  {
+    "chrisgrieser/nvim-puppeteer",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    ft = { "javascript", "typescript", "typescriptreact", "javascriptreact", "python" },
+  },
+  {
+    "nat-418/boole.nvim",
+    event = { "User AstroFile" },
+    opts = { mappings = {
+      increment = "+",
+      decrement = "-",
+    } },
   },
 }
