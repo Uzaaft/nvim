@@ -1,18 +1,20 @@
 return {
-  {
-    "pmizio/typescript-tools.nvim",
-    event = { "BufReadPre *.ts,*.tsx,*.js,*.jsx", "BufNewFile *.ts,*.tsx,*.js,*.jsx" },
-    dependencies = { "nvim-lua/plenary.nvim", "nvim-lspconfig" },
-    opts = function()
-      return {
-        settings = {
-          tsserver_file_preferences = {
-            includeInlayParameterNameHints = "literals",
-            includeInlayVariableTypeHints = true,
-            includeInlayFunctionLikeReturnTypeHints = true,
-          },
+  "pmizio/typescript-tools.nvim",
+  ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+  opts = function()
+    return require("astrocore").extend_tbl(require("astrolsp").lsp_opts "tsserver", {
+      settings = {
+        tsserver_file_preferences = {
+          includeInlayEnumMemberValueHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayVariableTypeHintsWhenTypeMatchesName = false,
         },
-      }
-    end,
-  },
+      },
+    })
+  end,
 }
