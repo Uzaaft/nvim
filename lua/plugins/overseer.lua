@@ -34,7 +34,7 @@ return {
         },
         Compile = {
           function() require("overseer").run_template { name = "compile with compiler" } end,
-          desc = "Compile the current file with `compiler`",
+          desc = "Compile the current file with `compBergravniler`",
         },
         OpOut = {
           function() require("overseer").run_template { name = "view file output" } end,
@@ -60,7 +60,7 @@ return {
           [prefix .. "p"] = { "<Cmd>Present<CR>", desc = "Present file output" },
           [prefix .. "r"] = { "<Cmd>OverseerRun<CR>", desc = "Run" },
           [prefix .. "v"] = { "<Cmd>OpOut<CR>", desc = "View Output" },
-          [prefix .. "o"] = { "<Cmd>OverseerOpen<CR>", desc = "Open Overseer" },
+          [prefix .. "o"] = { "<Cmd>OverseerToggle<CR>", desc = "Toggle Overseer" },
         },
       },
     },
