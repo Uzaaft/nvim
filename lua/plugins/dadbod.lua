@@ -7,7 +7,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     optional = true,
-    event = { "InsertEnter" },
+    event = { "CmdlineEnter", "InsertEnter" },
     dependencies = {
       {
         "kristijanhusak/vim-dadbod-completion",
