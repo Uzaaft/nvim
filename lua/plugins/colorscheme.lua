@@ -5,7 +5,7 @@ return {
     colorscheme = "catppuccin",
     style = {
       inactive = true, -- Bool value, toggles inactive window color.
-      transparent = false, -- Bool value, toggles transperency.
+      transparent = true, -- Bool value, toggles transperency.transpare
       floating = true, -- Bool value, toggles floating windows background colors.
       popup = true, -- Bool value, toggles popup background color.
       neotree = false, -- Bool value, toggles neo-trees background color.
