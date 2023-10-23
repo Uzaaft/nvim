@@ -28,11 +28,18 @@ end
 return {
   {
     "neo-tree.nvim",
-    enabled = true,
+    enabled = false,
+  },
+  {
+    "uzaaft/mini-files-rename",
+    dev = true,
+    dependencies = { "echasnovski/mini.files" },
+    event = "User AstroLspSetup",
+    opts = {},
   },
   {
     "echasnovski/mini.files",
-    enabled = false,
+    enabled = true,
     keys = {
       {
         "<leader>e",
