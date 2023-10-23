@@ -31,6 +31,7 @@ return {
   },
   {
     "iamcco/markdown-preview.nvim",
+    enabled = false,
     build = "cd app && npm install",
     ft = "markdown",
   },
@@ -69,6 +70,7 @@ return {
   },
   {
     "chrisgrieser/nvim-puppeteer",
+    event = { "User AstroFile" },
     dependencies = "nvim-treesitter/nvim-treesitter",
     ft = { "javascript", "typescript", "typescriptreact", "javascriptreact", "python" },
   },
