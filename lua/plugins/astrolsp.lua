@@ -3,6 +3,7 @@ return {
   ---@type AstroLSPOpts
   opts = {
     servers = { "pylance" },
+    ---@diagnostic disable: missing-fields
     config = {
       clangd = { capabilities = { offsetEncoding = "utf-8" } },
       julials = { autostart = false },
