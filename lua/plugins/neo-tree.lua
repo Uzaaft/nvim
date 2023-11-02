@@ -6,18 +6,18 @@ return {
       filtered_items = { always_show = { ".github", ".gitignore" } },
     },
     nesting_rules = {
-      [".gitignore"] = {
-        pattern = "^%.gitignore$",
-        files = { ".gitattributes", ".gitmodules", ".gitmessage", ".mailmap", ".git-blame*" },
-      },
-      [".tool-versions"] = {
-        pattern = "^%.tool-versions$",
-        files = { ".rtx.toml" },
+      conform = {
+        pattern = "^(.*)$",
+        files = { ".conform.*.%1" },
       },
       docker = {
         pattern = "^dockerfile$",
         ignore_case = true,
         files = { ".dockerignore", "docker-compose.*", "dockerfile*" },
+      },
+      git_files = {
+        pattern = "^%.gitignore$",
+        files = { ".gitattributes", ".gitmodules", ".gitmessage", ".mailmap", ".git-blame*" },
       },
       readme = {
         pattern = "^readme.*",
@@ -70,6 +70,10 @@ return {
           "%1.toc",
           "%1.xdv",
         },
+      },
+      tool_versions = {
+        pattern = "^%.tool-versions$",
+        files = { ".rtx.toml" },
       },
     },
   },

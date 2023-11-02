@@ -1,15 +1,6 @@
 return {
   "jay-babu/mason-nvim-dap.nvim",
   opts = {
-    ensure_installed = {
-      "bash",
-      "cppdbg",
-      "delve",
-      "haskell",
-      "js",
-      "php",
-      "python",
-    },
     handlers = {
       js = function()
         local dap = require "dap"
