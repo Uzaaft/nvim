@@ -69,6 +69,7 @@ return {
 
       opts.formatters_by_ft = {
         lua = { "stylua" },
+        puppet = { "puppet-lint" },
         python = { "isort", "black" },
         sh = { "shfmt" },
         ["*"] = { "injected" },
