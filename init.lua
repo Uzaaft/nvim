@@ -16,6 +16,7 @@ end
 
 vim.filetype.add {
   extension = {
+    mdx = "markdown.mdx",
     qmd = "markdown",
     yml = yaml_ft,
     yaml = yaml_ft,
