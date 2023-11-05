@@ -20,6 +20,7 @@ return {
       "jsonls",
       "julials",
       "lua_ls",
+      "ruff_lsp",
       "taplo",
       "texlab",
       "tsserver",
@@ -30,8 +31,7 @@ return {
       "shellcheck",
 
       -- Formatters
-      "black",
-      "isort",
+      "ruff",
       "prettierd",
       "shfmt",
       "stylua",

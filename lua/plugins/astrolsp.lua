@@ -136,7 +136,6 @@ return {
     },
     capabilities = { workspace = { didChangeWatchedFiles = { dynamicRegistration = false } } },
     diagnostics = { update_in_insert = false },
-    formatting = { format_on_save = { ignore_filetypes = { "julia" } } },
     mappings = {
       i = {
         ["<C-l>"] = {

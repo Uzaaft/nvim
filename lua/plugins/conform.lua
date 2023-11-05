@@ -68,12 +68,15 @@ return {
       end
 
       opts.formatters_by_ft = {
+        ["*"] = { "injected" },
         lua = { "stylua" },
         puppet = { "puppet-lint" },
-        python = { "isort", "black" },
+        python = function(bufnr)
+          return require("conform").get_formatter_info("ruff_format", bufnr).available and { "ruff_format" }
+            or { "isort", "black" }
+        end,
         sh = { "shfmt" },
-        ["*"] = { "injected" },
-        ["_"] = { "trim_whitespace", "trime_newlines", "squeeze_blanks" },
+        ["_"] = { "trim_whitespace", "trim_newlines", "squeeze_blanks" },
       }
 
       -- prettier filetypes
