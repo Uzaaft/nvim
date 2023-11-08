@@ -11,5 +11,4 @@ return {
   { "mfussenegger/nvim-dap", dependencies = { { "theHamsta/nvim-dap-virtual-text", config = true } } },
   { "rcarriga/nvim-notify", opts = { timeout = 0 } },
   { "wakatime/vim-wakatime", event = "User AstroFile" },
-  { "williamboman/mason.nvim", opts = { PATH = "append" } },
 }
