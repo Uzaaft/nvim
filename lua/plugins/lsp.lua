@@ -13,7 +13,6 @@ return {
       },
       handlers = {
         dart = false,
-        rust_analyzer = false,
       },
       formatting = {
         format_on_save = {
