@@ -1,34 +1,21 @@
 return {
   "nvim-telescope/telescope.nvim",
   dependencies = {
-    "nvim-telescope/telescope-bibtex.nvim",
-    {
-      "jay-babu/project.nvim",
-      name = "project_nvim",
-      event = "VeryLazy",
-      opts = { ignore_lsp = { "lua_ls", "julials" } },
-    },
     {
       "AstroNvim/astrocore",
-      opts = {
-        mappings = {
-          n = {
-            ["<Leader>fB"] = { "<Cmd>Telescope bibtex<CR>", desc = "Find BibTeX" },
-            ["<Leader>fp"] = { "<Cmd>Telescope projects<CR>", desc = "Find projects" },
-            -- buffer switching
-            ["<Tab>"] = {
-              function()
-                if #vim.t.bufs > 1 then
-                  require("telescope.builtin").buffers { sort_mru = true, ignore_current_buffer = true }
-                else
-                  require("astrocore").notify "No other buffers open"
-                end
-              end,
-              desc = "Switch Buffers",
-            },
-          },
-        },
-      },
+      opts = function(_, opts)
+        -- buffer switching
+        opts.mappings.n["<Tab>"] = {
+          function()
+            if #vim.t.bufs > 1 then
+              require("telescope.builtin").buffers { sort_mru = true, ignore_current_buffer = true }
+            else
+              require("astrocore").notify "No other buffers open"
+            end
+          end,
+          desc = "Switch Buffers",
+        }
+      end,
     },
   },
   opts = {
@@ -54,9 +41,6 @@ return {
         },
       },
     },
-    extensions = {
-      bibtex = { context = true, context_fallback = false },
-    },
     pickers = {
       find_files = {
         hidden = true,
@@ -75,10 +59,4 @@ return {
       },
     },
   },
-  config = function(...)
-    require "astronvim.plugins.configs.telescope"(...)
-    local telescope = require "telescope"
-    telescope.load_extension "bibtex"
-    telescope.load_extension "projects"
-  end,
 }
