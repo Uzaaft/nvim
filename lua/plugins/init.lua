@@ -48,6 +48,8 @@ return {
   },
   {
     "dmmulroy/tsc.nvim",
+    ft = { "typescript", "typescriptreact" },
+    command = "TSC",
     opts = {},
   },
   {
@@ -82,4 +84,5 @@ return {
       decrement = "-",
     } },
   },
+  { "justinsgithub/wezterm-types" },
 }
