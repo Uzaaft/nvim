@@ -10,17 +10,6 @@ return {
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    opts = function(_, opts) opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, "zls") end,
-  },
-  {
-    "jay-babu/mason-null-ls.nvim",
-    opts = function(_, opts)
-      opts.ensure_installed = utils.list_insert_unique(opts.ensure_installed, { "stylua", "luacheck" })
-    end,
-  },
-
-  {
     "NTBBloodbath/zig-tools.nvim",
     -- Load zig-tools.nvim only in Zig buffers
     ft = { "zig" },
