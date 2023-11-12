@@ -14,4 +14,14 @@
 --     ["~/%.config/foo/.*"] = "fooscript",
 --   },
 -- }
-vim.api.nvim_command "command! NpmScripts lua require('config.telescope-package').script_picker()"
+
+-- Recognize some files known to have JSON with comments.
+vim.filetype.add {
+  filename = {
+    [".eslintrc.json"] = "jsonc",
+  },
+  pattern = {
+    ["tsconfig*.json"] = "jsonc",
+    [".*/%.vscode/.*%.json"] = "jsonc",
+  },
+}
