@@ -19,6 +19,7 @@ return {
       noice = true,
       notify = true,
       overseer = true,
+      rainbow_delimiters = true,
       semantic_tokens = true,
       symbols_outline = true,
       telescope = { enabled = true, style = "nvchad" },
