@@ -1,23 +1,5 @@
 return {
   "nvim-telescope/telescope.nvim",
-  dependencies = {
-    {
-      "AstroNvim/astrocore",
-      opts = function(_, opts)
-        -- buffer switching
-        opts.mappings.n["<Tab>"] = {
-          function()
-            if #vim.t.bufs > 1 then
-              require("telescope.builtin").buffers { sort_mru = true, ignore_current_buffer = true }
-            else
-              require("astrocore").notify "No other buffers open"
-            end
-          end,
-          desc = "Switch Buffers",
-        }
-      end,
-    },
-  },
   opts = {
     defaults = {
       results_title = "",
