@@ -97,10 +97,7 @@ return {
         end,
         settings = {
           texlab = {
-            build = {
-              args = { "-shell-escape", "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
-              onSave = true,
-            },
+            build = { onSave = true },
             forwardSearch = { executable = "zathura", args = { "--synctex-forward", "%l:1:%f", "%p" } },
           },
         },
