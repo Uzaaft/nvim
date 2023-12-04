@@ -1,5 +1,8 @@
 return {
-  "stevearc/oil.nvim",
+  -- "stevearc/oil.nvim",
+  -- use fork until issue is closed: https://github.com/stevearc/oil.nvim/issues/245
+  "mehalter/oil.nvim",
+  branch = "sessionloadpost_perf",
   cmd = "Oil",
   dependencies = {
     {
