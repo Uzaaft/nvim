@@ -8,6 +8,16 @@ return {
     {
       "AstroNvim/astrocore",
       opts = {
+        autocmds = {
+          oil_settings = {
+            {
+              event = "FileType",
+              desc = "Disable view saving for oil buffers",
+              pattern = "oil",
+              callback = function(args) vim.b[args.buf].view_activated = false end,
+            },
+          },
+        },
         mappings = {
           n = {
             ["<Tab>"] = { "<Cmd>Oil<CR>", desc = "Oil Filebrowser" },
@@ -20,23 +30,20 @@ return {
       opts = function(_, opts)
         local old_disable = opts.opts.disable_winbar_cb
         opts.opts.disable_winbar_cb = function(args)
-          if vim.bo[args.buf].filetype == "oil" then
-            return false
-          else
-            return old_disable(args)
-          end
+          if vim.bo[args.buf].filetype ~= "oil" and old_disable then return old_disable(args) end
         end
 
-        local status = require "astroui.status"
-        table.insert(opts.winbar, 1, {
-          condition = function(args) return vim.bo[args.bufnr].filetype == "oil" end,
-          status.component.separated_path {
-            padding = { left = 2 },
-            max_depth = false,
-            suffix = false,
-            path_func = function() return require("oil").get_current_dir() end,
-          },
-        })
+        if opts.winbar then
+          table.insert(opts.winbar, 1, {
+            condition = function(args) return vim.bo[args.bufnr].filetype == "oil" end,
+            require("astroui.status").component.separated_path {
+              padding = { left = 2 },
+              max_depth = false,
+              suffix = false,
+              path_func = function() return require("oil").get_current_dir() end,
+            },
+          })
+        end
       end,
     },
   },
