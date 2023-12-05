@@ -1,6 +1,12 @@
 return {
   {
     "echasnovski/mini.move",
+    keys = {
+      { "ﬁ", mode = { "n", "v" } },
+      { "ª", mode = { "n", "v" } },
+      { "√", mode = { "n", "v" } },
+      { "˛", mode = { "n", "v" } },
+    },
     opts = {
       mappings = {
         -- Move visual selection in Visual mode. Defaults are Alt (Meta) + hjkl.
@@ -36,5 +42,41 @@ return {
       { "sn", desc = "Update `MiniSurround.config.n_lines`" },
     },
     opts = { n_lines = 200 },
+  },
+  {
+    "echasnovski/mini.map",
+    version = "*",
+    keys = {
+      { "<leader>um", function() require("mini.map").toggle() end, desc = "Toggle minimap" },
+    },
+    opts = function()
+      local map = require "mini.map"
+      return {
+        integrations = {
+          map.gen_integration.builtin_search(),
+          map.gen_integration.gitsigns(),
+          map.gen_integration.diagnostic {
+            error = "DiagnosticFloatingError",
+            warn = "DiagnosticFloatingWarn",
+            info = "DiagnosticFloatingInfo",
+            hint = "DiagnosticFloatingHint",
+          },
+        },
+        symbols = {
+          encode = map.gen_encode_symbols.dot "6x6",
+        },
+        window = {
+          side = "right",
+          width = 11,
+          winblend = 0,
+          show_integration_count = true,
+        },
+      }
+    end,
+  },
+  {
+    "catppuccin/nvim",
+    optional = true,
+    opts = { integrations = { mini = true } },
   },
 }
