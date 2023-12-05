@@ -41,7 +41,6 @@ return {
       "cpptools",
       "debugpy",
       "delve",
-      "haskell-debug-adapter",
       "js-debug-adapter",
       "php-debug-adapter",
     },
