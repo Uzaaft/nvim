@@ -4,12 +4,14 @@ return {
   { "max397574/better-escape.nvim", enabled = false },
   { "nvimtools/none-ls.nvim", enabled = false },
   { "jay-babu/mason-null-ls.nvim", enabled = false },
+  { "folke/which-key.nvim", enabled = false },
+  { "folke/which-key.nvim", enabled = false },
   -- Very small specs not worth their own files
   { "akinsho/toggleterm.nvim", opts = { terminal_mappings = false } },
   {
     "rcarriga/nvim-notify",
     opts = {
-      timeout = 1000,
+      timeout = 500,
       background_colour = "#000000",
       render = "wrapped-compact",
       stages = "slide",
@@ -19,14 +21,12 @@ return {
   },
   { "wakatime/vim-wakatime", event = "User AstroFile" },
   {
-    "saimo/peek.nvim",
-    -- Disable this plugin until I figure out how to make it work with my setup.
+    "toppair/peek.nvim",
     enabled = true,
-    event = { "VeryLazy" },
+    ft = "markdown",
     build = "deno task --quiet build:fast",
     config = function()
       require("peek").setup()
-      -- refer to `configuration to change defaults`
       vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
       vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
     end,
@@ -38,7 +38,9 @@ return {
     ft = "markdown",
   },
   {
+
     "barrett-ruth/import-cost.nvim",
+    ft = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
     build = "sh install.sh yarn",
     config = true,
   },
@@ -53,19 +55,6 @@ return {
     ft = { "typescript", "typescriptreact" },
     command = "TSC",
     opts = {},
-  },
-  {
-    "AstroNvim/astrolsp",
-    opts = {
-      mappings = {
-        n = {
-          ["<leader>lr"] = {
-            ":IncRename ",
-            desc = "IncRename",
-          },
-        },
-      },
-    },
   },
   {
     "b0o/SchemaStore.nvim",
@@ -87,4 +76,12 @@ return {
     } },
   },
   { "justinsgithub/wezterm-types" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      if opts.ensure_installed ~= "all" then
+        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, "html")
+      end
+    end,
+  },
 }
