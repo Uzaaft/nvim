@@ -30,6 +30,9 @@ return {
     opts = {
       formatters_by_ft = {
         lua = { "stylua" },
+        kotli = { "ktlint" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
       },
       format_on_save = {
         lsp_fallback = true,
