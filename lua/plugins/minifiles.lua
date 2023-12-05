@@ -31,18 +31,11 @@ return {
     enabled = false,
   },
   {
-    "uzaaft/mini-files-rename",
-    dev = true,
-    dependencies = { "echasnovski/mini.files" },
-    event = "User AstroLspSetup",
-    opts = {},
-  },
-  {
     "echasnovski/mini.files",
-    enabled = true,
+    enabled = false,
     keys = {
       {
-        "<leader>e",
+        "<Tab>",
         -- Open the explorer in the current directory, with focus on the current
         -- file and in the last used state.
         function() require("mini.files").open(vim.loop.cwd(), true) end,
