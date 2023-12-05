@@ -1,7 +1,6 @@
 return {
   {
     "vxpm/ferris.nvim",
-    lazy = true,
     init = function()
       vim.api.nvim_create_autocmd("LspAttach", {
         callback = function(args)

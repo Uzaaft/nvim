@@ -5,7 +5,7 @@ return {
     dependencies = {
       {
         "js-everts/cmp-tailwind-colors",
-        event = "VeryLazy",
+        event = "User AstroFile",
         opts = {},
       },
     },
