@@ -1,55 +1,60 @@
--- Remember my mappings.
 return {
+  { "folke/which-key.nvim", enabled = false },
   {
     "echasnovski/mini.clue",
+    dependecies = { "AstroNvim/astrocore" },
     event = "VeryLazy",
     opts = function()
       local miniclue = require "mini.clue"
+      local astrocore_clues = {}
+      for mode, maps in pairs(require("astrocore").which_key_queue) do
+        for keys, map in pairs(maps) do
+          if type(map) == "table" then
+            local desc = map.name or map.desc
+            if desc then table.insert(astrocore_clues, { mode = mode, keys = keys, desc = desc }) end
+          end
+        end
+      end
       return {
         triggers = {
-          -- Builtins.
+          -- Leader triggers
+          { mode = "n", keys = "<Leader>" },
+          { mode = "x", keys = "<Leader>" },
+
+          -- Built-in completion
+          { mode = "i", keys = "<C-x>" },
+
+          -- `g` key
           { mode = "n", keys = "g" },
           { mode = "x", keys = "g" },
+
+          -- Marks
+          { mode = "n", keys = "'" },
           { mode = "n", keys = "`" },
+          { mode = "x", keys = "'" },
           { mode = "x", keys = "`" },
+
+          -- Registers
           { mode = "n", keys = '"' },
           { mode = "x", keys = '"' },
           { mode = "i", keys = "<C-r>" },
           { mode = "c", keys = "<C-r>" },
+
+          -- Window commands
           { mode = "n", keys = "<C-w>" },
+
+          -- `z` key
           { mode = "n", keys = "z" },
-          -- Leader triggers.
-          { mode = "n", keys = "<Leader>" },
-          { mode = "x", keys = "<Leader>" },
-          -- Moving between stuff.
-          { mode = "n", keys = "[" },
-          { mode = "n", keys = "]" },
+          { mode = "x", keys = "z" },
         },
         clues = {
-          -- Leader/movement groups.
-          -- Useful builtins.
+          astrocore_clues,
+          miniclue.gen_clues.builtin_completion(),
+          miniclue.gen_clues.g(),
           miniclue.gen_clues.marks(),
           miniclue.gen_clues.registers(),
-        },
-        window = {
-          delay = 300,
-          scroll_down = "<C-f>",
-          scroll_up = "<C-b>",
-          config = function(bufnr)
-            local max_width = 0
-            for _, line in ipairs(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)) do
-              max_width = math.max(max_width, vim.fn.strchars(line))
-            end
-
-            -- Keep some right padding.
-            max_width = max_width + 2
-
-            return {
-              border = "rounded",
-              -- Dynamic width capped at 45.
-              width = math.min(45, max_width),
-            }
-          end,
+          miniclue.gen_clues.windows(),
+          miniclue.gen_clues.z(),
         },
       }
     end,
