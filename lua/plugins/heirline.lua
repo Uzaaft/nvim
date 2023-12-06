@@ -18,7 +18,9 @@ return {
   opts = function(_, opts)
     local status = require "astroui.status"
     -- custom statusline
-    opts.statusline[3] = status.component.file_info { filetype = {}, filename = false }
+    opts.statusline[3] = status.component.file_info {
+      file_modified = { padding = { left = 1, right = 1 }, condition = status.condition.is_file },
+    }
 
     -- add time to mode indicator
     opts.statusline[#opts.statusline] = status.component.builder {
@@ -61,8 +63,9 @@ return {
       status.component.separated_path { path_func = path_func },
       status.component.file_info { -- add file_info to breadcrumbs
         file_icon = { hl = status.hl.filetype_color, padding = { left = 0 } },
-        file_modified = false,
         file_read_only = false,
+        filename = {},
+        filetype = false,
         hl = status.hl.get_attributes("winbar", true),
         surround = false,
         update = "BufEnter",
