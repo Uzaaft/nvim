@@ -1,8 +1,5 @@
 return {
-  -- "stevearc/oil.nvim",
-  -- use fork until issue is closed: https://github.com/stevearc/oil.nvim/issues/245
-  "mehalter/oil.nvim",
-  branch = "sessionloadpost_perf",
+  "stevearc/oil.nvim",
   cmd = "Oil",
   init = function() -- start oil on startup lazily if necessary
     if vim.fn.argc() == 1 then
