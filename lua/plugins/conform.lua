@@ -2,8 +2,7 @@ return {
   { "AstroNvim/astrolsp", opts = { formatting = { disabled = true } } },
   {
     "stevearc/conform.nvim",
-    event = "BufWritePre",
-    cmd = "ConformInfo",
+    event = "User AstroFile",
     dependencies = {
       "williamboman/mason.nvim",
       {
