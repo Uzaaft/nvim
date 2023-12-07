@@ -6,7 +6,13 @@ return {
     linters_by_ft = {
       puppet = { "puppet-lint" },
       sh = { "shellcheck" },
-      ["yaml.ansible"] = { "ansible_lint" },
+      ansible = { "ansible_lint" },
+      cfn = { "cfn_lint" },
+    },
+    linters = {
+      cfn_lint = {
+        ignore_exitcode = true,
+      },
     },
   },
   config = function(_, opts)
