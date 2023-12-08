@@ -7,7 +7,8 @@ return {
     integrations = {
       aerial = true,
       cmp = true,
-      dap = { enabled = true, enable_ui = true },
+      dap = true,
+      dap_ui = true,
       gitsigns = true,
       indent_blankline = { enabled = true },
       markdown = true,
