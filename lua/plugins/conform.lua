@@ -1,7 +1,9 @@
 return {
   { "AstroNvim/astrolsp", opts = { formatting = { disabled = true } } },
   {
-    "stevearc/conform.nvim",
+    -- "stevearc/conform.nvim",
+    "mehalter/conform.nvim",
+    branch = "prettier_options",
     event = "User AstroFile",
     dependencies = {
       "williamboman/mason.nvim",
@@ -59,6 +61,7 @@ return {
       },
     },
     opts = function(_, opts)
+      opts.log_level = vim.log.levels.DEBUG
       opts.format_on_save = function(bufnr)
         if vim.g.autoformat == nil then vim.g.autoformat = true end
         local autoformat = vim.b[bufnr].autoformat
@@ -78,53 +81,6 @@ return {
         ["_"] = { "trim_whitespace", "trim_newlines", "squeeze_blanks" },
       }
 
-      --- Helper function to parse options to into a parser if available
-      ---@param self conform.JobFormatterConfig
-      ---@param ctx conform.Context|conform.RangeContext
-      local function eval_parser(self, ctx)
-        local filetype = vim.bo[ctx.buf].filetype
-        local options = self.options
-        if options and options.ft_parsers and options.ft_parsers[filetype] then
-          return { "--parser=" .. self.options.ft_parsers[filetype] }
-        end
-      end
-
-      local util = require "conform.util"
-      opts.formatters = {
-        ---@type conform.FileFormatterConfig
-        ---@diagnostic disable-next-line: missing-fields
-        prettier = {
-          options = {
-            ft_parsers = {
-              javascript = "babel",
-              javascriptreact = "babel",
-              typescript = "typescript",
-              typescriptreact = "typescript",
-              vue = "vue",
-              css = "css",
-              scss = "scss",
-              less = "less",
-              html = "html",
-              json = "json",
-              jsonc = "json",
-              yaml = "yaml",
-              ["yaml.cfn"] = "yaml",
-              ["yaml.ansible"] = "yaml",
-              markdown = "markdown",
-              ["markdown.mdx"] = "mdx",
-              graphql = "graphql",
-              handlebars = "glimmer",
-            },
-          },
-          args = function(self, ctx) return eval_parser(self, ctx) or { "--stdin-filepath", "$FILENAME" } end,
-          range_args = function(self, ctx)
-            local start_offset, end_offset = util.get_offsets_from_range(ctx.buf, ctx.range)
-            local args = eval_parser(self, ctx) or { "$FILENAME" }
-            return vim.list_extend(args, { "--range-start=" .. start_offset, "--range-end=" .. end_offset })
-          end,
-        },
-      }
-
       -- prettier filetypes
       vim.tbl_map(function(ft) opts.formatters_by_ft[ft] = { "prettier" } end, {
         "javascript",
@@ -139,12 +95,23 @@ return {
         "json",
         "jsonc",
         "yaml",
+        "yaml.ansible",
         "yaml.cfn",
         "markdown",
         "markdown.mdx",
         "graphql",
         "handlebars",
       })
+
+      opts.formatters = {
+        prettier = {
+          options = {
+            ft_parsers = {
+              markdown = "markdown",
+            },
+          },
+        },
+      }
     end,
     init = function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end,
   },
