@@ -51,7 +51,8 @@ return {
       opts = function(_, opts)
         local old_disable = opts.opts.disable_winbar_cb
         opts.opts.disable_winbar_cb = function(args)
-          if vim.bo[args.buf].filetype ~= "oil" and old_disable then return old_disable(args) end
+          if vim.api.nvim_buf_is_valid(args.buf) and vim.bo[args.buf].filetype == "oil" then return false end
+          return old_disable(args)
         end
 
         if opts.winbar then
