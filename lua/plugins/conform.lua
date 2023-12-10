@@ -1,9 +1,7 @@
 return {
   { "AstroNvim/astrolsp", opts = { formatting = { disabled = true } } },
   {
-    -- "stevearc/conform.nvim",
-    "mehalter/conform.nvim",
-    branch = "prettier_options",
+    "stevearc/conform.nvim",
     event = "User AstroFile",
     dependencies = {
       "williamboman/mason.nvim",
