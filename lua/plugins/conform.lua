@@ -3,6 +3,7 @@ return {
   {
     "stevearc/conform.nvim",
     event = "User AstroFile",
+    cmd = "ConformInfo",
     dependencies = {
       "williamboman/mason.nvim",
       {
