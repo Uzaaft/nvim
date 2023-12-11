@@ -77,7 +77,11 @@ return {
             or { "isort", "black" }
         end,
         sh = { "shfmt" },
-        ["_"] = { "trim_whitespace", "trim_newlines", "squeeze_blanks" },
+        ["_"] = function(bufnr)
+          return require("astrocore.buffer").is_valid(bufnr)
+              and { "trim_whitespace", "trim_newlines", "squeeze_blanks" }
+            or {}
+        end,
       }
 
       -- prettier filetypes
