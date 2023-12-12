@@ -4,6 +4,7 @@ return {
   init = function() -- start oil on startup lazily if necessary
     if vim.fn.argc() == 1 then
       local arg = vim.fn.argv(0)
+      ---@cast arg string
       local stat = vim.loop.fs_stat(arg)
       local adapter = string.match(arg, "^([%l-]*)://")
       if (stat and stat.type == "directory") or adapter == "oil-ssh" then require "oil" end
@@ -49,15 +50,16 @@ return {
     {
       "rebelot/heirline.nvim",
       opts = function(_, opts)
+        local status = require "astroui.status"
         local old_disable = opts.opts.disable_winbar_cb
         opts.opts.disable_winbar_cb = function(args)
-          if vim.api.nvim_buf_is_valid(args.buf) and vim.bo[args.buf].filetype == "oil" then return false end
+          if status.condition.buffer_matches({ filetype = "oil" }, args.buf) then return false end
           return old_disable(args)
         end
 
         if opts.winbar then
           table.insert(opts.winbar, 1, {
-            condition = function(args) return vim.bo[args.bufnr].filetype == "oil" end,
+            condition = function(args) return status.condition.buffer_matches({ filetype = "oil" }, args.bufnr) end,
             require("astroui.status").component.separated_path {
               padding = { left = 2 },
               max_depth = false,
