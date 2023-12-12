@@ -2,7 +2,7 @@
 require "config.lazy"
 
 local function yaml_ft(path, bufnr)
-  buf_text = table.concat(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false), "\n")
+  local buf_text = table.concat(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false), "\n")
   if
     -- check if file is in roles, tasks, or handlers folder
     vim.regex("(tasks\\|roles\\|handlers)/"):match_str(path)
