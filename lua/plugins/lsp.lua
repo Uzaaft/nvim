@@ -20,8 +20,6 @@ return {
         },
         timeout_ms = 1000, -- default format timeout
       },
-
-      -- customize language server configuration options passed to `lspconfig`
       config = {
         clangd = { capabilities = { offsetEncoding = "utf-8" } },
         julials = { autostart = false },
