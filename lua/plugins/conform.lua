@@ -71,6 +71,7 @@ return {
       opts.formatters_by_ft = {
         ["*"] = { "injected" },
         lua = { "stylua" },
+        typescriptreact = { "biome" },
         python = function(bufnr)
           return require("conform").get_formatter_info("ruff_format", bufnr).available and { "ruff_format" }
             or { "isort", "black" }
@@ -81,38 +82,6 @@ return {
               and { "trim_whitespace", "trim_newlines", "squeeze_blanks" }
             or {}
         end,
-      }
-
-      -- prettier filetypes
-      vim.tbl_map(function(ft) opts.formatters_by_ft[ft] = { "prettier" } end, {
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-        "vue",
-        "css",
-        "scss",
-        "less",
-        "html",
-        "json",
-        "jsonc",
-        "yaml",
-        "yaml.ansible",
-        "yaml.cfn",
-        "markdown",
-        "markdown.mdx",
-        "graphql",
-        "handlebars",
-      })
-
-      opts.formatters = {
-        prettier = {
-          options = {
-            ft_parsers = {
-              markdown = "markdown",
-            },
-          },
-        },
       }
     end,
     init = function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end,
