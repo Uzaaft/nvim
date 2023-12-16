@@ -4,6 +4,7 @@ return {
     "AstroNvim/astrolsp",
     ---@type AstroLSPOpts
     opts = {
+      servers = { "vtsls" },
       features = {
         inlay_hints = true,
       },
@@ -13,6 +14,7 @@ return {
       },
       handlers = {
         dart = false,
+        tsserver = false,
       },
       formatting = {
         format_on_save = {
