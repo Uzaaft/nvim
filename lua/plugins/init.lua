@@ -6,6 +6,8 @@ return {
   { "jay-babu/mason-null-ls.nvim", enabled = false },
   { "folke/which-key.nvim", enabled = false },
   { "folke/which-key.nvim", enabled = false },
+  { "alpha-nvim", enabled = false }, -- disable starter
+
   -- Very small specs not worth their own files
   { "akinsho/toggleterm.nvim", opts = { terminal_mappings = false } },
   {
@@ -30,19 +32,6 @@ return {
       vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
       vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
     end,
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    enabled = false,
-    build = "cd app && npm install",
-    ft = "markdown",
-  },
-  {
-
-    "barrett-ruth/import-cost.nvim",
-    ft = { "javascript", "typescript", "typescriptreact", "javascriptreact" },
-    build = "sh install.sh yarn",
-    config = true,
   },
   {
     "vuki656/package-info.nvim",
@@ -76,12 +65,4 @@ return {
     } },
   },
   { "justinsgithub/wezterm-types" },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, "html")
-      end
-    end,
-  },
 }
