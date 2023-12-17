@@ -35,15 +35,12 @@ return {
         "bash-debug-adapter",
         "cpptools",
         "debugpy",
-        "delve",
         "js-debug-adapter",
-        "php-debug-adapter",
       },
     },
     config = function(_, opts)
       local mason_tool_installer = require "mason-tool-installer"
       mason_tool_installer.setup(opts)
-      mason_tool_installer.run_on_start()
     end,
   },
   {
