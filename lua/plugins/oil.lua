@@ -72,6 +72,7 @@ return {
     },
   },
   opts = {
+    skip_confirm_for_simple_edits = true,
     keymaps = {
       ["<Tab>"] = "actions.close",
     },
