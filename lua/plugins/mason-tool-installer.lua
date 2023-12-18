@@ -21,7 +21,7 @@ return {
         "jsonls",
         "julials",
         "lua_ls",
-        { "pylance", version = "2023.10.40" }, -- last known working version
+        { "pylance", version = "2023.12.100" }, -- last known working version
         "ruff_lsp",
         "taplo",
         "texlab",
