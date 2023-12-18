@@ -53,7 +53,7 @@ return {
         local status = require "astroui.status"
         local old_disable = opts.opts.disable_winbar_cb
         opts.opts.disable_winbar_cb = function(args)
-          if status.condition.buffer_matches({ filetype = "oil" }, args.buf) then return false end
+          if status.condition.buffer_matches({ filetype = "^oil$" }, args.buf) then return false end
           return old_disable(args)
         end
 
