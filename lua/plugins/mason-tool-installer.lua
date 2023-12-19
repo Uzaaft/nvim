@@ -10,19 +10,21 @@ return {
       ensure_installed = {
         -- Language Servers
         "ansiblels",
+        "astro",
         "clangd",
         "cssls",
         "gopls",
         "hls",
         "html",
         "intelephense",
-        "marksman",
-        "neocmake",
         "jsonls",
         "julials",
         "lua_ls",
+        "marksman",
+        "neocmake",
         { "pylance", version = "2023.12.100" }, -- last known working version
         "ruff_lsp",
+        "tailwindcss",
         "taplo",
         "texlab",
         "vtsls",
@@ -30,11 +32,11 @@ return {
 
         -- Linters
         "ansible-lint",
+        "ruff",
         "shellcheck",
 
         -- Formatters
-        "ruff",
-        "prettierd",
+        "prettier",
         "shfmt",
         "stylua",
 
