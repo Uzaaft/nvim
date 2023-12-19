@@ -10,7 +10,7 @@ return {
       status = {
         separators = {
           left = { "", " " },
-          right = { " ", "" },
+          right = { " ", "" },
         },
       },
     },
