@@ -25,7 +25,7 @@ return {
         "ruff_lsp",
         "taplo",
         "texlab",
-        "tsserver",
+        "vtsls",
         "yamlls",
 
         -- Linters

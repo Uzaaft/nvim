@@ -102,30 +102,26 @@ return {
           },
         },
       },
-      tsserver = {
+      vtsls = {
         settings = {
           typescript = {
             inlayHints = {
-              includeInlayParameterNameHints = "all",
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
+              parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = false },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              enumMemberValues = { enabled = true },
             },
           },
           javascript = {
             inlayHints = {
-              includeInlayParameterNameHints = "all",
-              includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-              includeInlayFunctionParameterTypeHints = true,
-              includeInlayVariableTypeHints = true,
-              includeInlayVariableTypeHintsWhenTypeMatchesName = false,
-              includeInlayPropertyDeclarationTypeHints = true,
-              includeInlayFunctionLikeReturnTypeHints = true,
-              includeInlayEnumMemberValueHints = true,
+              parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = false },
+              parameterTypes = { enabled = true },
+              variableTypes = { enabled = true, suppressWhenTypeMatchesName = false },
+              propertyDeclarationTypes = { enabled = true },
+              functionLikeReturnTypes = { enabled = true },
+              enumMemberValues = { enabled = true },
             },
           },
         },
