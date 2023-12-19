@@ -43,28 +43,28 @@
 )
 (
   [(info_string (language))] @markdown_code_block_lang_javascript
-  (#eq? @markdown_code_block_lang_javascript "javascript")
+  (#any-of? @markdown_code_block_lang_javascript "javascript" "js" "node")
   (#set! conceal "")
 )
 (
   [(info_string (language))] @markdown_code_block_lang_typescript
-  (#eq? @markdown_code_block_lang_typescript "typescript")
+  (#any-of? @markdown_code_block_lang_typescript "typescript" "ts")
   (#set! conceal "")
 )
 (
   [(info_string (language))] @markdown_code_block_lang_json
-  (#eq? @markdown_code_block_lang_json "json")
+  (#any-of? @markdown_code_block_lang_json "json" "jsonc")
   (#set! conceal "")
 )
 (
   [(info_string (language))] @markdown_code_block_lang_bash
-  (#eq? @markdown_code_block_lang_bash "bash")
+  (#any-of? @markdown_code_block_lang_bash "bash" "sh" "shell" "zsh")
   (#set! conceal "")
 )
 (
-  [(info_string (language))] @markdown_code_block_lang_bash
-  (#eq? @markdown_code_block_lang_bash "sh")
-  (#set! conceal "")
+  [(info_string (language))] @markdown_code_block_lang_julia
+  (#eq? @markdown_code_block_lang_julia "julia")
+  (#set! conceal "")
 )
 (
   [(info_string (language))] @markdown_code_block_lang_lua
@@ -73,7 +73,7 @@
 )
 (
   [(info_string (language))] @markdown_code_block_lang_python
-  (#eq? @markdown_code_block_lang_python "python")
+  (#any-of? @markdown_code_block_lang_python "python" "python3")
   (#set! conceal "")
 )
 (
@@ -87,9 +87,19 @@
   (#set! conceal "")
 )
 (
+  [(info_string (language))] @markdown_code_block_lang_md
+  (#any-of? @markdown_code_block_lang_md "markdown" "md" "pandoc")
+  (#set! conceal "")
+)
+(
   [(info_string (language))] @markdown_code_block_lang_yaml
-  (#eq? @markdown_code_block_lang_yaml "yaml")
+  (#any-of? @markdown_code_block_lang_yaml "yaml" "yml")
   (#set! conceal "")
+)
+(
+  [(info_string (language))] @markdown_code_block_lang_toml
+  (#eq? @markdown_code_block_lang_toml "toml")
+  (#set! conceal "")
 )
 (
   [(info_string (language))] @markdown_code_block_lang_java
@@ -98,7 +108,7 @@
 )
 (
   [(info_string (language))] @markdown_code_block_lang_html
-  (#eq? @markdown_code_block_lang_html "html")
+  (#eq? @markdown_code_block_lang_html "xhtml")
   (#set! conceal "")
 )
 (
