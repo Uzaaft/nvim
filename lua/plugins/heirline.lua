@@ -34,20 +34,12 @@ return {
           })
         end,
       },
-      update = {
-        "User",
-        "ModeChanged",
-        callback = vim.schedule_wrap(function(_, args)
-          if -- update on user UpdateTime event and mode change
-            (args.event == "User" and args.match == "UpdateTime")
-            or (args.event == "ModeChanged" and args.match:match ".*:.*")
-          then
-            vim.cmd.redrawstatus()
-          end
-        end), -- redraw on update
-      },
+      update = { "ModeChanged", pattern = "*:*", callback = vim.schedule_wrap(function() vim.cmd.redrawstatus() end) },
       hl = status.hl.get_attributes "mode", -- highlight based on mode attributes
       surround = { separator = "right", color = status.hl.mode_bg }, -- background highlight based on mode
+      init = status.init.update_events {
+        { "User", pattern = "UpdateTime", callback = vim.schedule_wrap(function() vim.cmd.redrawstatus() end) },
+      },
     }
 
     local uv = vim.uv or vim.loop
