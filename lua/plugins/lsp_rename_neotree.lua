@@ -67,9 +67,9 @@ local function any_match(filepath, filters)
   return false
 end
 
-local function is_matching_path(client, path_pair)
+local function is_matching_path(client, op, path_pair)
   local ret
-  local filters = vim.tbl_get(client.server_capabilities, "workspace", "fileOperations", "willRename", "filters")
+  local filters = vim.tbl_get(client.server_capabilities, "workspace", "fileOperations", op, "filters")
   if filters and is_subpath(client.config.root_dir, path_pair.source) then
     local relative_file = path_pair.source:sub(client.config.root_dir:len() + 2)
     if any_match(path_pair.source, filters) or any_match(relative_file, filters) then ret = path_pair end
@@ -77,20 +77,26 @@ local function is_matching_path(client, path_pair)
   return ret
 end
 
-local lsp_rename = function(args)
+local will_rename = function(args)
   local clients = (vim.lsp.get_clients or vim.lsp.get_active_clients)()
   for _, client in ipairs(clients) do
-    if is_matching_path(client, args) then
+    if is_matching_path(client, "willRename", args) then
       client.request("workspace/willRenameFiles", {
-        files = {
-          {
-            oldUri = vim.uri_from_fname(args.source),
-            newUri = vim.uri_from_fname(args.destination),
-          },
-        },
+        files = { { oldUri = vim.uri_from_fname(args.source), newUri = vim.uri_from_fname(args.destination) } },
       }, function(_, result)
         if result then vim.lsp.util.apply_workspace_edit(result, client.offset_encoding) end
       end)
+    end
+  end
+end
+
+local did_rename = function(args)
+  local clients = (vim.lsp.get_clients or vim.lsp.get_active_clients)()
+  for _, client in ipairs(clients) do
+    if is_matching_path(client, "didRename", args) then
+      client.notify("workspace/didRenameFiles", {
+        files = { { oldUri = vim.uri_from_fname(args.source), newUri = vim.uri_from_fname(args.destination) } },
+      })
     end
   end
 end
@@ -102,8 +108,10 @@ return {
 
     if not opts.event_handlers then opts.event_handlers = {} end
     vim.list_extend(opts.event_handlers, {
-      { event = events.FILE_RENAMED, handler = lsp_rename },
-      { event = events.FILE_MOVED, handler = lsp_rename },
+      { event = events.BEFORE_FILE_RENAME, handler = will_rename },
+      { event = events.BEFORE_FILE_MOVE, handler = will_rename },
+      { event = events.FILE_RENAMED, handler = did_rename },
+      { event = events.FILE_MOVED, handler = did_rename },
     })
   end,
 }
