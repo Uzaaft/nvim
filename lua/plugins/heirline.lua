@@ -36,7 +36,7 @@ return {
       },
       update = { "ModeChanged", pattern = "*:*", callback = vim.schedule_wrap(function() vim.cmd.redrawstatus() end) },
       hl = status.hl.get_attributes "mode", -- highlight based on mode attributes
-      surround = { separator = "right", color = status.hl.mode_bg }, -- background highlight based on mode
+      surround = { separator = "right", color = status.hl.mode_bg, update = { "ModeChanged", pattern = "*:*" } }, -- background highlight based on mode
       init = status.init.update_events {
         { "User", pattern = "UpdateTime", callback = vim.schedule_wrap(function() vim.cmd.redrawstatus() end) },
       },
