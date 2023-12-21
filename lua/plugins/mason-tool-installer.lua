@@ -3,9 +3,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     cmd = { "MasonToolsInstall", "MasonToolsUpdate", "MasonToolsClean" },
     dependencies = { "williamboman/mason.nvim" },
-    init = function()
-      require("astrocore").on_load("mason.nvim", function() require "mason-tool-installer" end)
-    end,
+    init = function(plugin) require("astrocore").on_load("mason.nvim", plugin.name) end,
     opts = {
       ensure_installed = {
         -- Language Servers
