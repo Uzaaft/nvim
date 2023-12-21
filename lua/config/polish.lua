@@ -11,18 +11,3 @@ vim.filetype.add {
     [".*/%.vscode/.*%.json"] = "jsonc",
   },
 }
-
-local inlay_hints_group = vim.api.nvim_create_augroup("uzaaft/toggle_inlay_hints", { clear = false })
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-  group = inlay_hints_group,
-  desc = "Enable inlay hints",
-  buffer = bufnr,
-  callback = function() vim.lsp.inlay_hint.enable(bufnr, false) end,
-})
-vim.api.nvim_create_autocmd("InsertLeave", {
-  group = inlay_hints_group,
-  desc = "Disable inlay hints",
-  buffer = bufnr,
-  callback = function() vim.lsp.inlay_hint.enable(bufnr, true) end,
-})
