@@ -53,16 +53,17 @@ return {
       "rebelot/heirline.nvim",
       opts = function(_, opts)
         local status = require "astroui.status"
-        local old_disable = opts.opts.disable_winbar_cb
+        local is_oil = function(bufnr) return status.condition.buffer_matches({ filetype = "^oil$" }, bufnr) end
+        local disable_winbar_cb = opts.opts.disable_winbar_cb
         opts.opts.disable_winbar_cb = function(args)
-          if status.condition.buffer_matches({ filetype = "^oil$" }, args.buf) then return false end
-          return old_disable(args)
+          if is_oil(args.buf) then return false end
+          return disable_winbar_cb(args)
         end
 
         if opts.winbar then
           table.insert(opts.winbar, 1, {
-            condition = function(args) return status.condition.buffer_matches({ filetype = "oil" }, args.bufnr) end,
-            require("astroui.status").component.separated_path {
+            condition = function(self) return is_oil(self.bufnr) end,
+            status.component.separated_path {
               padding = { left = 2 },
               max_depth = false,
               suffix = false,
