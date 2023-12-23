@@ -1,5 +1,6 @@
 return {
-  "stevearc/oil.nvim",
+  "mehalter/oil.nvim",
+  branch = "fileoperations_handlers",
   cmd = "Oil",
   init = function() -- start oil on startup lazily if necessary
     if vim.fn.argc() == 1 then
@@ -72,6 +73,7 @@ return {
     },
   },
   opts = {
+    skip_confirm_for_simple_edits = true,
     keymaps = {
       ["<Tab>"] = "actions.close",
     },
