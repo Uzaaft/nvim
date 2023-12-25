@@ -8,4 +8,4 @@
 -- vim.opt.signcolumn = "auto" -- sets vim.opt.signcolumn to auto
 -- vim.opt.wrap = false -- sets vim.opt.wrap
 
--- vim.g.mapleader = " " -- sets vim.g.mapleader
+vim.opt.cmdheight = 0
