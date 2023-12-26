@@ -6,29 +6,41 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
--- Quick Toggles
-local USE_STABLE = false -- use stable releases of AstroNvim
+-- Customize dev patterns
+local dev_patterns = {}
+
+-- table.insert(dev_patterns, "AstroNvim") -- local AstroNvim
+
+if vim.env.LAZY then table.insert(dev_patterns, "lazy.nvim") end
 
 require("lazy").setup({
-  { "AstroNvim/AstroNvim", branch = "v4", version = USE_STABLE and "^4" or nil, import = "astronvim.plugins" },
-  { import = "astronvim.lazy_snapshot", cond = USE_STABLE },
+  {
+    "AstroNvim/AstroNvim",
+    ---@type AstroNvimOpts
+    opts = {
+      -- pin_plugins = true
+    },
+    branch = "v4",
+    -- version = "^4",
+    import = "astronvim.plugins",
+  },
+  -- { "AstroNvim/astrocommunity" },
+  -- { import = "astrocommunity.pack.lua" },
   { import = "plugins" },
 }, {
+  dev = { patterns = dev_patterns },
   defaults = { lazy = true },
   diff = { cmd = "terminal_git" },
-  install = { colorscheme = { "default", "catppuccin", "astrodark", "habamax" } },
+  install = { colorscheme = { "habamax", "catppuccin" } },
   checker = { enabled = true },
   lockfile = vim.fn.stdpath "data" .. "/lazy-lock.json",
   performance = {
     rtp = {
-      -- disable some rtp plugins, add more to your liking
       disabled_plugins = {
         "gzip",
         "netrwPlugin",
-        "rplugin",
         "tarPlugin",
         "tohtml",
-        "tutor",
         "zipPlugin",
       },
     },
