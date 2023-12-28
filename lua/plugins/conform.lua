@@ -71,7 +71,7 @@ return {
       opts.formatters_by_ft = {
         ["*"] = { "injected" },
         lua = { "stylua" },
-        typescriptreact = { "biome" },
+        typescriptreact = { "prettierd" },
         python = function(bufnr)
           return require("conform").get_formatter_info("ruff_format", bufnr).available and { "ruff_format" }
             or { "isort", "black" }
