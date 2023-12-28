@@ -4,8 +4,7 @@ return {
   { "max397574/better-escape.nvim", enabled = false },
   { "nvimtools/none-ls.nvim", enabled = false },
   { "jay-babu/mason-null-ls.nvim", enabled = false },
-  { "folke/which-key.nvim", enabled = false },
-  { "folke/which-key.nvim", enabled = false },
+  -- { "folke/which-key.nvim", enabled = false },
   { "alpha-nvim", enabled = false }, -- disable starter
 
   -- Very small specs not worth their own files
@@ -24,8 +23,7 @@ return {
   { "wakatime/vim-wakatime", event = "User AstroFile" },
   {
     "toppair/peek.nvim",
-    enabled = true,
-    ft = "markdown",
+    ft = { "markdown", "md" },
     build = "deno task --quiet build:fast",
     config = function()
       require("peek").setup()
@@ -65,4 +63,18 @@ return {
     } },
   },
   { "justinsgithub/wezterm-types" },
+  {
+    "NTBBloodbath/zig-tools.nvim",
+    -- Load zig-tools.nvim only in Zig buffers
+    ft = { "zig" },
+    opts = {},
+    dependencies = {
+      {
+        "akinsho/toggleterm.nvim",
+      },
+      {
+        "nvim-lua/plenary.nvim",
+      },
+    },
+  },
 }
