@@ -1,13 +1,17 @@
-if true then return {} end -- REMOVE THIS LINE TO ACTIVATE THIS FILE
+local utils = require "astrocore"
 
--- Example customization of Treesitter
 return {
   "nvim-treesitter/nvim-treesitter",
   opts = function(_, opts)
-    -- add more things to the ensure_installed table protecting against community packs modifying it
-    opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
-      "toml",
-      "rust",
-    })
+    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+    parser_config.just = {
+      install_info = {
+        url = "https://github.com/IndianBoy42/tree-sitter-just", -- local path or git repo
+        files = { "src/parser.c", "src/scanner.cc" },
+        branch = "main",
+        use_makefile = true, -- this may be necessary on MacOS (try if you see compiler errors)
+      },
+      maintainers = { "@IndianBoy42" },
+    }
   end,
 }
