@@ -5,6 +5,8 @@ return {
     dependencies = { "williamboman/mason.nvim" },
     init = function(plugin) require("astrocore").on_load("mason.nvim", plugin.name) end,
     opts = {
+      auto_update = true,
+      debounce_hours = 24, -- at least 24 hours between attempts to install/update
       ensure_installed = {
         -- Language Servers
         "clangd",
@@ -23,10 +25,12 @@ return {
         "vtsls",
         "docker_compose_language_service",
         "dockerls",
+        "tailwindcss",
         { "pylance", version = "2023.12.101" }, -- last known working version
 
         -- Linters
         "shellcheck",
+        "luacheck",
 
         -- Formatters
         "prettierd",
@@ -38,6 +42,7 @@ return {
         "cpptools",
         "debugpy",
         "js-debug-adapter",
+        "codelldb",
       },
     },
     config = function(_, opts)
