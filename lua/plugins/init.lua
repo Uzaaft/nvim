@@ -77,4 +77,14 @@ return {
       },
     },
   },
+  {
+    "chrisgrieser/nvim-tinygit",
+    ft = { "gitrebase", "gitcommit" }, -- so ftplugins are loaded
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-telescope/telescope.nvim", -- either telescope or fzf-lua
+      -- "ibhagwan/fzf-lua",
+      "rcarriga/nvim-notify", -- optional, but recommended
+    },
+  },
 }

@@ -2,28 +2,16 @@ return {
   "AstroNvim/astroui",
   dependencies = {
     {
-      "catppuccin/nvim",
-      name = "catppuccin",
+      "rose-pine/neovim",
+      name = "rose-pine",
       priority = 1000,
-      ---@type CatppuccinOptions
       opts = {
-        transparent_background = true,
-        dim_inactive = {
-          enabled = true,
-          percentage = 0.1,
-        },
-        integrations = {
-          mini = true,
-          noice = true,
-          notify = true,
-          ufo = true,
-          overseer = true,
-          telescope = {
-            enabled = true,
-          },
-          which_key = true,
-        },
+        disable_background = true,
       },
+      init = function()
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+      end,
     },
   },
   ---@type AstroUIOpts
@@ -36,6 +24,6 @@ return {
       neotree = false, -- Bool value, toggles neo-trees background color.
       italic_comments = false, -- Bool value, toggles italic comments.
     },
-    colorscheme = "catppuccin",
+    colorscheme = "rose-pine",
   },
 }

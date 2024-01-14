@@ -45,5 +45,9 @@ local function better_search(key)
 end
 opts.mappings.n.n = { better_search "n", desc = "Next search" }
 opts.mappings.n.N = { better_search "N", desc = "Previous search" }
+opts.mappings.n.ga = { function() require("gitsigns").stage_hunk() end, desc = "Stage hunk" }
+opts.mappings.n.gA = { function() require("gitsigns").undo_stage_hunk() end, desc = "Undo stage hunk" }
+opts.mappings.n.gc = { function() require("tinygit").smartCommit() end, desc = "Commit" }
+opts.mappings.n.gp = { function() require("tinygit").push() end, desc = "push" }
 
 return { "AstroNvim/astrocore", opts = opts }

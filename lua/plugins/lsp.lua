@@ -32,6 +32,7 @@ return {
         rust_analyzer = {
           settings = {
             ["rust-analyzer"] = {
+              standalone = true,
               checkOnSave = {
                 command = "clippy",
               },
