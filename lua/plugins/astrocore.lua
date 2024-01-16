@@ -33,11 +33,11 @@ local opts = {
       -- better buffer navigation
       ["]b"] = false,
       ["[b"] = false,
-      ["<S-l>"] = {
+      ["L"] = {
         function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
         desc = "Next buffer",
       },
-      ["<S-h>"] = {
+      ["H"] = {
         function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
         desc = "Previous buffer",
       },
