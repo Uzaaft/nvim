@@ -17,6 +17,9 @@ return {
         end
       end
       return {
+        window = {
+          config = { anchor = "SW", row = "auto", col = "auto", border = "none" },
+        },
         triggers = {
           -- Leader triggers
           { mode = "n", keys = "<Leader>" },
@@ -56,6 +59,7 @@ return {
           miniclue.gen_clues.registers(),
           miniclue.gen_clues.windows(),
           miniclue.gen_clues.z(),
+          require("astrocore").which_key_register(),
         },
       }
     end,
