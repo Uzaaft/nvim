@@ -5,6 +5,9 @@ vim.filetype.add {
   },
   filename = {
     [".eslintrc.json"] = "jsonc",
+    [".env"] = "sh",
+    [".env.local"] = "sh",
+    ["docker-compose.yaml"] = "yaml.docker-compose",
   },
   pattern = {
     ["tsconfig*.json"] = "jsonc",
