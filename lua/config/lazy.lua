@@ -6,13 +6,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(vim.env.LAZY or lazypath)
 
--- Customize dev patterns
-local dev_patterns = {}
-
--- table.insert(dev_patterns, "AstroNvim") -- local AstroNvim
-
-if vim.env.LAZY then table.insert(dev_patterns, "lazy.nvim") end
-
 require("lazy").setup({
   {
     "AstroNvim/AstroNvim",
@@ -28,7 +21,17 @@ require("lazy").setup({
   -- { import = "astrocommunity.pack.lua" },
   { import = "plugins" },
 }, {
-  dev = { patterns = dev_patterns },
+  dev = {
+    -- TODO: uncomment when PR merged: https://github.com/folke/lazy.nvim/pull/1157
+    -- ---@param plugin LazyPlugin
+    -- path = function(plugin)
+    --   local dir = plugin.url:match "^https://(.*)%.git$"
+    --   return dir and vim.env.GIT_PATH and vim.env.GIT_PATH .. "/" .. dir or "~/projects/" .. plugin.name
+    -- end,
+    patterns = {
+      -- "AstroNvim", -- local AstroNvim
+    },
+  },
   defaults = { lazy = true },
   diff = { cmd = "terminal_git" },
   install = { colorscheme = { "catppuccin", "astrodark", "habamax" } },
