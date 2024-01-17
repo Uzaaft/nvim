@@ -22,9 +22,9 @@ return {
         end,
         cmd = { "pylance", "--stdio" },
         single_file_support = true,
+        before_init = function(_, c) c.settings.python.pythonPath = vim.fn.exepath "python" end,
         settings = {
           python = {
-            pythonPath = vim.env.VIRTUAL_ENV and vim.env.VIRTUAL_ENV .. "/bin/python",
             analysis = {
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
