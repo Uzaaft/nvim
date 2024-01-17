@@ -16,13 +16,14 @@ return {
         },
         mappings = {
           n = {
-            ["<Leader>ur"] = {
+            ["<Leader>u("] = {
               function()
-                require("rainbow-delimiters").toggle(0)
+                local bufnr = vim.api.nvim_get_current_buf()
+                require("rainbow-delimiters").toggle(bufnr)
                 require("astrocore").notify(
                   string.format(
                     "Buffer rainbow delimeters %s",
-                    require("rainbow-delimiters.lib").buffers[vim.api.nvim_get_current_buf()] and "on" or "off"
+                    require("rainbow-delimiters.lib").buffers[bufnr] and "on" or "off"
                   )
                 )
               end,
