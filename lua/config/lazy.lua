@@ -35,7 +35,6 @@ require("lazy").setup({
   defaults = { lazy = true },
   diff = { cmd = "terminal_git" },
   install = { colorscheme = { "catppuccin", "astrodark", "habamax" } },
-  checker = { enabled = true },
   lockfile = vim.fn.stdpath "data" .. "/lazy-lock.json",
   performance = {
     rtp = {
