@@ -22,12 +22,12 @@ require("lazy").setup({
   { import = "plugins" },
 }, {
   dev = {
-    -- TODO: uncomment when PR merged: https://github.com/folke/lazy.nvim/pull/1157
-    -- ---@param plugin LazyPlugin
-    -- path = function(plugin)
-    --   local dir = plugin.url:match "^https://(.*)%.git$"
-    --   return dir and vim.env.GIT_PATH and vim.env.GIT_PATH .. "/" .. dir or "~/projects/" .. plugin.name
-    -- end,
+    -- TODO: remove check when PR merged: https://github.com/folke/lazy.nvim/pull/1157
+    ---@param plugin LazyPlugin
+    path = vim.env.LAZY and function(plugin)
+      local dir = plugin.url:match "^https://(.*)%.git$"
+      return dir and vim.env.GIT_PATH and vim.env.GIT_PATH .. "/" .. dir or "~/projects/" .. plugin.name
+    end,
     patterns = {
       -- "AstroNvim", -- local AstroNvim
     },
