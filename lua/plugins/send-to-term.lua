@@ -1,4 +1,5 @@
 local prefix = "<Leader>r"
+---@type LazySpec
 return {
   "mtikekar/nvim-send-to-term",
   init = function() vim.g.send_disable_mapping = true end,

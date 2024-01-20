@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "arsham/indent-tools.nvim",
   dependencies = { "arsham/arshlib.nvim" },

@@ -14,6 +14,7 @@ if not lazy_loaded then
   vim.cmd.quit()
 end
 
+---@type LazyConfig
 lazy.setup({
   {
     "AstroNvim/AstroNvim",
@@ -28,7 +29,7 @@ lazy.setup({
   -- { "AstroNvim/astrocommunity" },
   -- { import = "astrocommunity.pack.lua" },
   { import = "plugins" },
-}, {
+} --[[@as LazySpec]], {
   dev = {
     -- TODO: remove check when PR merged: https://github.com/folke/lazy.nvim/pull/1157
     ---@param plugin LazyPlugin
@@ -55,4 +56,4 @@ lazy.setup({
       },
     },
   },
-})
+} --[[@as LazyConfig]])

@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   -- "antosha417/nvim-lsp-file-operations",
   "mehalter/nvim-lsp-file-operations",

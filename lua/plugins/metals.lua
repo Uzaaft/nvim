@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "scalameta/nvim-metals",
   dependencies = { "AstroNvim/astrolsp", opts = { handlers = { metals = false } } },

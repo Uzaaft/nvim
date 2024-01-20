@@ -1,4 +1,5 @@
 local prefix = "<Leader>a"
+---@type LazySpec
 return {
   "danymat/neogen",
   cmd = "Neogen",

@@ -1,4 +1,5 @@
 local prefix = "<Leader>s"
+---@type LazySpec
 return {
   "nvim-pack/nvim-spectre",
   cmd = "Spectre",

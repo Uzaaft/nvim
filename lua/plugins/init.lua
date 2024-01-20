@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   -- disable core plugins
   { "echasnovski/mini.indentscope", enabled = false },

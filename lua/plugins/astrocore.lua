@@ -111,4 +111,5 @@ for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", 
   end
 end
 
+---@type LazySpec
 return { "AstroNvim/astrocore", opts = opts }

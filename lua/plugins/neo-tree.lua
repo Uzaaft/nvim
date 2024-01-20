@@ -1,8 +1,11 @@
+---@type LazySpec
 return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = {
     filesystem = {
-      filtered_items = { always_show = { ".github", ".gitignore" } },
+      filtered_items = {
+        always_show = { ".github", ".gitignore" },
+      },
     },
     nesting_rules = {
       conform = {

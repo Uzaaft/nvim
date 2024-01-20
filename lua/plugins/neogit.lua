@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "NeogitOrg/neogit",
   cmd = "Neogit",

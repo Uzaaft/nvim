@@ -1,4 +1,5 @@
 local prefix = "<Leader>m"
+---@type LazySpec
 return {
   "stevearc/overseer.nvim",
   cmd = {

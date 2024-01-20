@@ -1,4 +1,5 @@
 local prefix = "<Leader>x"
+---@type LazySpec
 return {
   "folke/trouble.nvim",
   cmd = { "TroubleToggle", "Trouble" },

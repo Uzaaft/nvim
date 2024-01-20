@@ -17,6 +17,7 @@ Config.options.checker.enabled = false
 Config.options.change_detection.enabled = false
 Config.options.defaults.cond = function(plugin) return vim.tbl_contains(enabled, plugin.name) or plugin.vscode end
 
+---@type LazySpec
 return {
   {
     "AstroNvim/astrocore",
