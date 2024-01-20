@@ -31,9 +31,8 @@ lazy.setup({
   { import = "plugins" },
 } --[[@as LazySpec]], {
   dev = {
-    -- TODO: remove check when PR merged: https://github.com/folke/lazy.nvim/pull/1157
     ---@param plugin LazyPlugin
-    path = vim.env.LAZY and function(plugin)
+    path = function(plugin)
       local dir = plugin.url:match "^https://(.*)%.git$"
       return dir and vim.env.GIT_PATH and vim.env.GIT_PATH .. "/" .. dir or "~/projects/" .. plugin.name
     end,
