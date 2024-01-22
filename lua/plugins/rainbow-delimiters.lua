@@ -24,7 +24,7 @@ return {
                 require("astrocore").notify(
                   string.format(
                     "Buffer rainbow delimeters %s",
-                    require("rainbow-delimiters.lib").buffers[bufnr] and "on" or "off"
+                    require("rainbow-delimiters").is_enabled(bufnr) and "on" or "off"
                   )
                 )
               end,
