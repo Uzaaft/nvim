@@ -30,6 +30,7 @@ return {
 
         -- Linters
         "ansible-lint",
+        "luacheck",
         "ruff",
         "shellcheck",
 
