@@ -93,21 +93,23 @@ end
 opts.mappings.n.n = { better_search "n", desc = "Next search" }
 opts.mappings.n.N = { better_search "N", desc = "Previous search" }
 
+-- add line text object
+for lhs, rhs in pairs {
+  il = { ":<C-u>normal! $v^<CR>", desc = "inside line" },
+  al = { ":<C-u>normal! V<CR>", desc = "around line" },
+} do
+  opts.mappings.o[lhs] = rhs
+  opts.mappings.x[lhs] = rhs
+end
+
 -- add missing in between and arround two character pairs
-for _, char in ipairs { "_", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?" } do
-  local char_map = {
-    i = {
-      lhs = "i" .. char,
-      rhs = { (":<C-u>silent! normal! f%sF%slvt%s<CR>"):format(char, char, char), desc = "inside " .. char },
-    },
-    a = {
-      lhs = "a" .. char,
-      rhs = { (":<C-u>silent! normal! f%sF%svf%s<CR>"):format(char, char, char), desc = "around " .. char },
-    },
-  }
-  for _, mode in ipairs { "x", "o" } do
-    opts.mappings[mode][char_map.i.lhs] = char_map.i.rhs
-    opts.mappings[mode][char_map.a.lhs] = char_map.a.rhs
+for _, char in ipairs { "_", "-", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?" } do
+  for lhs, rhs in pairs {
+    ["i" .. char] = { (":<C-u>silent! normal! f%sF%slvt%s<CR>"):format(char, char, char), desc = "inside " .. char },
+    ["a" .. char] = { (":<C-u>silent! normal! f%sF%svf%s<CR>"):format(char, char, char), desc = "around " .. char },
+  } do
+    opts.mappings.o[lhs] = rhs
+    opts.mappings.x[lhs] = rhs
   end
 end
 
