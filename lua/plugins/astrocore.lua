@@ -113,5 +113,21 @@ for _, char in ipairs { "_", "-", ".", ":", ",", ";", "|", "/", "\\", "*", "+", 
   end
 end
 
+-- Experimental `nvim-ufo` mappings
+local function max_level()
+  -- return vim.wo.foldlevel -- find a way for this to return max fold level
+  return 0
+end
+local function set_fold(num)
+  -- vim.w.ufo_foldlevel = math.min(math.max(0, num), max_level()) -- when max_level is implemneted properly
+  vim.b.ufo_foldlevel = math.max(0, num)
+  require("ufo").closeFoldsWith(vim.b.ufo_foldlevel)
+end
+local shift_fold = function(dir) set_fold((vim.b.ufo_foldlevel or max_level()) + dir) end
+-- opts.mappings.n["zR"] = { function() set_fold(max_level()) end, desc = "Open all folds" } -- when max_level is implemented properly
+opts.mappings.n["zM"] = { function() set_fold(0) end, desc = "Close all folds" }
+opts.mappings.n["zr"] = { function() shift_fold(vim.v.count == 0 and 1 or vim.v.count) end, desc = "Fold less" }
+opts.mappings.n["zm"] = { function() shift_fold(-(vim.v.count == 0 and 1 or vim.v.count)) end, desc = "Fold more" }
+
 ---@type LazySpec
 return { "AstroNvim/astrocore", opts = opts }
