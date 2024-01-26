@@ -1,5 +1,9 @@
 ---@type AstroCoreOpts
 local opts = {
+  rooter = {
+    ignore = { servers = { "julials" } },
+    autochdir = true,
+  },
   autocmds = {
     auto_spell = {
       {
