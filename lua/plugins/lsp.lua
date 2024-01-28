@@ -142,7 +142,9 @@ return {
                 functionLikeReturnTypes = { enabled = true },
                 enumMemberValues = { enabled = true },
               },
-              updateImportsOnFileMove = "always",
+              updateImportsOnFileMove = {
+                enabled = "always",
+              },
             },
             javascript = {
               inlayHints = {
@@ -153,7 +155,9 @@ return {
                 functionLikeReturnTypes = { enabled = true },
                 enumMemberValues = { enabled = true },
               },
-              updateImportsOnFileMove = "always",
+              updateImportsOnFileMove = {
+                enabled = "always",
+              },
             },
           },
         },
