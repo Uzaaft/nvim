@@ -4,8 +4,10 @@ return {
   { "max397574/better-escape.nvim", enabled = false },
   { "nvimtools/none-ls.nvim", enabled = false },
   { "jay-babu/mason-null-ls.nvim", enabled = false },
-  -- { "folke/which-key.nvim", enabled = false },
+  { "folke/which-key.nvim", enabled = false },
   { "alpha-nvim", enabled = false }, -- disable starter
+  { "L3MON4D3/LuaSnip", enabled = false },
+  { "saadparwaiz1/cmp_luasnip", enaled = false },
 
   -- Very small specs not worth their own files
   { "akinsho/toggleterm.nvim", opts = { terminal_mappings = false } },
@@ -63,6 +65,7 @@ return {
     } },
   },
   { "justinsgithub/wezterm-types" },
+  { "neapsix/wezterm", name = "rose-pine-wezterm" },
   {
     "NTBBloodbath/zig-tools.nvim",
     -- Load zig-tools.nvim only in Zig buffers
@@ -79,12 +82,26 @@ return {
   },
   {
     "chrisgrieser/nvim-tinygit",
+    event = "User AstroGitFile",
     ft = { "gitrebase", "gitcommit" }, -- so ftplugins are loaded
+    init = function()
+      vim.api.nvim_create_user_command("GitCommit", function() require("tinygit").smartCommit() end, {})
+      vim.api.nvim_create_user_command("GitPush", function() require("tinygit").push() end, {})
+    end,
     dependencies = {
       "stevearc/dressing.nvim",
       "nvim-telescope/telescope.nvim", -- either telescope or fzf-lua
       -- "ibhagwan/fzf-lua",
-      "rcarriga/nvim-notify", -- optional, but recommended
+      -- "rcarriga/nvim-notify", -- optional, but recommended
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        dockerls = {},
+        docker_compose_language_service = {},
+      },
     },
   },
 }
