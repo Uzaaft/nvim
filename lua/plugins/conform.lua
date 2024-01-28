@@ -60,7 +60,6 @@ return {
       },
     },
     opts = function(_, opts)
-      opts.log_level = vim.log.levels.DEBUG
       opts.format_on_save = function(bufnr)
         if vim.g.autoformat == nil then vim.g.autoformat = true end
         local autoformat = vim.b[bufnr].autoformat

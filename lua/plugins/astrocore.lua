@@ -32,22 +32,20 @@ local opts = {
     },
   },
   mappings = {
-    n = {},
+    n = {
+      -- better buffer navigation
+      ["]b"] = false,
+      ["[b"] = false,
+      ["L"] = {
+        function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+        desc = "Next buffer",
+      },
+      ["H"] = {
+        function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+        desc = "Previous buffer",
+      },
+    },
   },
 }
-
-local function better_search(key)
-  return function()
-    local searched, error =
-      pcall(vim.cmd.normal, { args = { (vim.v.count > 0 and vim.v.count or "") .. key }, bang = true })
-    if not searched and type(error) == "string" then require("astrocore").notify(error, vim.log.levels.ERROR) end
-  end
-end
-opts.mappings.n.n = { better_search "n", desc = "Next search" }
-opts.mappings.n.N = { better_search "N", desc = "Previous search" }
-opts.mappings.n.ga = { function() require("gitsigns").stage_hunk() end, desc = "Stage hunk" }
-opts.mappings.n.gA = { function() require("gitsigns").undo_stage_hunk() end, desc = "Undo stage hunk" }
-opts.mappings.n.gc = { function() require("tinygit").smartCommit() end, desc = "Commit" }
-opts.mappings.n.gp = { function() require("tinygit").push() end, desc = "push" }
 
 return { "AstroNvim/astrocore", opts = opts }
