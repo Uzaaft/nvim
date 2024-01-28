@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "mehalter/oil.nvim",
   branch = "fileoperations_handlers",

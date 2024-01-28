@@ -5,6 +5,7 @@ local js_based_languages = {
   "javascriptreact",
 }
 
+---@type LazySpec
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
