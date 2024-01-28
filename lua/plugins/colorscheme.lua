@@ -1,6 +1,9 @@
 return {
   "AstroNvim/astroui",
   dependencies = {
+    { "catppuccin/nvim", name = "catppuccin", opts = {
+      no_italic = true,
+    } },
     {
       "rose-pine/neovim",
       name = "rose-pine",
@@ -24,6 +27,6 @@ return {
       neotree = false, -- Bool value, toggles neo-trees background color.
       italic_comments = false, -- Bool value, toggles italic comments.
     },
-    colorscheme = "rose-pine",
+    colorscheme = "catppuccin",
   },
 }
