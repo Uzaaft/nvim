@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   -- disable core plugins
-  { "echasnovski/mini.indentscope", enabled = false },
   { "lukas-reineke/indent-blankline.nvim", enabled = false },
   { "goolord/alpha-nvim", enabled = false },
   { "max397574/better-escape.nvim", enabled = false },
