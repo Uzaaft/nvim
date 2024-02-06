@@ -53,7 +53,11 @@ return {
 
       return {
         enhanced_diff_hl = true,
-        view = { merge_tool = { layout = "diff3_mixed" } },
+        view = {
+          default = { winbar_info = true },
+          file_history = { winbar_info = true },
+          merge_tool = { layout = "diff3_mixed" },
+        },
         hooks = { diff_buf_read = function(bufnr) vim.b[bufnr].view_activated = false end },
         keymaps = {
           disable_defaults = true,
