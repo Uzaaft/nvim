@@ -5,16 +5,6 @@ return {
     {
       "AstroNvim/astrocore",
       opts = {
-        autocmds = {
-          auto_disable_rainbow_delimeters = {
-            {
-              event = "BufRead",
-              callback = function(args)
-                if vim.b[args.buf].large_buf then require("rainbow-delimiters").disable(args.buf) end
-              end,
-            },
-          },
-        },
         mappings = {
           n = {
             ["<Leader>u("] = {
