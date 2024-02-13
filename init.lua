@@ -1,30 +1,18 @@
 -- bootstrap lazy.nvim, AstroNvim, and user plugins
-require "config.lazy"
+local lazypath = vim.env.LAZY or vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
+if not (vim.env.LAZY or vim.loop.fs_stat(lazypath)) then
+  vim.g.astronvim_first_install = true
+  -- stylua: ignore
+  vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", "--branch=stable", lazypath })
+end
+vim.opt.rtp:prepend(lazypath)
 
-local function yaml_ft(path, bufnr)
-  local buf_text = table.concat(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false), "\n")
-  if
-    -- check if file is in roles, tasks, or handlers folder
-    vim.regex("(tasks\\|roles\\|handlers)/"):match_str(path)
-    -- check for known ansible playbook text and if found, return yaml.ansible
-    or vim.regex("hosts:\\|tasks:"):match_str(buf_text)
-  then
-    return "yaml.ansible"
-  elseif vim.regex("AWSTemplateFormatVersion:"):match_str(buf_text) then
-    return "yaml.cfn"
-  else -- return yaml if nothing else
-    return "yaml"
-  end
+if not pcall(require, "lazy") then
+  -- stylua: ignore
+  vim.api.nvim_echo({ { ("Unable to load lazy from: %s\n"):format(lazypath), "ErrorMsg" }, { "Press any key to exit...", "MoreMsg" } }, true, {})
+  vim.fn.getchar()
+  vim.cmd.quit()
 end
 
-vim.filetype.add {
-  extension = {
-    mdx = "markdown.mdx",
-    qmd = "markdown",
-    yml = yaml_ft,
-    yaml = yaml_ft,
-  },
-  pattern = {
-    ["/tmp/neomutt.*"] = "markdown",
-  },
-}
+require "lazy_setup"
+require "polish"
