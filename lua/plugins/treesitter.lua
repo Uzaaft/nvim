@@ -6,7 +6,6 @@ return {
   ---@diagnostic disable-next-line: missing-fields
   opts = {
     auto_install = vim.fn.executable "tree-sitter" == 1,
-    ensure_installed = { "bash", "markdown", "markdown_inline", "regex", "vim" },
     matchup = { enable = true },
   },
 }
