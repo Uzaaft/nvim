@@ -6,7 +6,7 @@ return {
     colorscheme = "catppuccin",
     highlights = {
       init = function(colors_name)
-        local get_hlgroup = require("astrocore").get_hlgroup
+        local get_hlgroup = require("astroui").get_hlgroup
 
         -- Global Highlights --
         local highlights = {
