@@ -8,10 +8,6 @@ return {
       },
     },
     nesting_rules = {
-      conform = {
-        pattern = "^(.*)$",
-        files = { ".conform.*.%1" },
-      },
       docker = {
         pattern = "^dockerfile$",
         ignore_case = true,
