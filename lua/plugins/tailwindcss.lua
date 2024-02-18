@@ -5,7 +5,18 @@ return {
     dependencies = {
       {
         "js-everts/cmp-tailwind-colors",
-        event = "User AstroFile",
+        ft = {
+          "typescriptreact",
+          "javascriptreact",
+          "typescript",
+          "javascript",
+          "css",
+          "scss",
+          "html",
+          "vue",
+          "svelte",
+          "astro",
+        },
         opts = {},
       },
     },
