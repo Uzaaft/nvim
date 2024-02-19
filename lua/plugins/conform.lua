@@ -65,7 +65,7 @@ return {
         if vim.g.autoformat == nil then vim.g.autoformat = true end
         local autoformat = vim.b[bufnr].autoformat
         if autoformat == nil then autoformat = vim.g.autoformat end
-        if autoformat then return { timeout_ms = 500, lsp_fallback = true } end
+        if autoformat then return { timeout_ms = 2000, lsp_fallback = true } end
       end
 
       opts.formatters_by_ft = {
