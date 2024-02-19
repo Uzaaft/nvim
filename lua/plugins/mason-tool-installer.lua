@@ -22,6 +22,7 @@ return {
         "marksman",
         "neocmake",
         { "pylance", version = "2024.2.1" }, -- last known working version
+        "ruff_lsp",
         "tailwindcss",
         "taplo",
         "texlab",
@@ -31,7 +32,6 @@ return {
         -- Linters
         "ansible-lint",
         "luacheck",
-        "ruff",
         "shellcheck",
 
         -- Formatters

@@ -72,10 +72,6 @@ return {
         ["*"] = { "injected" },
         lua = { "stylua" },
         puppet = { "puppet-lint" },
-        python = function(bufnr)
-          return require("conform").get_formatter_info("ruff_format", bufnr).available and { "ruff_format" }
-            or { "isort", "black" }
-        end,
         sh = { "shfmt" },
         ["_"] = function(bufnr)
           return require("astrocore.buffer").is_valid(bufnr)
