@@ -22,8 +22,6 @@ return {
             [prefix .. "<CR>"] = { function() require("neotest").summary.toggle() end, desc = "Test Summary" },
             [prefix .. "o"] = { function() require("neotest").output.open() end, desc = "Output hover" },
             [prefix .. "O"] = { function() require("neotest").output_panel.toggle() end, desc = "Output window" },
-            ["]T"] = { function() require("neotest").jump.next() end, desc = "Next test" },
-            ["[T"] = { function() require("neotest").jump.prev() end, desc = "previous test" },
           },
         },
       },
