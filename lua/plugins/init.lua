@@ -1,16 +1,14 @@
+---@type LazySpec[]
 return {
   -- disable core plugins
-  { "echasnovski/mini.indentscope", enabled = false },
   { "max397574/better-escape.nvim", enabled = false },
   { "nvimtools/none-ls.nvim", enabled = false },
   { "jay-babu/mason-null-ls.nvim", enabled = false },
   { "folke/which-key.nvim", enabled = false },
   { "alpha-nvim", enabled = false }, -- disable starter
-  { "L3MON4D3/LuaSnip", enabled = false },
-  { "saadparwaiz1/cmp_luasnip", enaled = false },
-
   -- Very small specs not worth their own files
   { "akinsho/toggleterm.nvim", opts = { terminal_mappings = false } },
+  { "L3MON4D3/LuaSnip", enabled = false },
   {
     "rcarriga/nvim-notify",
     opts = {
@@ -50,22 +48,7 @@ return {
     -- Loaded by jsonls when needed.
     version = false,
   },
-  {
-    "chrisgrieser/nvim-puppeteer",
-    event = { "User AstroFile" },
-    dependencies = "nvim-treesitter/nvim-treesitter",
-    ft = { "javascript", "typescript", "typescriptreact", "javascriptreact", "python" },
-  },
-  {
-    "nat-418/boole.nvim",
-    event = { "User AstroFile" },
-    opts = { mappings = {
-      increment = "+",
-      decrement = "-",
-    } },
-  },
   { "justinsgithub/wezterm-types" },
-  { "neapsix/wezterm", name = "rose-pine-wezterm" },
   {
     "NTBBloodbath/zig-tools.nvim",
     -- Load zig-tools.nvim only in Zig buffers
@@ -81,27 +64,21 @@ return {
     },
   },
   {
-    "chrisgrieser/nvim-tinygit",
-    event = "User AstroGitFile",
-    ft = { "gitrebase", "gitcommit" }, -- so ftplugins are loaded
-    init = function()
-      vim.api.nvim_create_user_command("GitCommit", function() require("tinygit").smartCommit() end, {})
-      vim.api.nvim_create_user_command("GitPush", function() require("tinygit").push() end, {})
-    end,
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-telescope/telescope.nvim", -- either telescope or fzf-lua
-      -- "ibhagwan/fzf-lua",
-      -- "rcarriga/nvim-notify", -- optional, but recommended
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
+    "m4xshen/hardtime.nvim",
+    event = "User AstroFile",
+    enabled = false,
     opts = {
-      servers = {
-        dockerls = {},
-        docker_compose_language_service = {},
+      disabled_keys = {
+        ["<Insert>"] = { "", "i" },
+        ["<Home>"] = { "", "i" },
+        ["<End>"] = { "", "i" },
+        ["<PageUp>"] = { "", "i" },
+        ["<PageDown>"] = { "", "i" },
       },
     },
+    config = function(_, opts)
+      require("hardtime").setup(opts)
+      require("hardtime").enable()
+    end,
   },
 }

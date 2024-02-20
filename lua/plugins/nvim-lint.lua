@@ -6,6 +6,7 @@ return {
     linters_by_ft = {
       sh = { "shellcheck" },
       ["yaml.ansible"] = { "ansible_lint" },
+      lua = { "luacheck" },
     },
   },
   config = function(_, opts)

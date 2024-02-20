@@ -1,4 +1,4 @@
-if true then return {} end
+if false then return {} end
 return {
   "folke/flash.nvim",
   event = "VeryLazy",

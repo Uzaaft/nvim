@@ -31,7 +31,7 @@ require("lazy").setup({
   dev = { patterns = dev_patterns },
   defaults = { lazy = true },
   diff = { cmd = "terminal_git" },
-  install = { colorscheme = { "habamax", "catppuccin" } },
+  install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
   lockfile = vim.fn.stdpath "data" .. "/lazy-lock.json",
   performance = {
