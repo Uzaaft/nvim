@@ -6,7 +6,7 @@ local opts = {
   },
   options = {
     opt = {
-      conceallevel = 2, -- enable conceal
+      conceallevel = 1, -- enable conceal
       list = true, -- show whitespace characters
       listchars = { tab = "│→", extends = "⟩", precedes = "⟨", trail = "·", nbsp = "␣" },
       showbreak = "↪ ",
