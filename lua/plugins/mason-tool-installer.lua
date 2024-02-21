@@ -21,7 +21,7 @@ return {
         "lua_ls",
         "marksman",
         "neocmake",
-        { "pylance", version = "2024.2.1" }, -- last known working version
+        { "pylance", version = "2024.2.102" }, -- last known working version
         "ruff_lsp",
         "tailwindcss",
         "taplo",
