@@ -9,14 +9,14 @@ return {
   },
   opts = function(_, opts)
     opts.sources = {
-      { name = "nvim_lsp", priority = 1000 },
+      { name = "nvim_lsp", priority = 1000, group_index = 1 },
       { name = "luasnip", priority = 750 },
       { name = "pandoc_references", priority = 725 },
       { name = "latex_symbols", priority = 700 },
       { name = "emoji", priority = 700 },
       { name = "calc", priority = 650 },
       { name = "path", priority = 500 },
-      { name = "buffer", priority = 250 },
+      { name = "buffer", priority = 250, group_index = 2 },
     }
 
     if not opts.sorting then opts.sorting = {} end
