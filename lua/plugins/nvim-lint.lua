@@ -5,7 +5,7 @@ return {
   dependencies = { "williamboman/mason.nvim" },
   opts = {
     linters_by_ft = {
-      lua = { "luacheck" },
+      lua = { "selene" },
       puppet = { "puppet-lint" },
       sh = { "shellcheck" },
       ansible = { "ansible_lint" },

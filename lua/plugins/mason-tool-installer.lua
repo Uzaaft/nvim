@@ -31,7 +31,7 @@ return {
 
         -- Linters
         "ansible-lint",
-        "luacheck",
+        "selene",
         "shellcheck",
 
         -- Formatters
