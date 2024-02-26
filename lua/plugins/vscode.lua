@@ -1,21 +1,34 @@
 if not vim.g.vscode then return {} end
 
-local enabled = {
+local enabled = {}
+vim.tbl_map(function(plugin) enabled[plugin] = true end, {
+  -- core plugins
   "lazy.nvim",
+  "AstroNvim",
+  "astrocore",
+  "astroui",
   "Comment.nvim",
   "nvim-autopairs",
   "nvim-treesitter",
   "nvim-ts-autotag",
   "nvim-treesitter-textobjects",
   "nvim-ts-context-commentstring",
-  "astrocore",
-  "astroui",
-}
+  -- more known working
+  "flash.nvim",
+  "flit.nvim",
+  "leap.nvim",
+  "mini.ai",
+  "mini.comment",
+  "mini.surround",
+  "vim-easy-align",
+  "vim-repeat",
+  "vim-sandwich",
+})
 
 local Config = require "lazy.core.config"
 Config.options.checker.enabled = false
 Config.options.change_detection.enabled = false
-Config.options.defaults.cond = function(plugin) return vim.tbl_contains(enabled, plugin.name) or plugin.vscode end
+Config.options.defaults.cond = function(plugin) return enabled[plugin.name] end
 
 ---@type LazySpec
 return {
