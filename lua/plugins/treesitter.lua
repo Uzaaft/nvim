@@ -1,7 +1,10 @@
 ---@type LazySpec
 return {
   "nvim-treesitter/nvim-treesitter",
-  dependencies = { "andymass/vim-matchup", init = function() vim.g.matchup_matchparen_deferred = 1 end },
+  dependencies = {
+    "andymass/vim-matchup",
+    dependencies = { "AstroNvim/astrocore", opts = { options = { g = { matchup_matchparen_deferred = 1 } } } },
+  },
   ---@type TSConfig
   ---@diagnostic disable-next-line: missing-fields
   opts = {

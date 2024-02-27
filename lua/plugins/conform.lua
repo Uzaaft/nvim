@@ -10,6 +10,7 @@ return {
       {
         "AstroNvim/astrocore",
         opts = {
+          options = { opt = { formatexpr = "v:lua.require'conform'.formatexpr()" } },
           commands = {
             Format = {
               function(args)
@@ -112,6 +113,5 @@ return {
         },
       }
     end,
-    init = function() vim.o.formatexpr = "v:lua.require'conform'.formatexpr()" end,
   },
 }
