@@ -156,7 +156,6 @@ return {
         },
       },
     },
-    capabilities = { workspace = { didChangeWatchedFiles = { dynamicRegistration = false } } },
     diagnostics = { update_in_insert = false },
     mappings = {
       i = {
