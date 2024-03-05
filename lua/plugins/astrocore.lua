@@ -58,6 +58,7 @@ local opts = {
       },
     },
   },
+  diagnostics = { update_in_insert = false },
   filetypes = {
     extension = {
       mdx = "markdown.mdx",

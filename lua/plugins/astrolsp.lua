@@ -156,7 +156,6 @@ return {
         },
       },
     },
-    diagnostics = { update_in_insert = false },
     mappings = {
       i = {
         ["<C-l>"] = {
