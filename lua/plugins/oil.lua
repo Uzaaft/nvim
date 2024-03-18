@@ -39,6 +39,23 @@ return {
               pattern = "oil",
               callback = function(args) vim.b[args.buf].view_activated = false end,
             },
+            {
+              event = "User",
+              pattern = "OilActionsPost",
+              desc = "Logic to run after an action in Oil",
+              callback = function(args)
+                if args.data.err then return end
+                for _, action in ipairs(args.data.actions) do
+                  ---@cast action oil.Action
+                  if action.type == "delete" then
+                    ---@cast action oil.DeleteAction
+                    local _, path = require("oil.util").parse_url(action.url)
+                    local bufnr = vim.fn.bufnr(path)
+                    if bufnr ~= -1 then require("astrocore.buffer").wipe(bufnr, true) end
+                  end
+                end
+              end,
+            },
           },
         },
         mappings = {
