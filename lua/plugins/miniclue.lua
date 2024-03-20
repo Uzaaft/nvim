@@ -1,14 +1,17 @@
 return {
   {
     "echasnovski/mini.clue",
-    keys = {
-      "<Leader>",
-    },
     dependecies = { "AstroNvim/astrocore" },
+    keys = function()
+      require("lazy").load { plugins = { "astrocore" } } -- load astrocore before loading opts
+      local plugin = require("lazy.core.config").spec.plugins["mini.clue"]
+      local opts = require("lazy.core.plugin").values(plugin, "opts", false) -- resolve mini.clue options
+      return vim.tbl_map(function(trigger) return { trigger.keys, mode = trigger.mode } end, opts.triggers or {})
+    end,
     opts = function()
       local miniclue = require "mini.clue"
       local astrocore_clues = {}
-      for mode, maps in pairs(require("astrocore").which_key_queue) do
+      for mode, maps in pairs(require("astrocore").which_key_queue or {}) do
         for keys, map in pairs(maps) do
           if type(map) == "table" then
             local desc = map.name or map.desc
