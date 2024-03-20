@@ -10,6 +10,7 @@ return {
         -- Language Servers
         "ansiblels",
         "astro",
+        "basedpyright",
         "clangd",
         "cssls",
         "gopls",
@@ -21,7 +22,6 @@ return {
         "lua_ls",
         "marksman",
         "neocmake",
-        { "pylance", version = "2024.3.1" }, -- last known working version
         "ruff_lsp",
         "tailwindcss",
         "taplo",
