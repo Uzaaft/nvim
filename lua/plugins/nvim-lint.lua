@@ -6,6 +6,7 @@ return {
   opts = {
     linters_by_ft = {
       lua = { "selene" },
+      sql = { "sqlfluff" },
       -- puppet = { "puppet-lint" },
       sh = { "shellcheck" },
       -- ansible = { "ansible_lint" },

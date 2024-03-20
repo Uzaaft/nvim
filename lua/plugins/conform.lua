@@ -97,6 +97,7 @@ return {
       opts.formatters_by_ft = {
         ["*"] = { "injected" },
         lua = { "stylua" },
+        sql = { "sqlfluff" },
         typescriptreact = { formatter },
         typescript = { formatter },
         javascriptreact = { formatter },
