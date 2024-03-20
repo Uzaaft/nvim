@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
-  "mehalter/oil.nvim",
-  branch = "fileoperations_handlers",
+  "stevearc/oil.nvim",
   cmd = "Oil",
   init = function() -- start oil on startup lazily if necessary
     if vim.fn.argc() == 1 then
@@ -40,6 +39,23 @@ return {
               pattern = "oil",
               callback = function(args) vim.b[args.buf].view_activated = false end,
             },
+            {
+              event = "User",
+              pattern = "OilActionsPost",
+              desc = "Logic to run after an action in Oil",
+              callback = function(args)
+                if args.data.err then return end
+                for _, action in ipairs(args.data.actions) do
+                  ---@cast action oil.Action
+                  if action.type == "delete" then
+                    ---@cast action oil.DeleteAction
+                    local _, path = require("oil.util").parse_url(action.url)
+                    local bufnr = vim.fn.bufnr(path)
+                    if bufnr ~= -1 then require("astrocore.buffer").wipe(bufnr, true) end
+                  end
+                end
+              end,
+            },
           },
         },
         mappings = {
@@ -53,16 +69,17 @@ return {
       "rebelot/heirline.nvim",
       opts = function(_, opts)
         local status = require "astroui.status"
-        local old_disable = opts.opts.disable_winbar_cb
+        local is_oil = function(bufnr) return status.condition.buffer_matches({ filetype = "^oil$" }, bufnr) end
+        local disable_winbar_cb = opts.opts.disable_winbar_cb
         opts.opts.disable_winbar_cb = function(args)
-          if status.condition.buffer_matches({ filetype = "oil" }, args.buf) then return false end
-          return old_disable(args)
+          if is_oil(args.buf) then return false end
+          return disable_winbar_cb(args)
         end
 
         if opts.winbar then
           table.insert(opts.winbar, 1, {
-            condition = function(args) return status.condition.buffer_matches({ filetype = "oil" }, args.bufnr) end,
-            require("astroui.status").component.separated_path {
+            condition = function(self) return is_oil(self.bufnr) end,
+            status.component.separated_path {
               padding = { left = 2 },
               max_depth = false,
               suffix = false,
@@ -75,6 +92,7 @@ return {
   },
   opts = {
     skip_confirm_for_simple_edits = true,
+    experimental_watch_for_changes = true,
     keymaps = {
       ["<Tab>"] = "actions.close",
     },
