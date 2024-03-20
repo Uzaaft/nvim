@@ -44,4 +44,7 @@ return {
     version = false,
   },
   { "justinsgithub/wezterm-types" },
+  { "tamton-aquib/zone.nvim", opts = {
+    style = "dvd",
+  } },
 }
