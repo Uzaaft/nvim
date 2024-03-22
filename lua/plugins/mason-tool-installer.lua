@@ -27,7 +27,7 @@ return {
         "docker_compose_language_service",
         "dockerls",
         "tailwindcss",
-        { "pylance", version = "2023.1.104" }, -- last known working version
+        { "pylance", version = "2024.3.1" }, -- last known working version
 
         -- Linters
         "shellcheck",
