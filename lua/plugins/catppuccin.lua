@@ -5,19 +5,36 @@ return {
   ---@type CatppuccinOptions
   opts = {
     dim_inactive = { enabled = true, percentage = 0.25 },
-    integration_default = false,
+    default_integrations = false,
     integrations = {
       aerial = true,
       cmp = true,
       dap = true,
       dap_ui = true,
       gitsigns = true,
+      illuminate = { enabled = true, lsp = true },
       indent_blankline = { enabled = true },
       markdown = true,
       mason = true,
       mini = true,
-      native_lsp = { enabled = true, inlay_hints = { background = false } },
+      native_lsp = {
+        enabled = true,
+        virtual_text = {
+          errors = { "italic" },
+          hints = { "italic" },
+          warnings = { "italic" },
+          information = { "italic" },
+        },
+        underlines = {
+          errors = { "underline" },
+          hints = { "underline" },
+          warnings = { "underline" },
+          information = { "underline" },
+        },
+        inlay_hints = { background = false },
+      },
       neogit = true,
+      neotest = true,
       neotree = true,
       noice = true,
       notify = true,
@@ -29,6 +46,7 @@ return {
       treesitter = true,
       ufo = true,
       which_key = true,
+      window_picker = true,
     },
     custom_highlights = {
       -- disable italics  for treesitter highlights
