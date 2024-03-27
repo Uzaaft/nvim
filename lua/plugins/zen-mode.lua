@@ -41,7 +41,7 @@ return {
       vim.g.indent_blankline_enabled = false
       vim.g.miniindentscope_disable = true
       vim.wo.winbar = nil
-      vim.diagnostic.config(require("astrolsp").config.diagnostics[vim.g.diagnostics_mode])
+      vim.diagnostic.config(require("astrocore").config.diagnostics[vim.g.diagnostics_mode])
     end,
     on_close = function() -- restore diagnostics, indent blankline, and winbar
       vim.g.diagnostics_mode = vim.g.diagnostics_mode_old
@@ -49,7 +49,7 @@ return {
       vim.g.miniindentscope_disable = vim.g.miniindentscope_disable_old
       vim.wo.winbar = vim.g.winbar_old
       pcall(vim.cmd.IndentBlanklineRefresh)
-      vim.diagnostic.config(require("astrolsp").config.diagnostics[vim.g.diagnostics_mode])
+      vim.diagnostic.config(require("astrocore").config.diagnostics[vim.g.diagnostics_mode])
     end,
   },
 }
