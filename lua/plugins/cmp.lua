@@ -9,7 +9,7 @@ return {
   },
   opts = function(_, opts)
     opts.sources = {
-      { name = "nvim_lsp", priority = 1000, group_index = 1 },
+      { name = "nvim_lsp", priority = 1000 },
       { name = "luasnip", priority = 750 },
       { name = "pandoc_references", priority = 725 },
       { name = "latex_symbols", priority = 700 },
