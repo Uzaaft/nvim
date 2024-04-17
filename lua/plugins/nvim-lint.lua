@@ -10,6 +10,7 @@ return {
       sh = { "shellcheck" },
       ansible = { "ansible_lint" },
       cfn = { "cfn_lint" },
+      sql = { "sqlfluff" },
     },
     linters = {
       cfn_lint = {

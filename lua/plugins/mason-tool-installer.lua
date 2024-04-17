@@ -34,6 +34,7 @@ return {
         "ansible-lint",
         "selene",
         "shellcheck",
+        "sqlfluff",
 
         -- Formatters
         "prettier",
