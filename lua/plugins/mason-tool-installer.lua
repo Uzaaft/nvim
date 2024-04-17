@@ -23,6 +23,7 @@ return {
         "marksman",
         "neocmake",
         "ruff_lsp",
+        "sqls",
         "tailwindcss",
         "taplo",
         "texlab",
