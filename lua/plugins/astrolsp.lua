@@ -58,6 +58,7 @@ return {
           },
         },
       },
+      ruff_lsp = { on_attach = function(client) client.server_capabilities.hoverProvider = false end },
       taplo = { evenBetterToml = { schema = { catalogs = { "https://www.schemastore.org/api/json/catalog.json" } } } },
       texlab = {
         on_attach = function(_, bufnr)
