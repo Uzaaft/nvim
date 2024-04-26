@@ -73,8 +73,8 @@ local opts = {
   mappings = {
     n = {
       -- disable default bindings
-      ["<C-q>"] = false,
-      ["<C-s>"] = false,
+      ["<C-Q>"] = false,
+      ["<C-S>"] = false,
       ["q:"] = ":",
       -- better buffer navigation
       ["]b"] = false,
@@ -91,6 +91,7 @@ local opts = {
       ["<Leader>."] = { "<Cmd>cd %:p:h<CR>", desc = "Set CWD" },
     },
     i = {
+      ["<C-S>"] = false,
       ["<S-Tab>"] = { "<C-V><Tab>", desc = "Tab character" },
     },
     -- terminal mappings
@@ -99,6 +100,7 @@ local opts = {
       ["<Esc><Esc>"] = { "<C-\\><C-n>:q<CR>", desc = "Terminal quit" },
     },
     x = {
+      ["<C-S>"] = false,
       -- better increment/decrement
       ["+"] = { "g<C-a>", desc = "Increment number" },
       ["-"] = { "g<C-x>", desc = "Descrement number" },

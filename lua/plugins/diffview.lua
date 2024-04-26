@@ -110,9 +110,9 @@ return {
             ["<Up>"] = actions.prev_entry,
             ["<CR>"] = actions.select_entry,
             ["<2-LeftMouse>"] = actions.select_entry,
-            ["<C-A-d>"] = actions.open_in_diffview, -- Open the entry under the cursor in a diffview
-            ["<C-b>"] = actions.scroll_view(-0.25),
-            ["<C-f>"] = actions.scroll_view(0.25),
+            ["<M-C-D>"] = actions.open_in_diffview, -- Open the entry under the cursor in a diffview
+            ["<C-B>"] = actions.scroll_view(-0.25),
+            ["<C-F>"] = actions.scroll_view(0.25),
             ["<Tab>"] = actions.select_next_entry,
             ["<S-Tab>"] = actions.select_prev_entry,
           },
