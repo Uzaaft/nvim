@@ -20,7 +20,7 @@ return {
         "jsonls",
         "julials",
         "lua_ls",
-        "marksman",
+        "markdown_oxide",
         "neocmake",
         "ruff_lsp",
         "sqls",
