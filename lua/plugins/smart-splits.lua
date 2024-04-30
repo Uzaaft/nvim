@@ -1,7 +1,6 @@
 ---@type LazySpec
 return {
   "mrjones2014/smart-splits.nvim",
-  event = "VeryLazy",
   dependencies = {
     "AstroNvim/astrocore",
     opts = {
@@ -21,5 +20,5 @@ return {
     },
   },
   build = "./kitty/install-kittens.bash",
-  opts = function(_, opts) opts.at_edge = require("smart-splits.types").AtEdgeBehavior.stop end,
+  opts = { at_edge = "stop" },
 }
