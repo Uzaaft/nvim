@@ -19,9 +19,7 @@ return {
         opts.statusline[10] = require("astroui.status").component.virtual_env {
           on_click = {
             name = "heirline_virtual_env",
-            callback = function()
-              vim.schedule(function() vim.cmd.VenvSelect() end)
-            end,
+            callback = function() vim.schedule(vim.cmd.VenvSelect) end,
           },
         }
       end,

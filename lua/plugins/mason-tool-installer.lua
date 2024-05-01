@@ -49,6 +49,9 @@ return {
         "haskell-debug-adapter",
         "js-debug-adapter",
         "php-debug-adapter",
+
+        -- Other Tools
+        "tree-sitter-cli",
       },
     },
     config = function(_, opts)
