@@ -9,6 +9,7 @@ return {
         Clock = "", -- add icon for clock
       },
       status = {
+        attributes = { mode = { bold = true } },
         separators = {
           left = { "", " " },
           right = { " ", "" },
