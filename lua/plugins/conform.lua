@@ -74,6 +74,7 @@ return {
         lua = { "stylua" },
         puppet = { "puppet-lint" },
         sh = { "shfmt" },
+        sql = { "sqlfluff" },
         ["_"] = function(bufnr)
           return require("astrocore.buffer").is_valid(bufnr)
               and { "trim_whitespace", "trim_newlines", "squeeze_blanks" }
