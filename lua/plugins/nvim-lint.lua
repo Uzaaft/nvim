@@ -7,6 +7,7 @@ return {
     linters_by_ft = {
       lua = { "selene" },
       puppet = { "puppet-lint" },
+      rego = { "opa_check" },
       sh = { "shellcheck" },
       ansible = { "ansible_lint" },
       cfn = { "cfn_lint" },

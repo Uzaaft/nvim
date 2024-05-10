@@ -22,6 +22,7 @@ return {
         "lua_ls",
         "markdown_oxide",
         "neocmake",
+        "regols",
         "ruff_lsp",
         "sqls",
         "tailwindcss",
