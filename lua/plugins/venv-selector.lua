@@ -13,17 +13,6 @@ return {
         },
       },
     },
-    {
-      "rebelot/heirline.nvim",
-      opts = function(_, opts)
-        opts.statusline[10] = require("astroui.status").component.virtual_env {
-          on_click = {
-            name = "heirline_virtual_env",
-            callback = function() vim.schedule(vim.cmd.VenvSelect) end,
-          },
-        }
-      end,
-    },
   },
   opts = function()
     local opts = {
