@@ -12,9 +12,4 @@
 (pipe_table_row ("|") @punctuation.special @conceal (#set! conceal "│"))
 
 ; block quotes
-((block_quote_marker) @markdown_quote_marker (#set! conceal "▍"))
-((block_quote
-  (paragraph (inline
-    (block_continuation) @markdown_quote_marker (#set! conceal "▍")
-  ))
-))
+([(block_quote_marker) (block_continuation)] @markdown_quote_marker (#set! conceal "▍"))
