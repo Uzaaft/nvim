@@ -23,7 +23,7 @@ return {
         "markdown-oxide",
         "neocmakelsp",
         "regols",
-        "ruff-lsp",
+        "ruff",
         "sqls",
         "tailwindcss-language-server",
         "taplo",

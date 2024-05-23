@@ -79,7 +79,7 @@ return {
       julials = { autostart = false },
       lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
       markdown_oxide = { capabilities = { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } } },
-      ruff_lsp = { on_attach = function(client) client.server_capabilities.hoverProvider = false end },
+      ruff = { on_attach = function(client) client.server_capabilities.hoverProvider = false end },
       taplo = { evenBetterToml = { schema = { catalogs = { "https://www.schemastore.org/api/json/catalog.json" } } } },
       texlab = {
         on_attach = function(_, bufnr)
