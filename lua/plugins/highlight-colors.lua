@@ -13,6 +13,6 @@ return {
         end,
       },
     },
-    opts = { enabled_named_colors = false },
+    opts = { enable_named_colors = false },
   },
 }
