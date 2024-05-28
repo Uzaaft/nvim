@@ -13,6 +13,7 @@ return {
         "basedpyright",
         "clangd",
         "css-lsp",
+        "dockerfile-language-server",
         "gopls",
         "haskell-language-server",
         "html-lsp",

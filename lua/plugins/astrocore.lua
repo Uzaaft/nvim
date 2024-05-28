@@ -66,6 +66,10 @@ local opts = {
       yml = yaml_ft,
       yaml = yaml_ft,
     },
+    filename = {
+      ["docker-compose.yml"] = "yaml.docker-compose",
+      ["docker-compose.yaml"] = "yaml.docker-compose",
+    },
     pattern = {
       ["/tmp/neomutt.*"] = "markdown",
     },
