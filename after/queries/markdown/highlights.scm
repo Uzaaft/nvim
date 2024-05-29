@@ -10,6 +10,3 @@
 (pipe_table_delimiter_row ("|") @punctuation.special @conceal (#set! conceal "│"))
 (pipe_table_delimiter_cell ("-") @punctuation.special @conceal (#set! conceal "─"))
 (pipe_table_row ("|") @punctuation.special @conceal (#set! conceal "│"))
-
-; block quotes
-([(block_quote_marker) (block_continuation)] @markdown_quote_marker (#set! conceal "▍"))
