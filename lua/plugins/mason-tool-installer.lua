@@ -15,7 +15,7 @@ return {
         "css-lsp",
         "dockerfile-language-server",
         "gopls",
-        "haskell-language-server",
+        -- "haskell-language-server",
         "html-lsp",
         "intelephense",
         "json-lsp",
@@ -49,7 +49,7 @@ return {
         "cpptools",
         "debugpy",
         "delve",
-        "haskell-debug-adapter",
+        -- "haskell-debug-adapter",
         "js-debug-adapter",
         "php-debug-adapter",
 
