@@ -17,7 +17,7 @@ return {
           { "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Buffer Diagnostics (Trouble)" }
 
         if require("astrocore").is_available "todo-comments.nvim" then
-          maps.n[prefix .. "T"] = { "<Cmd>TodoTrouble<CR>", desc = "TODOs (Trouble)" }
+          maps.n[prefix .. "T"] = { "<Cmd>Trouble todo<CR>", desc = "TODOs (Trouble)" }
         end
       end,
     },
