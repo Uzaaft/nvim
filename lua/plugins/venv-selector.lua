@@ -1,7 +1,8 @@
 ---@type LazySpec
 return {
   "linux-cultist/venv-selector.nvim",
-  cmd = { "VenvSelect", "VenvSelectCached" },
+  branch = "regexp",
+  cmd = "VenvSelect",
   dependencies = {
     {
       "AstroNvim/astrocore",
