@@ -1,4 +1,4 @@
----@LazySpec
+---@type LazySpec
 return {
   { "AstroNvim/AstroNvim", import = "astronvim.plugins" },
   -- { "AstroNvim/astrocommunity" },
