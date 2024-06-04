@@ -29,6 +29,7 @@ return {
         "tailwindcss-language-server",
         "taplo",
         "texlab",
+        "typos-lsp",
         "vtsls",
         "yaml-language-server",
 
