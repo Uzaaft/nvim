@@ -71,6 +71,7 @@ return {
 
       opts.formatters_by_ft = {
         ["*"] = { "injected" },
+        toml = { "taplo" },
         lua = { "stylua" },
         puppet = { "puppet-lint" },
         sh = { "shfmt" },
