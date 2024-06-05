@@ -12,7 +12,7 @@ return {
       "css-lsp",
       "dockerfile-language-server",
       "gopls",
-      "haskell-language-server",
+      -- "haskell-language-server",
       "html-lsp",
       "intelephense",
       "jinja-lsp",

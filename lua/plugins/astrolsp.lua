@@ -1,5 +1,19 @@
-local servers = {} -- only add local servers if their commands are available
-for server, cmd in pairs { julials = "julia" } do
+local servers = {
+  "vtsls",
+  "docker_compose_language_service",
+  "dockerls",
+  "sqls",
+  "zls",
+  "rust_analyzer",
+} -- only add local servers if their commands are available
+for server, cmd in pairs {
+  julials = "julia",
+  sourcekit = "swift",
+  zls = "zig",
+  nixd = "nix",
+  basedpyright = "python3",
+  ["terraformls"] = "terraform",
+} do
   if vim.fn.executable(cmd) == 1 then table.insert(servers, server) end
 end
 

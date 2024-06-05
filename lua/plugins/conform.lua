@@ -26,8 +26,15 @@ return {
       lua = { "stylua" },
       puppet = { "puppet-lint" },
       sh = { "shfmt" },
-      sql = { "sqlfluff" },
+      -- sql = { "pg_format" },
       python = { "isort", "black" },
+      -- nix = { "alejandra" },
+      tf = { "terraform_fmt" },
+      terraform = { "terraform_fmt" },
+      rust = { "injected", "rustfmt" },
+      ["terraform-vars"] = { "terraform_fmt" },
+      ["yaml.docker-compose"] = { "prettierd", "prettier", stop_after_first = true },
+
       ["_"] = function(bufnr)
         return buf_utils.is_valid(bufnr)
             and buf_utils.has_filetype(bufnr)
@@ -59,6 +66,10 @@ return {
     })
 
     opts.formatters = {
+      sqlfluff = {
+        command = "sqlfluff",
+        args = { "-l", "postgresql" },
+      },
       prettier = {
         options = {
           ft_parsers = {

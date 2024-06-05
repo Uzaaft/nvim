@@ -41,7 +41,7 @@ return {
       opts = {
         options = {
           g = {
-            slime_target = "kitty",
+            slime_target = "tmux",
             slime_bracketed_paste = true,
             slime_no_mappings = true,
             slime_cell_delimiter = "^\\s*# %%",

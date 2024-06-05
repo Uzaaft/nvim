@@ -19,13 +19,15 @@ return {
     { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
-    provider = "copilot_claude",
-    auto_suggestions_provider = "copilot_claude",
+    -- claude = {
+    -- api_key_name = 'cmd:op read "op://Personal/AnthropicNeovim/credential"',
+    -- },
     vendors = {
-      copilot_claude = {
-        __inherited_from = "copilot",
-        api_key_name = "GITHUB_TOKEN",
-        model = "claude-3.5-sonnet",
+      ollama = {
+        __inherited_from = "openai",
+        api_key_name = "",
+        endpoint = "http://127.0.0.1:11434/v1",
+        model = "deepseek-r1:7b",
       },
     },
     hints = { enabled = false },
@@ -91,7 +93,7 @@ return {
         },
       },
     },
-    { "zbirenbaum/copilot.lua", cmd = "Copilot", opts = { panel = { enabled = false }, suggestion = { false } } },
+    -- { "zbirenbaum/copilot.lua", cmd = "Copilot", opts = { panel = { enabled = false }, suggestion = { false } } },
     {
       "MeanderingProgrammer/render-markdown.nvim",
       optional = true,

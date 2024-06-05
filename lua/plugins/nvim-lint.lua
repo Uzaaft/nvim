@@ -11,6 +11,11 @@ return {
       ansible = { "ansible_lint" },
       cfn = { "cfn_lint" },
       sql = { "sqlfluff" },
+      tf = { "tflint", "tfsec" },
+      terraform = { "tflint", "tfsec" },
+      nix = { "statix", "deadnix" },
+      ["docker-compose"] = { "hadolint" },
+      ["terraform-vars"] = { "tflint", "tfsec" },
     },
     linters = {
       cfn_lint = {
