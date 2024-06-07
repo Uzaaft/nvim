@@ -5,6 +5,7 @@ return {
     defaults = {
       results_title = "",
       selection_caret = "  ",
+      path_display = { "filename_first" },
       layout_config = {
         width = 0.90,
         height = 0.85,
@@ -26,7 +27,6 @@ return {
     },
     pickers = {
       buffers = {
-        path_display = { "smart" },
         mappings = {
           i = { ["<C-d>"] = function(...) return require("telescope.actions").delete_buffer(...) end },
           n = { ["d"] = function(...) return require("telescope.actions").delete_buffer(...) end },
