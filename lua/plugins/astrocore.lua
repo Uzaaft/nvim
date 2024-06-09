@@ -135,15 +135,15 @@ return {
       },
     }) --[[@as AstroCoreOpts]]
 
-    local function better_search(key)
-      return function()
-        local searched, error =
-          pcall(vim.cmd.normal, { args = { (vim.v.count > 0 and vim.v.count or "") .. key }, bang = true })
-        if not searched and type(error) == "string" then require("astrocore").notify(error, vim.log.levels.ERROR) end
-      end
+    -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+    for lhs, rhs in pairs {
+      n = { "'Nn'[v:searchforward]", expr = true, desc = "Next Search Result" },
+      N = { "'nN'[v:searchforward]", expr = true, desc = "Prev Search Result" },
+    } do
+      opts.mappings.n[lhs] = rhs
+      opts.mappings.x[lhs] = rhs
+      opts.mappings.o[lhs] = rhs
     end
-    opts.mappings.n.n = { better_search "n", desc = "Next search" }
-    opts.mappings.n.N = { better_search "N", desc = "Previous search" }
 
     -- add line text object
     for lhs, rhs in pairs {
