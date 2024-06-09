@@ -154,7 +154,7 @@ return {
       opts.mappings.x[lhs] = rhs
     end
 
-    -- add missing in between and arround two character pairs
+    -- add missing in between and around two character pairs
     for _, char in ipairs { "_", "-", ".", ":", ",", ";", "|", "/", "\\", "*", "+", "%", "`", "?" } do
       for lhs, rhs in pairs {
         ["i" .. char] = { (":<C-u>silent! normal! f%sF%slvt%s<CR>"):format(char, char, char), desc = "inside " .. char },
