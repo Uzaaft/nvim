@@ -15,7 +15,7 @@ return {
           type = "pwa-node",
           request = "launch",
           name = "js-debug: Attach to Process (pwa-node)",
-          proccessId = require("dap.utils").pick_process,
+          processId = require("dap.utils").pick_process,
           cwd = "${workspaceFolder}",
         }
         local function deno(cmd)
