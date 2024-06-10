@@ -32,6 +32,7 @@ return {
         "typos-lsp",
         "vtsls",
         "yaml-language-server",
+        { "zls", version = "0.13.0" },
 
         -- Linters
         "ansible-lint",
