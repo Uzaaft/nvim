@@ -61,6 +61,7 @@ return {
         },
       },
     },
+    ---@param opts conform.setupOpts
     opts = function(_, opts)
       opts.format_on_save = function(bufnr)
         if vim.g.autoformat == nil then vim.g.autoformat = true end
