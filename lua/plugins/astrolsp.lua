@@ -97,6 +97,7 @@ return {
           },
         },
       },
+      typos_lsp = { single_file_support = false },
       vtsls = {
         settings = {
           typescript = {
