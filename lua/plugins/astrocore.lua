@@ -114,14 +114,6 @@ return {
           -- better increment/decrement
           ["+"] = { "g<C-a>", desc = "Increment number" },
           ["-"] = { "g<C-x>", desc = "Descrement number" },
-          -- line text-objects
-          ["iL"] = { ":<C-u>normal! $v^<CR>", desc = "Inside line text object" },
-          ["aL"] = { ":<C-u>normal! $v0<CR>", desc = "Around line text object" },
-        },
-        o = {
-          -- line text-objects
-          ["iL"] = { ":<C-u>normal! $v^<CR>", desc = "Inside line text object" },
-          ["aL"] = { ":<C-u>normal! $v0<CR>", desc = "Around line text object" },
         },
         ia = vim.fn.has "nvim-0.10" == 1 and {
           mktmpl = { function() return "<++>" end, desc = "Insert <++>", expr = true },
