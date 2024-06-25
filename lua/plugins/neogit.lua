@@ -8,7 +8,8 @@ return {
       opts = {
         mappings = {
           n = {
-            ["<Leader>gG"] = { function() require("neogit").open() end, desc = "Neogit" },
+            ["<Leader>gG"] = { function() vim.cmd.Neogit() end, desc = "Neogit" },
+            ["<Leader>gn"] = { function() vim.cmd.Neogit "commit" end, desc = "New Git commit" },
           },
         },
       },
