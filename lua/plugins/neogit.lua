@@ -13,15 +13,11 @@ return {
         },
       },
     },
-    opts = function()
-      local get_icon = require("astroui").get_icon
-      local fold_signs = { get_icon "FoldClosed", get_icon "FoldOpened" }
-      return {
-        disable_builtin_notifications = true,
-        integrations = { telescope = true },
-        signs = { section = fold_signs, item = fold_signs },
-      }
-    end,
+    opts = {
+      disable_builtin_notifications = true,
+      integrations = { telescope = true },
+      signs = { section = { "", "" }, item = { "", "" } },
+    },
   },
   {
     "catppuccin",
