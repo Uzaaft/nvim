@@ -64,7 +64,10 @@ return {
           },
         },
       },
-      diagnostics = { update_in_insert = false },
+      diagnostics = {
+        update_in_insert = false,
+        virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
+      },
       filetypes = {
         extension = {
           mdx = "markdown.mdx",
@@ -125,7 +128,7 @@ return {
           Fdate = { function() return os.date "%H:%M:%S" end, desc = "H:M:S", expr = true },
         } or nil,
       },
-    }) --[[@as AstroCoreOpts]]
+    } --[[@as AstroCoreOpts]]) --[[@as AstroCoreOpts]]
 
     -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
     for lhs, rhs in pairs {
