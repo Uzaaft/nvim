@@ -1,3 +1,8 @@
+local servers = {} -- only add local servers if their commands are available
+for server, cmd in pairs { julials = "julia" } do
+  if vim.fn.executable(cmd) == 1 then table.insert(servers, server) end
+end
+
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
@@ -23,6 +28,7 @@ return {
         },
       },
     },
+    servers = servers,
     ---@diagnostic disable: missing-fields
     config = {
       basedpyright = {
@@ -76,7 +82,25 @@ return {
           },
         },
       },
-      julials = { autostart = false },
+      julials = {
+        on_new_config = function(new_config, _)
+          -- check for nvim-lspconfig julia sysimage shim
+          local julia = (vim.env.JULIA_DEPOT_PATH or vim.fn.expand "~/.julia")
+            .. "/environments/nvim-lspconfig/bin/julia"
+          if require("lspconfig").util.path.is_file(julia) then
+            new_config.cmd[1] = julia
+          else
+            new_config.autostart = false -- only auto start if sysimage is available
+          end
+        end,
+        settings = {
+          julia = {
+            lint = {
+              missingrefs = "none",
+            },
+          },
+        },
+      },
       lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
       markdown_oxide = { capabilities = { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } } },
       ruff = { on_attach = function(client) client.server_capabilities.hoverProvider = false end },
