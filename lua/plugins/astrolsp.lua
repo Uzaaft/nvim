@@ -83,7 +83,7 @@ return {
         },
       },
       julials = {
-        on_new_config = function(new_config, _)
+        on_new_config = function(new_config)
           -- check for nvim-lspconfig julia sysimage shim
           local julia = (vim.env.JULIA_DEPOT_PATH or vim.fn.expand "~/.julia")
             .. "/environments/nvim-lspconfig/bin/julia"
