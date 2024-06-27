@@ -1,4 +1,5 @@
 ---@type LazySpec
+if true then return {} end
 return {
   "mrjones2014/smart-splits.nvim",
   dependencies = {
