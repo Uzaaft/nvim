@@ -120,9 +120,8 @@ return {
             local args = {}
             local bo = vim.bo[ctx.buf]
             if bo.expandtab then
-              local tab_size = bo.tabstop or 2
               local indent_size = bo.shiftwidth
-              if indent_size == 0 or not indent_size then indent_size = tab_size end
+              if indent_size == 0 then indent_size = bo.tabstop end
               vim.list_extend(args, { "-i", tostring(indent_size) })
             end
             return args
