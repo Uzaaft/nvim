@@ -28,7 +28,7 @@ return {
     pickers = {
       buffers = {
         mappings = {
-          i = { ["<C-d>"] = function(...) return require("telescope.actions").delete_buffer(...) end },
+          i = { ["<C-D>"] = function(...) return require("telescope.actions").delete_buffer(...) end },
           n = { ["d"] = function(...) return require("telescope.actions").delete_buffer(...) end },
         },
       },
