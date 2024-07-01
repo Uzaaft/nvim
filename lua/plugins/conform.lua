@@ -72,6 +72,7 @@ return {
 
       opts.formatters_by_ft = {
         ["*"] = { "injected" },
+        packer = { "packer_fmt" },
         toml = { "taplo" },
         lua = { "stylua" },
         puppet = { "puppet-lint" },
