@@ -53,7 +53,7 @@ return {
         },
         mappings = {
           n = {
-            [prefix] = { desc = "󱁤 Compilation" },
+            [prefix] = { desc = " Overseer" },
             [prefix .. "a"] = { "<Cmd>OverseerQuickAction<CR>", desc = "Quick Action" },
             [prefix .. "i"] = { "<Cmd>OverseerInfo<CR>", desc = "Overseer Info" },
             [prefix .. "k"] = { "<Cmd>Compile<CR>", desc = "Compile" },
