@@ -116,18 +116,6 @@ return {
             },
           },
         },
-        shfmt = {
-          prepend_args = function(_, ctx)
-            local args = {}
-            local bo = vim.bo[ctx.buf]
-            if bo.expandtab then
-              local indent_size = bo.shiftwidth
-              if indent_size == 0 then indent_size = bo.tabstop end
-              vim.list_extend(args, { "-i", tostring(indent_size) })
-            end
-            return args
-          end,
-        },
       }
     end,
   },
