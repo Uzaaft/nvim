@@ -11,6 +11,7 @@ return {
         "ansible-language-server",
         "astro-language-server",
         "basedpyright",
+        "bash-language-server",
         "clangd",
         "css-lsp",
         "dockerfile-language-server",
