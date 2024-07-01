@@ -93,7 +93,7 @@ return {
           { "icon", default_file = get_icon "DefaultFile", directory = get_icon "FolderClosed" },
         },
         skip_confirm_for_simple_edits = true,
-        experimental_watch_for_changes = true,
+        watch_for_changes = true,
         keymaps = {
           ["<Tab>"] = "actions.close",
         },
