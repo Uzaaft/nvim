@@ -8,7 +8,6 @@ return {
       lua = { "selene" },
       puppet = { "puppet-lint" },
       rego = { "opa_check" },
-      sh = { "shellcheck" },
       ansible = { "ansible_lint" },
       cfn = { "cfn_lint" },
       sql = { "sqlfluff" },
