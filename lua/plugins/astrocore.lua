@@ -80,6 +80,7 @@ return {
           ["docker-compose.yaml"] = "yaml.docker-compose",
         },
         pattern = {
+          [".*%.pkr%.hcl"] = "hcl.packer",
           ["/tmp/neomutt.*"] = "markdown",
         },
       },
