@@ -3,14 +3,12 @@ return {
   "linux-cultist/venv-selector.nvim",
   branch = "regexp",
   cmd = "VenvSelect",
-  dependencies = {
-    {
-      "AstroNvim/astrocore",
-      opts = {
-        mappings = {
-          n = {
-            ["<Leader>v"] = { "<Cmd>VenvSelect<CR>", desc = "Activate virtual environment" },
-          },
+  specs = {
+    "AstroNvim/astrocore",
+    opts = {
+      mappings = {
+        n = {
+          ["<Leader>v"] = { "<Cmd>VenvSelect<CR>", desc = "Activate virtual environment" },
         },
       },
     },

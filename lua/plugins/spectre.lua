@@ -3,7 +3,7 @@ local prefix = "<Leader>s"
 return {
   "nvim-pack/nvim-spectre",
   cmd = "Spectre",
-  dependencies = {
+  specs = {
     "AstroNvim/astrocore",
     opts = {
       mappings = {

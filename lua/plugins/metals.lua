@@ -3,7 +3,7 @@ return {
   "scalameta/nvim-metals",
   enabled = function() return vim.fn.executable "cs" == 1 or vim.fn.executable "coursier" == 1 end,
   ft = { "scala", "sbt", "java" },
-  dependencies = {
+  specs = {
     { "AstroNvim/astrolsp", opts = { handlers = { metals = false } } },
     {
       "mfussenegger/nvim-dap",

@@ -1,6 +1,6 @@
 return {
   "nanotee/sqls.nvim",
-  dependencies = {
+  specs = {
     "AstroNvim/astrocore",
     opts = {
       autocmds = {

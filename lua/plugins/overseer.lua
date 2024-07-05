@@ -1,24 +1,30 @@
 local prefix = "<Leader>m"
 ---@type LazySpec
 return {
-  {
-    "stevearc/overseer.nvim",
-    cmd = {
-      "OverseerOpen",
-      "OverseerClose",
-      "OverseerToggle",
-      "OverseerSaveBundle",
-      "OverseerLoadBundle",
-      "OverseerDeleteBundle",
-      "OverseerRunCmd",
-      "OverseerRun",
-      "OverseerInfo",
-      "OverseerBuild",
-      "OverseerQuickAction",
-      "OverseerTaskAction",
-      "OverseerClearCache",
+  "stevearc/overseer.nvim",
+  cmd = {
+    "OverseerOpen",
+    "OverseerClose",
+    "OverseerToggle",
+    "OverseerSaveBundle",
+    "OverseerLoadBundle",
+    "OverseerDeleteBundle",
+    "OverseerRunCmd",
+    "OverseerRun",
+    "OverseerInfo",
+    "OverseerBuild",
+    "OverseerQuickAction",
+    "OverseerTaskAction",
+    "OverseerClearCache",
+  },
+  specs = {
+    {
+      "catppuccin",
+      optional = true,
+      ---@type CatppuccinOptions
+      opts = { integrations = { overseer = true } },
     },
-    dependencies = {
+    {
       "AstroNvim/astrocore",
       opts = {
         commands = {
@@ -66,49 +72,43 @@ return {
         },
       },
     },
-    opts = {
-      setup = {
-        task_list = {
-          strategy = "toggleterm",
-          direction = "bottom",
-          bindings = {
-            ["<C-l>"] = false,
-            ["<C-h>"] = false,
-            ["<C-k>"] = false,
-            ["<C-j>"] = false,
-            q = "<Cmd>close<CR>",
-            K = "IncreaseDetail",
-            J = "DecreaseDetail",
-            ["<C-p>"] = "ScrollOutputUp",
-            ["<C-n>"] = "ScrollOutputDown",
-          },
-        },
-      },
-      templates = {
-        {
-          name = "compile with compiler",
-          builder = function() return { cmd = { "compiler" }, args = { vim.fn.expand "%:p" } } end,
-        },
-        {
-          name = "view file output",
-          builder = function() return { cmd = { "opout" }, args = { vim.fn.expand "%:p" } } end,
-        },
-        {
-          name = "present with pdfpc",
-          builder = function() return { cmd = { "pdfpc" }, args = { vim.fn.expand "%:r" .. ".pdf" } } end,
-          condition = { callback = function() return vim.fn.filereadable(vim.fn.expand "%:r" .. ".pdf") == 1 end },
+  },
+  opts = {
+    setup = {
+      task_list = {
+        strategy = "toggleterm",
+        direction = "bottom",
+        bindings = {
+          ["<C-l>"] = false,
+          ["<C-h>"] = false,
+          ["<C-k>"] = false,
+          ["<C-j>"] = false,
+          q = "<Cmd>close<CR>",
+          K = "IncreaseDetail",
+          J = "DecreaseDetail",
+          ["<C-p>"] = "ScrollOutputUp",
+          ["<C-n>"] = "ScrollOutputDown",
         },
       },
     },
-    config = function(_, opts)
-      require("overseer").setup(opts.setup)
-      vim.tbl_map(require("overseer").register_template, opts.templates)
-    end,
+    templates = {
+      {
+        name = "compile with compiler",
+        builder = function() return { cmd = { "compiler" }, args = { vim.fn.expand "%:p" } } end,
+      },
+      {
+        name = "view file output",
+        builder = function() return { cmd = { "opout" }, args = { vim.fn.expand "%:p" } } end,
+      },
+      {
+        name = "present with pdfpc",
+        builder = function() return { cmd = { "pdfpc" }, args = { vim.fn.expand "%:r" .. ".pdf" } } end,
+        condition = { callback = function() return vim.fn.filereadable(vim.fn.expand "%:r" .. ".pdf") == 1 end },
+      },
+    },
   },
-  {
-    "catppuccin",
-    optional = true,
-    ---@type CatppuccinOptions
-    opts = { integrations = { overseer = true } },
-  },
+  config = function(_, opts)
+    require("overseer").setup(opts.setup)
+    vim.tbl_map(require("overseer").register_template, opts.templates)
+  end,
 }

@@ -1,8 +1,8 @@
 ---@type LazySpec
 return {
   "junegunn/vim-easy-align",
-  event = "User AstroFile",
-  dependencies = {
+  keys = { "<Plug>(EasyAlign)" },
+  specs = {
     "AstroNvim/astrocore",
     opts = {
       mappings = {

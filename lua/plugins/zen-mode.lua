@@ -2,7 +2,7 @@
 return {
   "folke/zen-mode.nvim",
   cmd = "ZenMode",
-  dependencies = {
+  specs = {
     "AstroNvim/astrocore",
     opts = {
       mappings = {

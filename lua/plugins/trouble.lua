@@ -1,9 +1,10 @@
 ---@type LazySpec
 return {
-  {
-    "folke/trouble.nvim",
-    cmd = "Trouble",
-    dependencies = {
+  "folke/trouble.nvim",
+  cmd = "Trouble",
+  specs = {
+    { "lewis6991/gitsigns.nvim", opts = { trouble = true } },
+    {
       "AstroNvim/astrocore",
       opts = function(_, opts)
         local maps, prefix = opts.mappings, "<Leader>x"
@@ -21,27 +22,26 @@ return {
         end
       end,
     },
-    opts = function()
-      local get_icon = require("astroui").get_icon
-      local lspkind_avail, lspkind = pcall(require, "lspkind")
-
-      ---@type trouble.Config
-      return {
-        keys = {
-          ["<Esc>"] = "close",
-          ["<C-e>"] = "cancel",
-        },
-        icons = {
-          indent = {
-            fold_open = get_icon "FoldOpened",
-            fold_closed = get_icon "FoldClosed",
-          },
-          folder_closed = get_icon "FolderClosed",
-          folder_open = get_icon "FolderOpen",
-          kinds = lspkind_avail and lspkind.symbol_map,
-        },
-      }
-    end,
   },
-  { "lewis6991/gitsigns.nvim", opts = { trouble = true } },
+  opts = function()
+    local get_icon = require("astroui").get_icon
+    local lspkind_avail, lspkind = pcall(require, "lspkind")
+
+    ---@type trouble.Config
+    return {
+      keys = {
+        ["<Esc>"] = "close",
+        ["<C-e>"] = "cancel",
+      },
+      icons = {
+        indent = {
+          fold_open = get_icon "FoldOpened",
+          fold_closed = get_icon "FoldClosed",
+        },
+        folder_closed = get_icon "FolderClosed",
+        folder_open = get_icon "FolderOpen",
+        kinds = lspkind_avail and lspkind.symbol_map,
+      },
+    }
+  end,
 }

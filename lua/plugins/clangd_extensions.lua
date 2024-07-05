@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   "p00f/clangd_extensions.nvim",
-  dependencies = {
+  specs = {
     "AstroNvim/astrocore",
     opts = {
       autocmds = {

@@ -3,7 +3,7 @@ local prefix = "<Leader>a"
 return {
   "danymat/neogen",
   cmd = "Neogen",
-  dependencies = {
+  specs = {
     "AstroNvim/astrocore",
     opts = {
       mappings = {
