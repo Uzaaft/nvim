@@ -2,7 +2,7 @@
 return {
   "antosha417/nvim-lsp-file-operations",
   init = function(plugin) require("astrocore").on_load("neo-tree.nvim", plugin.name) end,
-  dependencies = {
+  specs = {
     "AstroNvim/astrolsp",
     opts = function(_, opts)
       local operations = vim.tbl_get(require("astrocore").plugin_opts "nvim-lsp-file-operations", "operations") or {}

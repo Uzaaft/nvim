@@ -1,7 +1,7 @@
 ---@type LazySpec
 return {
   "rebelot/heirline.nvim",
-  dependencies = {
+  specs = {
     "AstroNvim/astroui",
     ---@type AstroUIOpts
     opts = {
