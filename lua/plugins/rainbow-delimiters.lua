@@ -1,6 +1,10 @@
 ---@type LazySpec
 return {
   "HiPhish/rainbow-delimiters.nvim",
+  dependencies = { "nvim-treesitter/nvim-treesitter" },
+  event = "User AstroFile",
+  main = "rainbow-delimiters.setup",
+  opts = {},
   specs = {
     {
       "AstroNvim/astrocore",
@@ -31,8 +35,4 @@ return {
       opts = { integrations = { rainbow_delimiters = true } },
     },
   },
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
-  event = "User AstroFile",
-  main = "rainbow-delimiters.setup",
-  opts = {},
 }

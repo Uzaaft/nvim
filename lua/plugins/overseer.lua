@@ -17,6 +17,44 @@ return {
     "OverseerTaskAction",
     "OverseerClearCache",
   },
+  opts = {
+    setup = {
+      task_list = {
+        strategy = "toggleterm",
+        direction = "bottom",
+        bindings = {
+          ["<C-l>"] = false,
+          ["<C-h>"] = false,
+          ["<C-k>"] = false,
+          ["<C-j>"] = false,
+          q = "<Cmd>close<CR>",
+          K = "IncreaseDetail",
+          J = "DecreaseDetail",
+          ["<C-p>"] = "ScrollOutputUp",
+          ["<C-n>"] = "ScrollOutputDown",
+        },
+      },
+    },
+    templates = {
+      {
+        name = "compile with compiler",
+        builder = function() return { cmd = { "compiler" }, args = { vim.fn.expand "%:p" } } end,
+      },
+      {
+        name = "view file output",
+        builder = function() return { cmd = { "opout" }, args = { vim.fn.expand "%:p" } } end,
+      },
+      {
+        name = "present with pdfpc",
+        builder = function() return { cmd = { "pdfpc" }, args = { vim.fn.expand "%:r" .. ".pdf" } } end,
+        condition = { callback = function() return vim.fn.filereadable(vim.fn.expand "%:r" .. ".pdf") == 1 end },
+      },
+    },
+  },
+  config = function(_, opts)
+    require("overseer").setup(opts.setup)
+    vim.tbl_map(require("overseer").register_template, opts.templates)
+  end,
   specs = {
     {
       "catppuccin",
@@ -73,42 +111,4 @@ return {
       },
     },
   },
-  opts = {
-    setup = {
-      task_list = {
-        strategy = "toggleterm",
-        direction = "bottom",
-        bindings = {
-          ["<C-l>"] = false,
-          ["<C-h>"] = false,
-          ["<C-k>"] = false,
-          ["<C-j>"] = false,
-          q = "<Cmd>close<CR>",
-          K = "IncreaseDetail",
-          J = "DecreaseDetail",
-          ["<C-p>"] = "ScrollOutputUp",
-          ["<C-n>"] = "ScrollOutputDown",
-        },
-      },
-    },
-    templates = {
-      {
-        name = "compile with compiler",
-        builder = function() return { cmd = { "compiler" }, args = { vim.fn.expand "%:p" } } end,
-      },
-      {
-        name = "view file output",
-        builder = function() return { cmd = { "opout" }, args = { vim.fn.expand "%:p" } } end,
-      },
-      {
-        name = "present with pdfpc",
-        builder = function() return { cmd = { "pdfpc" }, args = { vim.fn.expand "%:r" .. ".pdf" } } end,
-        condition = { callback = function() return vim.fn.filereadable(vim.fn.expand "%:r" .. ".pdf") == 1 end },
-      },
-    },
-  },
-  config = function(_, opts)
-    require("overseer").setup(opts.setup)
-    vim.tbl_map(require("overseer").register_template, opts.templates)
-  end,
 }

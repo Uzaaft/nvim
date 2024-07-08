@@ -1,12 +1,6 @@
 ---@type LazySpec
 return {
   "echasnovski/mini.move",
-  specs = {
-    "catppuccin",
-    optional = true,
-    ---@type CatppuccinOptions
-    opts = { integrations = { mini = true } },
-  },
   keys = {
     { "<M-l>", mode = { "n", "v" } },
     { "<M-k>", mode = { "n", "v" } },
@@ -14,4 +8,12 @@ return {
     { "<M-h>", mode = { "n", "v" } },
   },
   opts = {},
+  specs = {
+    {
+      "catppuccin",
+      optional = true,
+      ---@type CatppuccinOptions
+      opts = { integrations = { mini = true } },
+    },
+  },
 }

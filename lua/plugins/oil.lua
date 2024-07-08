@@ -11,6 +11,19 @@ return {
       if (stat and stat.type == "directory") or adapter == "oil-ssh" then require "oil" end
     end
   end,
+  opts = function()
+    local get_icon = require("astroui").get_icon
+    return {
+      columns = {
+        { "icon", default_file = get_icon "DefaultFile", directory = get_icon "FolderClosed" },
+      },
+      skip_confirm_for_simple_edits = true,
+      watch_for_changes = true,
+      keymaps = {
+        ["<Tab>"] = "actions.close",
+      },
+    }
+  end,
   specs = {
     { "nvim-neo-tree/neo-tree.nvim", optional = true, opts = { filesystem = { hijack_netrw_behavior = "disabled" } } },
     {
@@ -85,17 +98,4 @@ return {
       end,
     },
   },
-  opts = function()
-    local get_icon = require("astroui").get_icon
-    return {
-      columns = {
-        { "icon", default_file = get_icon "DefaultFile", directory = get_icon "FolderClosed" },
-      },
-      skip_confirm_for_simple_edits = true,
-      watch_for_changes = true,
-      keymaps = {
-        ["<Tab>"] = "actions.close",
-      },
-    }
-  end,
 }
