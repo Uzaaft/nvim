@@ -2,6 +2,11 @@
 return {
   "NeogitOrg/neogit",
   cmd = "Neogit",
+  opts = {
+    disable_builtin_notifications = true,
+    disable_signs = true,
+    integrations = { telescope = true },
+  },
   specs = {
     {
       "AstroNvim/astrocore",
@@ -20,10 +25,5 @@ return {
       ---@type CatppuccinOptions
       opts = { integrations = { neogit = true } },
     },
-  },
-  opts = {
-    disable_builtin_notifications = true,
-    disable_signs = true,
-    integrations = { telescope = true },
   },
 }

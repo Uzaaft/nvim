@@ -2,6 +2,33 @@ local prefix = "<Leader>T"
 ---@type LazySpec
 return {
   "nvim-neotest/neotest",
+  dependencies = {
+    "nvim-neotest/nvim-nio",
+    "mrcjkb/neotest-haskell",
+    "nvim-neotest/neotest-go",
+    "nvim-neotest/neotest-python",
+    "stevanmilic/neotest-scala",
+  },
+  opts = function()
+    return {
+      adapters = {
+        require "neotest-go",
+        require "neotest-haskell",
+        require "neotest-python",
+        require "neotest-scala",
+      },
+    }
+  end,
+  config = function(_, opts)
+    vim.diagnostic.config({
+      virtual_text = {
+        format = function(diagnostic)
+          return diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
+        end,
+      },
+    }, vim.api.nvim_create_namespace "neotest")
+    require("neotest").setup(opts)
+  end,
   specs = {
     "nvim-lua/plenary.nvim",
     {
@@ -34,31 +61,4 @@ return {
       opts = { integrations = { neotest = true } },
     },
   },
-  dependencies = {
-    "nvim-neotest/nvim-nio",
-    "mrcjkb/neotest-haskell",
-    "nvim-neotest/neotest-go",
-    "nvim-neotest/neotest-python",
-    "stevanmilic/neotest-scala",
-  },
-  opts = function()
-    return {
-      adapters = {
-        require "neotest-go",
-        require "neotest-haskell",
-        require "neotest-python",
-        require "neotest-scala",
-      },
-    }
-  end,
-  config = function(_, opts)
-    vim.diagnostic.config({
-      virtual_text = {
-        format = function(diagnostic)
-          return diagnostic.message:gsub("\n", " "):gsub("\t", " "):gsub("%s+", " "):gsub("^%s+", "")
-        end,
-      },
-    }, vim.api.nvim_create_namespace "neotest")
-    require("neotest").setup(opts)
-  end,
 }

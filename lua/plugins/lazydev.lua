@@ -1,11 +1,8 @@
-return vim.fn.has "nvim-0.10" ~= 1 and {} or {
+return {
   "folke/lazydev.nvim",
   ft = "lua",
   cmd = "LazyDev",
-  specs = {
-    { "folke/neodev.nvim", enabled = false },
-    { "Bilal2453/luvit-meta", lazy = true },
-  },
+  enabled = vim.fn.has "nvim-0.10" == 1,
   opts = {
     library = {
       { path = "luvit-meta/library", words = { "vim%.uv" } },
@@ -16,8 +13,13 @@ return vim.fn.has "nvim-0.10" ~= 1 and {} or {
       { path = "lazy.nvim", words = { "Lazy" } },
     },
   },
-},
-  {
-    "hrsh7th/nvim-cmp",
-    opts = function(_, opts) table.insert(opts.sources, { name = "lazydev", group_index = 0 }) end,
-  }
+  specs = {
+    { "folke/neodev.nvim", optional = true, enabled = false },
+    { "Bilal2453/luvit-meta", lazy = true },
+    {
+      "hrsh7th/nvim-cmp",
+      optional = true,
+      opts = function(_, opts) table.insert(opts.sources, { name = "lazydev", group_index = 0 }) end,
+    },
+  },
+}

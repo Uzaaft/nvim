@@ -1,11 +1,5 @@
 return {
   "machakann/vim-sandwich",
-  specs = {
-    "catppuccin",
-    optional = true,
-    ---@type CatppuccinOptions
-    opts = { integrations = { sandwich = true } },
-  },
   dependencies = {
     "AstroNvim/astrocore",
     opts = function(_, opts)
@@ -23,5 +17,13 @@ return {
     { "<Plug>(sandwich-add)", mode = { "n", "x", "o" } },
     "<Plug>(sandwich-delete)",
     "<Plug>(sandwich-replace)",
+  },
+  specs = {
+    {
+      "catppuccin",
+      optional = true,
+      ---@type CatppuccinOptions
+      opts = { integrations = { sandwich = true } },
+    },
   },
 }

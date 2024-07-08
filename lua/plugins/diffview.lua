@@ -3,26 +3,6 @@ local prefix = "<Leader>D"
 return {
   "sindrets/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewFileHistory" },
-  specs = {
-    {
-      "AstroNvim/astrocore",
-      opts = {
-        mappings = {
-          n = {
-            [prefix] = { name = " Diff View" },
-            [prefix .. "<CR>"] = { "<Cmd>DiffviewOpen<CR>", desc = "Open DiffView" },
-            [prefix .. "h"] = { "<Cmd>DiffviewFileHistory %<CR>", desc = "Open DiffView File History" },
-            [prefix .. "H"] = { "<Cmd>DiffviewFileHistory<CR>", desc = "Open DiffView Branch History" },
-          },
-        },
-      },
-    },
-    {
-      "NeogitOrg/neogit",
-      optional = true,
-      opts = { integrations = { diffview = true } },
-    },
-  },
   opts = function()
     local actions = require "diffview.actions"
     local build_keymaps = function(maps)
@@ -131,4 +111,24 @@ return {
       },
     }
   end,
+  specs = {
+    {
+      "AstroNvim/astrocore",
+      opts = {
+        mappings = {
+          n = {
+            [prefix] = { name = " Diff View" },
+            [prefix .. "<CR>"] = { "<Cmd>DiffviewOpen<CR>", desc = "Open DiffView" },
+            [prefix .. "h"] = { "<Cmd>DiffviewFileHistory %<CR>", desc = "Open DiffView File History" },
+            [prefix .. "H"] = { "<Cmd>DiffviewFileHistory<CR>", desc = "Open DiffView Branch History" },
+          },
+        },
+      },
+    },
+    {
+      "NeogitOrg/neogit",
+      optional = true,
+      opts = { integrations = { diffview = true } },
+    },
+  },
 }

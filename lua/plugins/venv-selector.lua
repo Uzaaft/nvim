@@ -3,16 +3,6 @@ return {
   "linux-cultist/venv-selector.nvim",
   branch = "regexp",
   cmd = "VenvSelect",
-  specs = {
-    "AstroNvim/astrocore",
-    opts = {
-      mappings = {
-        n = {
-          ["<Leader>v"] = { "<Cmd>VenvSelect<CR>", desc = "Activate virtual environment" },
-        },
-      },
-    },
-  },
   opts = function()
     local opts = {
       name = { "env", ".env", "venv", ".venv" },
@@ -25,4 +15,16 @@ return {
     end
     return opts
   end,
+  specs = {
+    {
+      "AstroNvim/astrocore",
+      opts = {
+        mappings = {
+          n = {
+            ["<Leader>v"] = { "<Cmd>VenvSelect<CR>", desc = "Activate virtual environment" },
+          },
+        },
+      },
+    },
+  },
 }

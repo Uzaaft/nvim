@@ -2,15 +2,6 @@
 return {
   "folke/noice.nvim",
   event = "VeryLazy",
-  specs = {
-    { "rcarriga/nvim-notify", init = false, config = true },
-    {
-      "catppuccin",
-      optional = true,
-      ---@type CatppuccinOptions
-      opts = { integrations = { noice = true } },
-    },
-  },
   opts = {
     cmdline = { view = "cmdline" },
     messages = { view_search = false },
@@ -26,6 +17,15 @@ return {
       { filter = { event = "msg_show", find = "^%d+ more lines$" }, opts = { skip = true } }, -- skip paste notifications
       { filter = { event = "msg_show", find = "^%d+ fewer lines$" }, opts = { skip = true } }, -- skip delete notifications
       { filter = { event = "msg_show", find = "^%d+ lines yanked$" }, opts = { skip = true } }, -- skip yank notifications
+    },
+  },
+  specs = {
+    { "rcarriga/nvim-notify", init = false, config = true },
+    {
+      "catppuccin",
+      optional = true,
+      ---@type CatppuccinOptions
+      opts = { integrations = { noice = true } },
     },
   },
 }

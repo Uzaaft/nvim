@@ -2,17 +2,19 @@
 return {
   "rebelot/heirline.nvim",
   specs = {
-    "AstroNvim/astroui",
-    ---@type AstroUIOpts
-    opts = {
-      icons = {
-        Clock = "", -- add icon for clock
-      },
-      status = {
-        attributes = { mode = { bold = true } },
-        separators = {
-          left = { "", " " },
-          right = { " ", "" },
+    {
+      "AstroNvim/astroui",
+      ---@type AstroUIOpts
+      opts = {
+        icons = {
+          Clock = "", -- add icon for clock
+        },
+        status = {
+          attributes = { mode = { bold = true } },
+          separators = {
+            left = { "", " " },
+            right = { " ", "" },
+          },
         },
       },
     },
