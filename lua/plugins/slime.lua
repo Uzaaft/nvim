@@ -44,7 +44,7 @@ return {
             slime_target = "kitty",
             slime_bracketed_paste = true,
             slime_no_mappings = true,
-            slime_cell_delimiter = "^\\s*##",
+            slime_cell_delimiter = "^\\s*# %%",
           },
         },
         mappings = {
