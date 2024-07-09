@@ -72,15 +72,17 @@ return {
         extension = {
           mdx = "markdown.mdx",
           qmd = "markdown",
-          yml = yaml_ft,
           yaml = yaml_ft,
+          yml = yaml_ft,
         },
         filename = {
-          ["docker-compose.yml"] = "yaml.docker-compose",
           ["docker-compose.yaml"] = "yaml.docker-compose",
+          ["docker-compose.yml"] = "yaml.docker-compose",
         },
         pattern = {
+          ["%.env%.[%w_.-]+"] = "sh",
           [".*%.pkr%.hcl"] = "hcl.packer",
+          [".*/kitty/.+%.conf"] = "bash",
           ["/tmp/neomutt.*"] = "markdown",
         },
       },
