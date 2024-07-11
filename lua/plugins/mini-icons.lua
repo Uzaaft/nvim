@@ -16,7 +16,6 @@ return {
     filetype = {
       gotmpl = { glyph = "󰟓", hl = "MiniIconsGrey" },
       ["hcl.packer"] = { glyph = "", hl = "MiniIconsAzure" },
-      hcl = { glyph = "󰫵", hl = "MiniIconsAzure" },
     },
   },
   init = function()
