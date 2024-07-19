@@ -6,11 +6,13 @@ return {
   dependencies = { "williamboman/mason.nvim" },
   ---@param opts conform.setupOpts
   opts = function(_, opts)
+    opts.default_format_opts = { lsp_format = "fallback" }
+
     opts.format_on_save = function(bufnr)
       if vim.g.autoformat == nil then vim.g.autoformat = true end
       local autoformat = vim.b[bufnr].autoformat
       if autoformat == nil then autoformat = vim.g.autoformat end
-      if autoformat then return { timeout_ms = 2000, lsp_format = "fallback" } end
+      if autoformat then return { timeout_ms = 2000 } end
     end
 
     opts.formatters_by_ft = {
@@ -77,7 +79,7 @@ return {
                   ["end"] = { args.line2, end_line:len() },
                 }
               end
-              require("conform").format { async = true, lsp_format = "fallback", range = range }
+              require("conform").format { async = true, range = range }
             end,
             desc = "Format buffer",
             range = true,
