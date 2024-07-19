@@ -4,16 +4,12 @@ return {
   "nvim-neotest/neotest",
   dependencies = {
     "nvim-neotest/nvim-nio",
-    "mrcjkb/neotest-haskell",
-    "nvim-neotest/neotest-go",
     "nvim-neotest/neotest-python",
     "stevanmilic/neotest-scala",
   },
   opts = function()
     return {
       adapters = {
-        require "neotest-go",
-        require "neotest-haskell",
         require "neotest-python",
         require "neotest-scala",
       },
