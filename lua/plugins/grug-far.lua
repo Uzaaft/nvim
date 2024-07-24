@@ -51,14 +51,6 @@ return {
         },
       },
     },
-    {
-      "catppuccin",
-      optional = true,
-      opts = {
-        custom_highlights = {
-          GrugFarResultsMatch = { link = "IncSearch" },
-        },
-      },
-    },
+    { "catppuccin", optional = true, opts = { integrations = { grug_far = true } } },
   },
 }
