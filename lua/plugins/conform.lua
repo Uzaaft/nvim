@@ -7,6 +7,13 @@ return {
   ---@param opts conform.setupOpts
   opts = function(_, opts)
     opts.default_format_opts = { lsp_format = "fallback" }
+    opts.formatters.injected = {
+      options = {
+        lang_to_formatters = {
+          sql = { "pg_format" },
+        },
+      },
+    }
 
     opts.format_on_save = function(bufnr)
       if vim.g.autoformat == nil then vim.g.autoformat = true end
