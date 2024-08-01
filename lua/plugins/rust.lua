@@ -130,15 +130,14 @@ return {
       },
     },
     opts = {
+      null_ls = {
+        enabled = false,
+      },
       completion = {
         crates = {
           enabled = true,
         },
         cmp = { enabled = true },
-      },
-      null_ls = {
-        enabled = true,
-        name = "crates.nvim",
       },
     },
   },
