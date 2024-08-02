@@ -63,6 +63,23 @@ return {
             end,
           },
         },
+        sync_term_background = {
+          {
+            event = { "UIEnter", "User" },
+            desc = "Set background of terminal automatically",
+            callback = function(args)
+              if args.event == "UIEnter" or args.match == "AstroColorScheme" then
+                local bg = vim.tbl_get(require("astroui").get_hlgroup "Normal", "bg")
+                if bg then io.write(string.format("\027]11;#%06x\027\\", bg)) end
+              end
+            end,
+          },
+          {
+            event = "UILeave",
+            desc = "Restore terminal background when leaving",
+            callback = function() io.write "\027]111\027\\" end,
+          },
+        },
       },
       diagnostics = {
         update_in_insert = false,
