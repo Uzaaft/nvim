@@ -44,7 +44,6 @@ return {
     },
     custom_highlights = {
       -- disable italics  for treesitter highlights
-      TabLineFill = { link = "StatusLine" },
       LspInlayHint = { style = { "italic" } },
       UfoFoldedEllipsis = { link = "UfoFoldedFg" },
       ["@parameter"] = { style = {} },
