@@ -2,6 +2,7 @@
 return {
   "stevearc/conform.nvim",
   event = "User AstroFile",
+  version = vim.fn.has "nvim-0.10" ~= 1 and "7",
   cmd = "ConformInfo",
   dependencies = { "williamboman/mason.nvim" },
   ---@param opts conform.setupOpts
