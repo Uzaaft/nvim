@@ -24,7 +24,7 @@ return {
       puppet = { "puppet-lint" },
       sh = { "shfmt" },
       sql = { "sqlfluff" },
-      python = { "ruff_organize_imports", "ruff_format" },
+      python = { "ruff_organize_imports", lsp_format = "last" },
       ["_"] = function(bufnr)
         return require("astrocore.buffer").is_valid(bufnr) and { "trim_whitespace", "trim_newlines", "squeeze_blanks" }
           or {}
