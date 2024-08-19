@@ -43,14 +43,6 @@ return {
             analysis = {
               typeCheckingMode = "basic",
               autoImportCompletions = true,
-              diagnosticSeverityOverrides = {
-                reportUnusedImport = "information",
-                reportUnusedFunction = "information",
-                reportUnusedVariable = "information",
-                reportOptionalMemberAccess = "none",
-                reportOptionalSubscript = "none",
-                reportPrivateImportUsage = "none",
-              },
             },
           },
         },
