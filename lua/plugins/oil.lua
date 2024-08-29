@@ -42,14 +42,25 @@ return {
       orig_refresh(...)
     end
 
+    local columns = {
+      icon = { "icon", default_file = get_icon "DefaultFile", directory = get_icon "FolderClosed" },
+      permissions = { "permissions", highlight = "Type" },
+      size = { "size", highlight = "String" },
+      mtime = { "mtime", highlight = "Function" },
+    }
+    local simple, detailed = { columns.icon }, { columns.permissions, columns.size, columns.mtime, columns.icon }
+
     ---@type oil.setupOpts
     return {
-      columns = {
-        { "icon", default_file = get_icon "DefaultFile", directory = get_icon "FolderClosed" },
-      },
+      columns = simple,
       skip_confirm_for_simple_edits = true,
+      prompt_save_on_select_new_entry = false,
       watch_for_changes = true,
       keymaps = {
+        gd = {
+          desc = "Toggle detailed file view",
+          callback = function() require("oil").set_columns(#require("oil.config").columns == 1 and detailed or simple) end,
+        },
         R = "actions.refresh",
         ["<Tab>"] = "actions.close",
       },
