@@ -2,24 +2,6 @@
 return {
   "nvim-neo-tree/neo-tree.nvim",
   opts = {
-    -- TODO: When PR merged upstream, uncomment for mini.icons support
-    -- default_component_configs = {
-    --   icon = {
-    --     provider = function(icon, node)
-    --       local text, hl
-    --       local mini_icons = require "mini.icons"
-    --       if node.type == "file" then
-    --         text, hl = mini_icons.get("file", node.name)
-    --       elseif node.type == "directory" then
-    --         text, hl = mini_icons.get("directory", node.name)
-    --         if node:is_expanded() then text = nil end
-    --       end
-    --
-    --       if text then icon.text = text end
-    --       if hl then icon.highlight = hl end
-    --     end,
-    --   },
-    -- },
     filesystem = {
       filtered_items = {
         always_show = { ".github", ".gitignore" },
