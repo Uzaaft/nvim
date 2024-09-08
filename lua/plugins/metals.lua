@@ -28,7 +28,7 @@ return {
     {
       "mfussenegger/nvim-dap",
       optional = true,
-      config = function()
+      opts = function()
         require("dap").configurations.scala = {
           {
             type = "scala",
