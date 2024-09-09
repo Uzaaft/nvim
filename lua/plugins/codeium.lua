@@ -14,9 +14,21 @@ return {
           desc = "Toggle AI assistant",
         }
         maps.n["<M-CR>"] = { function() require("neocodeium").chat() end }
-        maps.i["<M-]>"] = { function() require("neocodeium").cycle_or_complete() end }
+        maps.i["<M-]>"] = {
+          function()
+            local cmp_avail, cmp = pcall(require, "cmp")
+            if cmp_avail then cmp.abort() end
+            require("neocodeium").cycle_or_complete()
+          end,
+        }
         maps.i["<M-\\>"] = maps.i["<M-]>"]
-        maps.i["<M-[>"] = { function() require("neocodeium").cycle_or_complete(-1) end }
+        maps.i["<M-[>"] = {
+          function()
+            local cmp_avail, cmp = pcall(require, "cmp")
+            if cmp_avail then cmp.abort() end
+            require("neocodeium").cycle_or_complete(-1)
+          end,
+        }
         maps.i["<M-CR>"] = { function() require("neocodeium").accept() end }
         maps.i["<M-BS>"] = { function() require("neocodeium").clear() end }
       end,
