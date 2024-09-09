@@ -7,13 +7,10 @@ return {
       opts = function(_, opts)
         local maps = opts.mappings
         maps.n["<Leader>ff"][1] = function()
-          -- call git files inside of a git root
-          if vim.tbl_get((vim.uv or vim.loop).fs_stat ".git" or {}, "type") == "directory" then
-            require("telescope.builtin").git_files()
-            -- if not in git root then search that folder specifically
-          else
-            require("telescope.builtin").find_files()
-          end
+          require("telescope.builtin").find_files {
+            -- search all files if in git root
+            hidden = vim.tbl_get((vim.uv or vim.loop).fs_stat ".git" or {}, "type") == "directory",
+          }
         end
       end,
     },
