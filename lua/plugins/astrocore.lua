@@ -109,7 +109,6 @@ return {
           ["<Leader>."] = { "<Cmd>cd %:p:h<CR>", desc = "Set CWD" },
         },
         i = {
-          ["<C-S>"] = { function() vim.lsp.buf.signature_help() end, desc = "Signature Help" },
           ["<S-Tab>"] = { "<C-V><Tab>", desc = "Tab character" },
         },
         -- terminal mappings
