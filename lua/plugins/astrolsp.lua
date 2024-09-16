@@ -94,6 +94,17 @@ return {
       },
       lua_ls = { settings = { Lua = { hint = { enable = true, arrayIndex = "Disable" } } } },
       markdown_oxide = { capabilities = { workspace = { didChangeWatchedFiles = { dynamicRegistration = true } } } },
+      metals = {
+        settings = {
+          inlayHints = {
+            hintsInPatternMatch = { enable = true },
+            implicitArguments = { enable = true },
+            implicitConversions = { enable = true },
+            inferredTypes = { enable = true },
+            typeParameters = { enable = true },
+          },
+        },
+      },
       ruff = { on_attach = function(client) client.server_capabilities.hoverProvider = false end },
       taplo = { evenBetterToml = { schema = { catalogs = { "https://www.schemastore.org/api/json/catalog.json" } } } },
       texlab = {
