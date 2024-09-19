@@ -1,4 +1,18 @@
 local prefix = "<Leader>s"
+local function grug_far_explorer(dir)
+  local grug_far, prefills = require "grug-far", { paths = dir }
+  if not grug_far.has_instance "explorer" then
+    grug_far.open {
+      instanceName = "explorer",
+      prefills = prefills,
+      staticTitle = "Find and Replace from Explorer",
+    }
+  else
+    grug_far.open_instance "explorer"
+    grug_far.update_instance_prefills("explorer", prefills, false)
+  end
+end
+
 ---@type LazySpec
 return {
   "MagicDuck/grug-far.nvim",
@@ -59,11 +73,36 @@ return {
         },
       },
     },
-    { "catppuccin", optional = true, opts = { integrations = { grug_far = true } } },
     {
-      "folke/which-key.nvim",
+      "nvim-neo-tree/neo-tree.nvim",
       optional = true,
-      opts = { disable = { ft = { "grug-far" } } },
+      opts = {
+        commands = {
+          grug_far_replace = function(state)
+            local node = state.tree:get_node()
+            grug_far_explorer(node.type == "directory" and node:get_id() or vim.fn.fnamemodify(node:get_id(), ":h"))
+          end,
+        },
+        window = {
+          mappings = {
+            gs = "grug_far_replace",
+          },
+        },
+      },
     },
+    {
+      "stevearc/oil.nvim",
+      optional = true,
+      opts = {
+        keymaps = {
+          gs = {
+            desc = "Search/Replace in directory",
+            callback = function() grug_far_explorer(require("oil").get_current_dir()) end,
+          },
+        },
+      },
+    },
+    { "catppuccin", optional = true, opts = { integrations = { grug_far = true } } },
+    { "folke/which-key.nvim", optional = true, opts = { disable = { ft = { "grug-far" } } } },
   },
 }
