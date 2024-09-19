@@ -6,12 +6,12 @@ return {
   opts = function()
     local metals = require "metals"
     local user_config = require("astrolsp").lsp_opts "metals"
-    if require("astrocore").is_available "nvim-dap" then
-      local on_attach = user_config.on_attach
-      user_config.on_attach = function(...)
-        on_attach(...)
+    local astrocore = require "astrocore"
+    if astrocore.is_available "nvim-dap" then
+      user_config.on_attach = astrocore.patch_func(user_config.on_attach, function(orig, ...)
+        orig(...)
         metals.setup_dap()
-      end
+      end)
     end
     return require("astrocore").extend_tbl(metals.bare_config(), user_config)
   end,
