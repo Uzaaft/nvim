@@ -14,13 +14,13 @@ return {
           n = {
             [prefix] = { desc = "󰛔 Search/Replace" },
             [prefix .. "s"] = {
-              function() require("grug-far").grug_far { transient = true } end,
+              function() require("grug-far").open { transient = true } end,
               desc = "Search/Replace workspace",
             },
             [prefix .. "e"] = {
               function()
                 local ext = require("astrocore.buffer").is_valid() and vim.fn.expand "%:e" or ""
-                require("grug-far").grug_far {
+                require("grug-far").open {
                   transient = true,
                   prefills = { filesFilter = ext ~= "" and "*." .. ext or nil },
                 }
@@ -30,7 +30,7 @@ return {
             [prefix .. "f"] = {
               function()
                 local filter = require("astrocore.buffer").is_valid() and vim.fn.expand "%" or nil
-                require("grug-far").grug_far { transient = true, prefills = { paths = filter } }
+                require("grug-far").open { transient = true, prefills = { paths = filter } }
               end,
               desc = "Search/Replace file",
             },
@@ -38,7 +38,7 @@ return {
               function()
                 local current_word = vim.fn.expand "<cword>"
                 if current_word ~= "" then
-                  require("grug-far").grug_far {
+                  require("grug-far").open {
                     transient = true,
                     startCursorRow = 4,
                     prefills = { search = vim.fn.expand "<cword>" },
@@ -52,7 +52,7 @@ return {
           },
           v = {
             [prefix] = {
-              function() require("grug-far").grug_far { transient = true, startCursorRow = 4 } end,
+              function() require("grug-far").open { transient = true, startCursorRow = 4 } end,
               desc = "Replace selection",
             },
           },
