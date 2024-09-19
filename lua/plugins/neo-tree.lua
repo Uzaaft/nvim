@@ -7,6 +7,13 @@ return {
         always_show = { ".github", ".gitignore" },
       },
     },
+    window = {
+      mappings = {
+        ["\\"] = "open_split",
+        ["|"] = "open_vsplit",
+        s = "noop",
+      },
+    },
     nesting_rules = {
       docker = {
         pattern = "^dockerfile$",

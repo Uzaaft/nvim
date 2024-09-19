@@ -11,7 +11,7 @@ return {
       if (stat and stat.type == "directory") or adapter == "oil-ssh" then require "oil" end
     end
   end,
-  opts = function()
+  opts = function(_, opts)
     local astrocore, get_icon = require "astrocore", require("astroui").get_icon
 
     -- git status cache
@@ -50,7 +50,7 @@ return {
     local simple, detailed = { columns.icon }, { columns.permissions, columns.size, columns.mtime, columns.icon }
 
     ---@type oil.setupOpts
-    return {
+    return astrocore.extend_tbl(opts, {
       columns = simple,
       skip_confirm_for_simple_edits = true,
       prompt_save_on_select_new_entry = false,
@@ -80,7 +80,7 @@ return {
         end,
         is_always_hidden = function(name) return name == ".." end,
       },
-    }
+    })
   end,
   specs = {
     { "nvim-neo-tree/neo-tree.nvim", optional = true, opts = { filesystem = { hijack_netrw_behavior = "disabled" } } },
