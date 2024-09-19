@@ -50,7 +50,7 @@ return {
               desc = "Replace current word",
             },
           },
-          v = {
+          x = {
             [prefix] = {
               function() require("grug-far").open { transient = true, startCursorRow = 4 } end,
               desc = "Replace selection",
@@ -60,5 +60,10 @@ return {
       },
     },
     { "catppuccin", optional = true, opts = { integrations = { grug_far = true } } },
+    {
+      "folke/which-key.nvim",
+      optional = true,
+      opts = { disable = { ft = { "grug-far" } } },
+    },
   },
 }
