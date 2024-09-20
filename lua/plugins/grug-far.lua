@@ -1,5 +1,5 @@
 local prefix = "<Leader>s"
-local default_opts = { instanceName = "main", transient = true }
+local default_opts = { instanceName = "main" }
 local function grug_far_open(opts, with_visual)
   local grug_far = require "grug-far"
   opts = require("astrocore").extend_tbl(default_opts, opts)
@@ -21,6 +21,7 @@ return {
   cmd = "GrugFar",
   opts = {
     windowCreationCommand = "split",
+    transient = true,
   },
   specs = {
     {
