@@ -16,6 +16,11 @@ return {
       cfn_lint = {
         ignore_exitcode = true,
       },
+      selene = {
+        condition = function(ctx)
+          return #vim.fs.find("selene.toml", { path = ctx.filename, upward = true, type = "file" }) > 0
+        end,
+      },
     },
   },
   config = function(_, opts)
