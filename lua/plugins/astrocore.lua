@@ -149,23 +149,24 @@ return {
       },
     } --[[@as AstroCoreOpts]]) --[[@as AstroCoreOpts]]
 
+    local maps = opts.mappings
+    ---@cast maps -nil
+
     -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-    for lhs, rhs in pairs {
-      n = { "'Nn'[v:searchforward]", expr = true, desc = "Next Search Result" },
-      N = { "'nN'[v:searchforward]", expr = true, desc = "Prev Search Result" },
-    } do
-      opts.mappings.n[lhs] = rhs
-      opts.mappings.x[lhs] = rhs
-      opts.mappings.o[lhs] = rhs
-    end
+    maps.n.n = { "'Nn'[v:searchforward].'zv'", expr = true, desc = "Next Search Result" }
+    maps.x.n = { "'Nn'[v:searchforward]", expr = true, desc = "Next Search Result" }
+    maps.o.n = { "'Nn'[v:searchforward]", expr = true, desc = "Next Search Result" }
+    maps.n.N = { "'nN'[v:searchforward].'zv'", expr = true, desc = "Prev Search Result" }
+    maps.x.N = { "'nN'[v:searchforward]", expr = true, desc = "Prev Search Result" }
+    maps.o.N = { "'nN'[v:searchforward]", expr = true, desc = "Prev Search Result" }
 
     -- add line text object
     for lhs, rhs in pairs {
       il = { ":<C-u>normal! $v^<CR>", desc = "inside line" },
       al = { ":<C-u>normal! V<CR>", desc = "around line" },
     } do
-      opts.mappings.o[lhs] = rhs
-      opts.mappings.x[lhs] = rhs
+      maps.o[lhs] = rhs
+      maps.x[lhs] = rhs
     end
 
     -- add missing in between and around two character pairs
@@ -174,8 +175,8 @@ return {
         ["i" .. char] = { (":<C-u>silent! normal! f%sF%slvt%s<CR>"):format(char, char, char), desc = "inside " .. char },
         ["a" .. char] = { (":<C-u>silent! normal! f%sF%svf%s<CR>"):format(char, char, char), desc = "around " .. char },
       } do
-        opts.mappings.o[lhs] = rhs
-        opts.mappings.x[lhs] = rhs
+        maps.o[lhs] = rhs
+        maps.x[lhs] = rhs
       end
     end
 
