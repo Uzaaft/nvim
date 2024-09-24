@@ -143,12 +143,6 @@ return {
       },
       julials = {
         on_new_config = function(new_config)
-          local envPath = vim.tbl_get(new_config, "settings", "julia", "environmentPath")
-          if envPath then
-            if not new_config.cmd_env then new_config.cmd_env = {} end
-            new_config.cmd_env.JULIA_PROJECT = envPath
-          end
-
           -- check for nvim-lspconfig julia sysimage shim
           local julia = (vim.env.JULIA_DEPOT_PATH or vim.fn.expand "~/.julia")
             .. "/environments/nvim-lspconfig/bin/julia"
@@ -157,6 +151,10 @@ return {
           else
             new_config.autostart = false -- only auto start if sysimage is available
           end
+        end,
+        on_attach = function(client)
+          local environment = vim.tbl_get(client, "settings", "julia", "environmentPath")
+          if environment then client.notify("julia/activateenvironment", { envPath = environment }) end
         end,
         settings = {
           julia = {
