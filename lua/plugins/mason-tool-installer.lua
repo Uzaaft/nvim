@@ -25,6 +25,7 @@ return {
       "regols",
       "ruff",
       "sqls",
+      "svelte-language-server",
       "tailwindcss-language-server",
       "taplo",
       "texlab",
