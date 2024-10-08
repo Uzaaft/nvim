@@ -83,7 +83,7 @@ return {
                 or { vim.fn.expand "~/.julia" }
             )
           do
-            local bin = vim.fs.joinpath(depot, "environments", "nvim-lspconifg", "bin", "julia")
+            local bin = vim.fs.joinpath(depot, "environments", "nvim-lspconfig", "bin", "julia")
             local file = (vim.uv or vim.loop).fs_stat(bin)
             if file and file.type == "file" then
               found_shim = bin
