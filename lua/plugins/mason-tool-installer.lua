@@ -23,7 +23,6 @@ return {
       "markdown-oxide",
       "neocmakelsp",
       "regols",
-      "ruff",
       "sqls",
       "svelte-language-server",
       "tailwindcss-language-server",
@@ -40,6 +39,8 @@ return {
       "sqlfluff",
 
       -- Formatters
+      "black",
+      "isort",
       "prettier",
       "shfmt",
       "stylua",
