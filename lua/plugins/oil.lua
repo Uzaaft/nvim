@@ -49,7 +49,6 @@ return {
     }
     local simple, detailed = { columns.icon }, { columns.permissions, columns.size, columns.mtime, columns.icon }
 
-    ---@type oil.setupOpts
     return astrocore.extend_tbl(opts, {
       columns = simple,
       skip_confirm_for_simple_edits = true,
@@ -80,7 +79,15 @@ return {
         end,
         is_always_hidden = function(name) return name == ".." end,
       },
-    })
+      preview_win = {
+        win_options = {
+          foldcolumn = "0",
+          number = false,
+          relativenumber = false,
+          signcolumn = "no",
+        },
+      },
+    } --[[ @type oil.setupOpts ]])
   end,
   specs = {
     { "nvim-neo-tree/neo-tree.nvim", optional = true, opts = { filesystem = { hijack_netrw_behavior = "disabled" } } },
