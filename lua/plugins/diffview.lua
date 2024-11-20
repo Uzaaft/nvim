@@ -78,8 +78,8 @@ return {
           ["<Up>"] = actions.prev_entry,
           ["<CR>"] = actions.select_entry, -- Open the diff for the selected entry.
           ["<2-LeftMouse>"] = actions.select_entry,
-          ["<C-b>"] = actions.scroll_view(-0.25), -- Scroll the view up
-          ["<C-f>"] = actions.scroll_view(0.25), -- Scroll the view down
+          ["<C-B>"] = actions.scroll_view(-0.25), -- Scroll the view up
+          ["<C-F>"] = actions.scroll_view(0.25), -- Scroll the view down
           ["<Tab>"] = actions.select_next_entry,
           ["<S-tab>"] = actions.select_prev_entry,
         },
