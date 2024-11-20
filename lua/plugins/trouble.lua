@@ -9,7 +9,7 @@ return {
     return {
       keys = {
         ["<Esc>"] = "close",
-        ["<C-e>"] = "cancel",
+        ["<C-E>"] = "cancel",
       },
       icons = {
         indent = {
