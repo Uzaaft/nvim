@@ -8,6 +8,7 @@ local disabled = {
   "Exafunction/codeium.vim",
   "HiPhish/rainbow-delimiters.nvim",
   "nvim-telescope/telescope-bibtex.nvim",
+  "WhoIsSethDaniel/mason-tool-installer.nvim",
 }
 if vim.fn.has "nvim-0.10" == 1 then table.insert(disabled, "numToStr/Comment.nvim") end
 
