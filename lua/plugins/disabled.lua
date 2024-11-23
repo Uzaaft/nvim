@@ -7,6 +7,7 @@ local disabled = {
   "L3MON4D3/LuaSnip",
   "Exafunction/codeium.vim",
   "HiPhish/rainbow-delimiters.nvim",
+  "nvim-telescope/telescope-bibtex.nvim",
 }
 if vim.fn.has "nvim-0.10" == 1 then table.insert(disabled, "numToStr/Comment.nvim") end
 
