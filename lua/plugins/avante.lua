@@ -1,7 +1,8 @@
+local prefix = "<Leader>A"
 return {
   "yetone/avante.nvim",
   build = "make",
-  -- version = "*",
+  event = "User AstroFile",
   cmd = {
     "AvanteAsk",
     "AvanteBuild",
@@ -16,56 +17,29 @@ return {
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
-    {
-      "AstroNvim/astrocore",
-      opts = function(_, opts)
-        local maps = assert(opts.mappings)
-        local prefix = "<Leader>A"
-
-        maps.n[prefix] = { desc = " Avante" }
-
-        maps.n[prefix .. "<CR>"] = { function() require("avante.api").ask() end, desc = "Avante ask" }
-        maps.v[prefix .. "<CR>"] = { function() require("avante.api").ask() end, desc = "Avante ask" }
-
-        maps.v[prefix .. "r"] = { function() require("avante.api").refresh() end, desc = "Avante refresh" }
-
-        maps.n[prefix .. "e"] = { function() require("avante.api").edit() end, desc = "Avante edit" }
-        maps.v[prefix .. "e"] = { function() require("avante.api").edit() end, desc = "Avante edit" }
-      end,
-    },
+    { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
     provider = "copilot",
     auto_suggestions_provider = "copilot",
     mappings = {
+      ask = prefix .. "<CR>",
+      edit = prefix .. "e",
+      refresh = prefix .. "r",
+      focus = prefix .. "f",
+      toggle = {
+        default = prefix .. "t",
+        debug = prefix .. "d",
+        hint = prefix .. "h",
+        suggestion = prefix .. "s",
+        repomap = prefix .. "R",
+      },
       diff = {
-        ours = "co",
-        theirs = "ct",
-        all_theirs = "ca",
-        both = "cb",
-        cursor = "cc",
         next = "]c",
         prev = "[c",
       },
-      suggestion = {
-        accept = "<M-l>",
-        next = "<M-]>",
-        prev = "<M-[>",
-        dismiss = "<C-]>",
-      },
-      jump = {
-        next = "]]",
-        prev = "[[",
-      },
-      submit = {
-        normal = "<CR>",
-        insert = "<C-s>",
-      },
-      sidebar = {
-        apply_all = "A",
-        apply_cursor = "a",
-        switch_windows = "<Tab>",
-        reverse_switch_windows = "<S-Tab>",
+      files = {
+        add_current = prefix .. ".",
       },
     },
   },
