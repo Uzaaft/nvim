@@ -27,6 +27,7 @@ return {
       "texlab",
       "typos-lsp",
       "vtsls",
+      "vue-language-server",
       "yaml-language-server",
 
       -- Linters
