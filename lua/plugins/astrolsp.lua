@@ -8,7 +8,6 @@ return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
-    features = { signature_help = true },
     autocmds = {
       no_insert_inlay_hints = {
         cond = vim.lsp.inlay_hint and "textDocument/inlayHint" or false,
