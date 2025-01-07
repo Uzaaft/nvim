@@ -154,29 +154,36 @@ return {
         },
       },
     },
-    { "Saghen/blink.compat", version = "*", lazy = true, opts = {} },
     {
-      "Saghen/blink.cmp",
-      opts_extend = { "sources.default" },
-      dependencies = { "jc-doyle/cmp-pandoc-references" },
-      opts = {
-        sources = {
-          default = { "pandoc" },
-          providers = {
-            pandoc = { name = "pandoc_references", module = "blink.compat.source", score_offset = 10 },
+      "Saghen/blink.compat",
+      version = "*",
+      lazy = true,
+      opts = {},
+      specs = {
+        {
+          "Saghen/blink.cmp",
+          opts_extend = { "sources.default" },
+          dependencies = { "jc-doyle/cmp-pandoc-references" },
+          opts = {
+            sources = {
+              default = { "pandoc" },
+              providers = {
+                pandoc = { name = "pandoc_references", module = "blink.compat.source", score_offset = 10 },
+              },
+            },
           },
         },
-      },
-    },
-    {
-      "Saghen/blink.cmp",
-      opts_extend = { "sources.default" },
-      dependencies = { "kdheepak/cmp-latex-symbols" },
-      opts = {
-        sources = {
-          default = { "latex" },
-          providers = {
-            latex = { name = "latex_symbols", module = "blink.compat.source", score_offset = -1 },
+        {
+          "Saghen/blink.cmp",
+          opts_extend = { "sources.default" },
+          dependencies = { "kdheepak/cmp-latex-symbols" },
+          opts = {
+            sources = {
+              default = { "latex" },
+              providers = {
+                latex = { name = "latex_symbols", module = "blink.compat.source", score_offset = -1 },
+              },
+            },
           },
         },
       },
