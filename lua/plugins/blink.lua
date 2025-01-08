@@ -11,7 +11,7 @@ local highlight_colors_format
 local kinds
 
 local function get_icon(ctx)
-  ctx.kind_hl_group = "BlinkCmpKind" .. ctx.kind
+  local highlight = "BlinkCmpKind" .. ctx.kind
   if mini_icons_get == nil then
     local mini_icons_avail, mini_icons = pcall(require, "mini.icons")
     mini_icons_get = mini_icons_avail and mini_icons.get or false
@@ -21,10 +21,10 @@ local function get_icon(ctx)
       local icon, hl = mini_icons_get("lsp", ctx.kind or "")
       if icon then
         ctx.kind_icon = icon
-        ctx.kind_hl_group = hl
+        highlight = hl
       end
     elseif ctx.item.source_name == "Path" then
-      ctx.kind_icon, ctx.kind_hl_group = mini_icons_get(ctx.kind == "Folder" and "directory" or "file", ctx.label)
+      ctx.kind_icon, highlight = mini_icons_get(ctx.kind == "Folder" and "directory" or "file", ctx.label)
     end
   end
   if highlight_colors_format == nil then
@@ -39,12 +39,12 @@ local function get_icon(ctx)
         local color_item = highlight_colors_format(doc, { kind = kinds[kinds.Color] })
         if color_item and color_item.abbr_hl_group then
           if color_item.abbr then ctx.kind_icon = color_item.abbr end
-          ctx.kind_hl_group = color_item.abbr_hl_group
+          highlight = color_item.abbr_hl_group
         end
       end
     end
   end
-  return ctx
+  return { text = ctx.kind_icon .. ctx.icon_gap, highlight = highlight }
 end
 
 return {
@@ -99,11 +99,8 @@ return {
           treesitter = { "lsp" },
           components = {
             kind_icon = {
-              text = function(ctx)
-                get_icon(ctx)
-                return ctx.kind_icon .. ctx.icon_gap
-              end,
-              highlight = function(ctx) return get_icon(ctx).kind_hl_group end,
+              text = function(ctx) return get_icon(ctx).text end,
+              highlight = function(ctx) return get_icon(ctx).highlight end,
             },
           },
         },
