@@ -3,31 +3,45 @@ local function has_words_before()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
 end
 
----@type function?
-local icon_provider
+---@type function|nil|false
+local mini_icons_get
+---@type function|nil|false
+local highlight_colors_format
+---@type table?
+local kinds
 
 local function get_icon(ctx)
   ctx.kind_hl_group = "BlinkCmpKind" .. ctx.kind
-  if not icon_provider and _G.MiniIcons then icon_provider = _G.MiniIcons.get end
-  if ctx.item.source_name == "LSP" then
-    local item_doc, color_item = ctx.item.documentation, nil
-    if item_doc then
-      local highlight_colors_avail, highlight_colors = pcall(require, "nvim-highlight-colors")
-      color_item = highlight_colors_avail and highlight_colors.format(item_doc, { kind = ctx.kind })
-    end
-    if icon_provider then
-      local icon, hl = icon_provider("lsp", ctx.kind or "")
+  if mini_icons_get == nil then
+    local mini_icons_avail, mini_icons = pcall(require, "mini.icons")
+    mini_icons_get = mini_icons_avail and mini_icons.get or false
+  end
+  if mini_icons_get then
+    if ctx.item.source_name == "LSP" then
+      local icon, hl = mini_icons_get("lsp", ctx.kind or "")
       if icon then
         ctx.kind_icon = icon
         ctx.kind_hl_group = hl
       end
+    elseif ctx.item.source_name == "Path" then
+      ctx.kind_icon, ctx.kind_hl_group = mini_icons_get(ctx.kind == "Folder" and "directory" or "file", ctx.label)
     end
-    if color_item and color_item.abbr and color_item.abbr_hl_group then
-      ctx.kind_icon, ctx.kind_hl_group = color_item.abbr, color_item.abbr_hl_group
-    end
-  elseif ctx.item.source_name == "Path" then
-    if icon_provider then
-      ctx.kind_icon, ctx.kind_hl_group = icon_provider(ctx.kind == "Folder" and "directory" or "file", ctx.label)
+  end
+  if highlight_colors_format == nil then
+    local highlight_colors_avail, highlight_colors = pcall(require, "nvim-highlight-colors")
+    highlight_colors_format = highlight_colors_avail and highlight_colors.format or false
+  end
+  if highlight_colors_format then
+    if not kinds then kinds = require("blink.cmp.types").CompletionItemKind end
+    if ctx.item.kind == kinds.Color then
+      local doc = vim.tbl_get(ctx, "item", "documentation")
+      if doc then
+        local color_item = highlight_colors_format(doc, { kind = kinds[kinds.Color] })
+        if color_item and color_item.abbr_hl_group then
+          if color_item.abbr then ctx.kind_icon = color_item.abbr end
+          ctx.kind_hl_group = color_item.abbr_hl_group
+        end
+      end
     end
   end
   return ctx
