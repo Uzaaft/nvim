@@ -59,7 +59,6 @@ return {
         path = { opts = { trailing_slash = false } },
       },
     },
-    snippets = { preset = "luasnip" },
     keymap = {
       ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
       ["<Up>"] = { "select_prev", "fallback" },
@@ -199,6 +198,18 @@ return {
               },
             },
           },
+        },
+      },
+    },
+    {
+      "L3MON4D3/LuaSnip",
+      optional = true,
+      specs = {
+        {
+          "Saghen/blink.cmp",
+          dependencies = "L3MON4D3/LuaSnip",
+          optional = true,
+          opts = { snippets = { preset = "luasnip" } },
         },
       },
     },
