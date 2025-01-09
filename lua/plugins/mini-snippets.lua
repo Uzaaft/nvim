@@ -21,6 +21,35 @@ return {
   end,
   specs = {
     {
+      "AstroNvim/astrocore",
+      ---@param opts AstroCoreOpts
+      opts = function(_, opts)
+        local snippet_mode_change
+        local stop_all_sessions = function()
+          local mini_snippets = require "mini.snippets"
+          while mini_snippets.session.get(false) do
+            mini_snippets.session.stop()
+          end
+          snippet_mode_change = nil
+        end
+        opts.autocmds.mini_snippets_stop = {
+          {
+            event = "User",
+            pattern = "MiniSnippetsSessionStart",
+            desc = "Set up snippet stopping when going to normal mode autocmd",
+            callback = function()
+              if not snippet_mode_change then
+                snippet_mode_change = vim.api.nvim_create_autocmd(
+                  "ModeChanged",
+                  { pattern = "*:n", once = true, callback = stop_all_sessions }
+                )
+              end
+            end,
+          },
+        }
+      end,
+    },
+    {
       "Saghen/blink.cmp",
       dependencies = "echasnovski/mini.snippets",
       optional = true,
