@@ -125,10 +125,15 @@ return {
     },
   },
   specs = {
-    {
+    { -- setup lsp capabilities
       "AstroNvim/astrolsp",
       optional = true,
-      opts = function(_, opts) opts.capabilities = require("blink.cmp").get_lsp_capabilities(opts.capabilities) end,
+      opts = function(_, opts)
+        opts.capabilities = require("blink.cmp").get_lsp_capabilities(opts.capabilities)
+        return require("astrocore").extend_tbl(opts, {
+          defaults = { signature_help = { focusable = true } },
+        })
+      end,
     },
     {
       "folke/lazydev.nvim",
