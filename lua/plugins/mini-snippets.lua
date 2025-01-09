@@ -26,8 +26,6 @@ return {
       optional = true,
       opts = { snippets = { preset = "mini_snippets" } },
     },
-    -- HACK: remove when fixed upstream
-    { "AstroNvim/astrocore", opts = { options = { opt = { showmode = true } } } },
     { "L3MON4D3/LuaSnip", enabled = false },
   },
 }
