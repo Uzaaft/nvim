@@ -20,8 +20,15 @@ return {
     { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
-    provider = "copilot",
-    auto_suggestions_provider = "copilot",
+    provider = "copilot-claude",
+    auto_suggestions_provider = "copilot-claude",
+    vendors = {
+      ["copilot-claude"] = {
+        __inherited_from = "copilot",
+        api_key_name = "GITHUB_TOKEN",
+        model = "claude-3.5-sonnet",
+      },
+    },
     file_selector = {
       provider = "telescope",
     },
