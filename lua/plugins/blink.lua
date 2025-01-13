@@ -50,7 +50,8 @@ end
 return {
   "Saghen/blink.cmp",
   event = { "InsertEnter", "CmdlineEnter" },
-  version = "0.*",
+  -- version = "0.*",
+  build = "cargo build --release",
   opts_extend = { "sources.default", "sources.cmdline" },
   opts = {
     sources = {
@@ -166,6 +167,33 @@ return {
               default = { "emoji" },
               providers = {
                 emoji = { name = "Emoji", module = "blink-emoji", min_keyword_length = 1, score_offset = -1 },
+              },
+            },
+          },
+        },
+      },
+    },
+    {
+      "Kaiser-Yang/blink-cmp-git",
+      lazy = true,
+      dependencies = "nvim-lua/plenary.nvim",
+      specs = {
+        {
+          "Saghen/blink.cmp",
+          opts_extend = { "sources.default" },
+          opts = {
+            sources = {
+              default = { "git" },
+              providers = {
+                git = {
+                  name = "Git",
+                  module = "blink-cmp-git",
+                  async = true,
+                  score_offset = 100,
+                  should_show_items = function(ctx)
+                    return vim.tbl_contains({ "gitcommit", "octo", "NeogitCommitMessage" }, vim.bo[ctx.bufnr].filetype)
+                  end,
+                },
               },
             },
           },
