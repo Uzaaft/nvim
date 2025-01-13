@@ -52,6 +52,9 @@ return {
         add_current = prefix .. ".",
       },
     },
+    windows = {
+      width = 45,
+    },
   },
   specs = {
     {
