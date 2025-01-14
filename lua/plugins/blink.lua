@@ -126,7 +126,8 @@ return {
     },
   },
   specs = {
-    { -- setup lsp capabilities
+    -- configure base plugins
+    {
       "AstroNvim/astrolsp",
       optional = true,
       opts = function(_, opts)
@@ -156,85 +157,6 @@ return {
       },
     },
     {
-      "moyiz/blink-emoji.nvim",
-      lazy = true,
-      specs = {
-        {
-          "Saghen/blink.cmp",
-          opts_extend = { "sources.default" },
-          opts = {
-            sources = {
-              default = { "emoji" },
-              providers = {
-                emoji = { name = "Emoji", module = "blink-emoji", min_keyword_length = 1, score_offset = -1 },
-              },
-            },
-          },
-        },
-      },
-    },
-    {
-      "Kaiser-Yang/blink-cmp-git",
-      lazy = true,
-      dependencies = "nvim-lua/plenary.nvim",
-      specs = {
-        {
-          "Saghen/blink.cmp",
-          opts_extend = { "sources.default" },
-          opts = {
-            sources = {
-              default = { "git" },
-              providers = {
-                git = {
-                  name = "Git",
-                  module = "blink-cmp-git",
-                  async = true,
-                  score_offset = 100,
-                  should_show_items = function(ctx)
-                    return vim.tbl_contains({ "gitcommit", "octo", "NeogitCommitMessage" }, vim.bo[ctx.bufnr].filetype)
-                  end,
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-    {
-      "Saghen/blink.compat",
-      version = "*",
-      lazy = true,
-      opts = {},
-      specs = {
-        {
-          "Saghen/blink.cmp",
-          opts_extend = { "sources.default" },
-          dependencies = { "jc-doyle/cmp-pandoc-references" },
-          opts = {
-            sources = {
-              default = { "pandoc" },
-              providers = {
-                pandoc = { name = "pandoc_references", module = "blink.compat.source", score_offset = 10 },
-              },
-            },
-          },
-        },
-        {
-          "Saghen/blink.cmp",
-          opts_extend = { "sources.default" },
-          dependencies = { "kdheepak/cmp-latex-symbols" },
-          opts = {
-            sources = {
-              default = { "latex" },
-              providers = {
-                latex = { name = "latex_symbols", module = "blink.compat.source", score_offset = -1 },
-              },
-            },
-          },
-        },
-      },
-    },
-    {
       "L3MON4D3/LuaSnip",
       optional = true,
       specs = {
@@ -247,9 +169,7 @@ return {
       },
     },
     { "catppuccin", optional = true, opts = { integrations = { blink_cmp = true } } },
-    -- disable built in completion plugins
+    -- disable nvim-cmp
     { "hrsh7th/nvim-cmp", enabled = false },
-    { "rcarriga/cmp-dap", enabled = false },
-    { "onsails/lspkind.nvim", enabled = false },
   },
 }
