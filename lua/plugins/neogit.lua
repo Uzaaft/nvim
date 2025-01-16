@@ -5,7 +5,6 @@ return {
   opts = {
     disable_builtin_notifications = true,
     disable_signs = true,
-    integrations = { telescope = true },
     mappings = {
       status = {
         ["<S-Tab>"] = "Close",
