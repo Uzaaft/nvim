@@ -1,8 +1,9 @@
 return {
   "folke/snacks.nvim",
-  init = function() require("astrocore").load_plugin_with_func("snacks.nvim", vim.ui, { "select", "input" }) end,
+  lazy = false,
+  priority = 1000,
   dependencies = { "nvim-treesitter/nvim-treesitter" },
-  opts = { input = {}, picker = { ui_select = true } },
+  opts = { picker = { ui_select = true } },
   specs = {
     {
       "AstroNvim/astrocore",
@@ -93,12 +94,15 @@ return {
           opts = {
             mappings = {
               n = {
-                ["<Leader>fT"] = function()
-                  if not package.loaded["todo-comments"] then -- make sure to load todo-comments
-                    require("lazy").load { plugins = { "todo-comments.nvim" } }
-                  end
-                  require("snacks").picker.todo_comments()
-                end,
+                ["<Leader>fT"] = {
+                  function()
+                    if not package.loaded["todo-comments"] then -- make sure to load todo-comments
+                      require("lazy").load { plugins = { "todo-comments.nvim" } }
+                    end
+                    require("snacks").picker.todo_comments()
+                  end,
+                  desc = "Search Todo Comments",
+                },
               },
             },
           },
@@ -120,6 +124,6 @@ return {
       },
     },
     { "nvim-telescope/telescope.nvim", enabled = false },
-    { "stevearc/dressing.nvim", enabled = false },
+    { "stevearc/dressing.nvim", opts = { select = { enabled = false } } },
   },
 }
