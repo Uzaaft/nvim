@@ -18,6 +18,12 @@ return {
         return vim.fn.filereadable(rel_path) == 1 and mini_snippets.read_file(rel_path)
       end,
     })
+    opts.mappings = {
+      expand = "",
+      jump_next = "",
+      jump_prev = "",
+      stop = "",
+    }
   end,
   specs = {
     {
