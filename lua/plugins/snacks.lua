@@ -1,8 +1,8 @@
 return {
   "folke/snacks.nvim",
-  init = function() require("astrocore").load_plugin_with_func("snacks.nvim", vim.ui, "select") end,
+  init = function() require("astrocore").load_plugin_with_func("snacks.nvim", vim.ui, { "select", "input" }) end,
   dependencies = { "nvim-treesitter/nvim-treesitter" },
-  opts = { picker = { ui_select = true } },
+  opts = { input = {}, picker = { ui_select = true } },
   specs = {
     {
       "AstroNvim/astrocore",
@@ -120,6 +120,6 @@ return {
       },
     },
     { "nvim-telescope/telescope.nvim", enabled = false },
-    { "stevearc/dressing.nvim", opts = { select = { enabled = false } } },
+    { "stevearc/dressing.nvim", enabled = false },
   },
 }
