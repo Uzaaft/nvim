@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "nvim-telescope/telescope-bibtex.nvim",
+  enabled = false,
   dependencies = {
     "nvim-telescope/telescope.nvim",
     opts = {

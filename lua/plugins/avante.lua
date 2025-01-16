@@ -29,9 +29,6 @@ return {
         model = "claude-3.5-sonnet",
       },
     },
-    file_selector = {
-      provider = "telescope",
-    },
     mappings = {
       ask = prefix .. "<CR>",
       edit = prefix .. "e",

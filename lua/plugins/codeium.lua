@@ -69,6 +69,7 @@ return {
     manual = true,
     silent = true,
     filetypes = {
+      snacks_picker_input = false,
       TelescopePrompt = false,
       ["dap-repl"] = false,
     },
