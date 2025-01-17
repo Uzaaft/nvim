@@ -62,7 +62,10 @@ return {
         --     { function() require("telescope").extensions.notify.notify() end, desc = "Find notifications" }
         -- end
         maps.n["<Leader>fo"] = { function() require("snacks").picker.recent() end, desc = "Find old files" }
+        maps.n["<Leader>fO"] =
+          { function() require("snacks").picker.recent { cwd = true } end, desc = "Find old files (cwd)" }
         maps.n["<Leader>fr"] = { function() require("snacks").picker.registers() end, desc = "Find registers" }
+        maps.n["<Leader>fs"] = { function() require("snacks").picker.smart() end, desc = "Find buffers/recent/files" }
         maps.n["<Leader>ft"] = { function() require("snacks").picker.colorschemes() end, desc = "Find themes" }
         if vim.fn.executable "rg" == 1 then
           maps.n["<Leader>fw"] = { function() require("snacks").picker.grep() end, desc = "Find words" }
