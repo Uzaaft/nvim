@@ -14,10 +14,7 @@ return {
         maps.n["<Leader>f"] = vim.tbl_get(opts, "_map_sections", "f")
         if vim.fn.executable "git" == 1 then
           maps.n["<Leader>g"] = vim.tbl_get(opts, "_map_sections", "g")
-          -- maps.n["<Leader>gb"] = {
-          --   function() require("telescope.builtin").git_branches { use_file_path = true } end,
-          --   desc = "Git branches",
-          -- }
+          maps.n["<Leader>gb"] = { function() require("snacks").picker.git_branches() end, desc = "Git branches" }
           maps.n["<Leader>gc"] = {
             function() require("snacks").picker.git_log() end,
             desc = "Git commits (repository)",
