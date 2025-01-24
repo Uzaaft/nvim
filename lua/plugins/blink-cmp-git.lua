@@ -14,8 +14,8 @@ return {
               module = "blink-cmp-git",
               async = true,
               score_offset = 100,
-              should_show_items = function(ctx)
-                return vim.tbl_contains({ "gitcommit", "octo", "NeogitCommitMessage" }, vim.bo[ctx.bufnr].filetype)
+              enabled = function()
+                return vim.tbl_contains({ "gitcommit", "octo", "NeogitCommitMessage" }, vim.bo.filetype)
               end,
             },
           },
