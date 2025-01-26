@@ -50,8 +50,8 @@ end
 return {
   "Saghen/blink.cmp",
   event = { "InsertEnter", "CmdlineEnter" },
-  -- version = "0.*",
-  build = "cargo build --release",
+  version = "0.*",
+  -- build = "cargo build --release",
   opts_extend = { "sources.default", "sources.cmdline" },
   opts = {
     sources = {
