@@ -9,7 +9,7 @@ return {
       "AstroNvim/astrocore",
       opts = function(_, opts)
         local maps = opts.mappings
-        -- local astro = require "astrocore"
+        local astro = require "astrocore"
         -- local is_available = astro.is_available
         maps.n["<Leader>f"] = vim.tbl_get(opts, "_map_sections", "f")
         if vim.fn.executable "git" == 1 then
@@ -55,10 +55,10 @@ return {
         maps.n["<Leader>fh"] = { function() require("snacks").picker.help() end, desc = "Find help" }
         maps.n["<Leader>fk"] = { function() require("snacks").picker.keymaps() end, desc = "Find keymaps" }
         maps.n["<Leader>fm"] = { function() require("snacks").picker.man() end, desc = "Find man" }
-        -- if is_available "nvim-notify" then
-        --   maps.n["<Leader>fn"] =
-        --     { function() require("telescope").extensions.notify.notify() end, desc = "Find notifications" }
-        -- end
+        if astro.plugin_opts("snacks.nvim").notifier then
+          maps.n["<Leader>fn"] =
+            { function() require("snacks").picker.notifications() end, desc = "Find notifications" }
+        end
         maps.n["<Leader>fo"] = { function() require("snacks").picker.recent() end, desc = "Find old files" }
         maps.n["<Leader>fO"] =
           { function() require("snacks").picker.recent { cwd = true } end, desc = "Find old files (cwd)" }
