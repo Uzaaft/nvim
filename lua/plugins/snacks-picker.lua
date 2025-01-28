@@ -24,6 +24,7 @@ return {
             desc = "Git commits (current file)",
           }
           maps.n["<Leader>gt"] = { function() require("snacks").picker.git_status() end, desc = "Git status" }
+          maps.n["<Leader>gT"] = { function() require("snacks").picker.git_stash() end, desc = "Git stash" }
         end
         maps.n["<Leader>f<CR>"] = { function() require("snacks").picker.resume() end, desc = "Resume previous search" }
         maps.n["<Leader>f'"] = { function() require("snacks").picker.marks() end, desc = "Find marks" }
