@@ -4,7 +4,6 @@ return {
   "danymat/neogen",
   cmd = "Neogen",
   opts = {
-    snippet_engine = "luasnip",
     languages = {
       lua = { template = { annotation_convention = "emmylua" } },
       typescript = { template = { annotation_convention = "tsdoc" } },
@@ -26,6 +25,11 @@ return {
           },
         },
       },
+    },
+    {
+      "L3MON4D3/LuaSnip",
+      optional = true,
+      specs = { "danymat/neogen", opts = { snippet_engine = "luasnip" } },
     },
   },
 }
