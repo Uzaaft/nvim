@@ -199,5 +199,16 @@ return {
         },
       },
     },
+    mason_lspconfig = {
+      servers = {
+        nextflow_ls = {
+          package = "nextflow-language-server", -- required package name in Mason (string)
+          filetypes = { "nextflow" }, -- required filetypes that apply (string or a list of strings)
+          config = { -- optional default configuration changes (table or a function that returns a table)
+            cmd = { "nextflow-language-server" },
+          },
+        },
+      },
+    },
   },
 }
