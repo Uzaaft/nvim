@@ -2,7 +2,6 @@ return {
   "folke/snacks.nvim",
   lazy = false,
   priority = 1000,
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
   opts = { picker = { ui_select = true } },
   specs = {
     {
