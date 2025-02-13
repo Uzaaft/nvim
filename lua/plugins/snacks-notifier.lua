@@ -2,7 +2,6 @@ return {
   "folke/snacks.nvim",
   lazy = false,
   priority = 1000,
-  dependencies = { "nvim-treesitter/nvim-treesitter" },
   opts = function(_, opts)
     opts.notifier = { timeout = 1000 }
     local get_icon = require("astroui").get_icon
