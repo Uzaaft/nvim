@@ -52,7 +52,7 @@ return {
   event = { "InsertEnter", "CmdlineEnter" },
   version = "0.*",
   -- build = "cargo build --release",
-  opts_extend = { "sources.default", "sources.cmdline" },
+  opts_extend = { "sources.default", "cmdline.sources", "term.sources" },
   opts = {
     sources = {
       default = { "lsp", "snippets", "path", "buffer" },
