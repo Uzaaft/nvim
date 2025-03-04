@@ -1,7 +1,6 @@
 return {
-  "Kaiser-Yang/blink-cmp-git",
+  "disrupted/blink-cmp-conventional-commits",
   lazy = true,
-  dependencies = "nvim-lua/plenary.nvim",
   specs = {
     {
       "Saghen/blink.cmp",
@@ -9,17 +8,16 @@ return {
         local per_filetype = {}
         for _, filetype in ipairs { "gitcommit", "octo", "NeogitCommitMessage" } do
           local git_sources = vim.tbl_get(opts, "sources", "per_filetype", filetype) or { "buffer" }
-          table.insert(git_sources, "git")
+          table.insert(git_sources, "conventional_commits")
           per_filetype[filetype] = git_sources
         end
         return require("astrocore").extend_tbl(opts, {
           sources = {
             per_filetype = per_filetype,
             providers = {
-              git = {
-                name = "Git",
-                module = "blink-cmp-git",
-                async = true,
+              conventional_commits = {
+                name = "Conventional Commits",
+                module = "blink-cmp-conventional-commits",
                 score_offset = 100,
               },
             },
