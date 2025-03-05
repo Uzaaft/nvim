@@ -28,6 +28,7 @@ return {
         model = "claude-3.5-sonnet",
       },
     },
+    hints = { enabled = false },
     mappings = {
       ask = prefix .. "<CR>",
       edit = prefix .. "e",
