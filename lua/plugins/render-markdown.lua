@@ -7,6 +7,7 @@ return {
     return opts.file_types or { "markdown" }
   end,
   opts = {
+    completions = { lsp = { enabled = true } },
     pipe_table = { enabled = false },
     sign = { enabled = false },
   },
