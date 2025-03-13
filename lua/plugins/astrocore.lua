@@ -80,6 +80,9 @@ return {
           qmd = "markdown",
           yaml = yaml_ft,
           yml = yaml_ft,
+          j2 = "jinja",
+          jinja2 = "jinja",
+          jinja = "jinja",
         },
         filename = {
           ["docker-compose.yaml"] = "yaml.docker-compose",

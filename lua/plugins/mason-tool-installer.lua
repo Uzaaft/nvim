@@ -15,6 +15,7 @@ return {
       "haskell-language-server",
       "html-lsp",
       "intelephense",
+      "jinja-lsp",
       "json-lsp",
       "lua-language-server",
       "markdown-oxide",
