@@ -105,6 +105,5 @@ return {
       },
     },
     { "catppuccin", optional = true, opts = { integrations = { grug_far = true } } },
-    { "folke/which-key.nvim", optional = true, opts = { disable = { ft = { "grug-far" } } } },
   },
 }
