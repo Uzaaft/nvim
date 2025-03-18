@@ -118,9 +118,26 @@ return {
         mappings = {
           n = {
             [prefix] = { name = " Diff View" },
-            [prefix .. "<CR>"] = { "<Cmd>DiffviewOpen<CR>", desc = "Open DiffView" },
-            [prefix .. "h"] = { "<Cmd>DiffviewFileHistory %<CR>", desc = "Open DiffView File History" },
-            [prefix .. "H"] = { "<Cmd>DiffviewFileHistory<CR>", desc = "Open DiffView Branch History" },
+            [prefix .. "<CR>"] = { function() vim.cmd.DiffviewOpen() end, desc = "Open DiffView" },
+            [prefix .. "h"] = { function() vim.cmd.DiffviewFileHistory "%" end, desc = "Open DiffView File History" },
+            [prefix .. "H"] = { function() vim.cmd.DiffviewFileHistory() end, desc = "Open DiffView Branch History" },
+            [prefix .. "o"] = {
+              function()
+                local branch
+                for _, origin in ipairs { "origin/main", "origin/master" } do
+                  if require("astrocore").cmd({ "git", "rev-parse", "--verify", origin }, false) then
+                    branch = origin
+                    break
+                  end
+                end
+                if branch then
+                  vim.cmd.DiffviewOpen(branch)
+                else
+                  vim.notify("Unable to identify an origin branch", vim.log.levels.WARN)
+                end
+              end,
+              desc = "Open DiffView against origin",
+            },
           },
         },
       },
