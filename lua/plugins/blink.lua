@@ -57,7 +57,7 @@ return {
     sources = {
       default = { "lsp", "snippets", "path", "buffer" },
       providers = {
-        path = { opts = { trailing_slash = false } },
+        path = { opts = { trailing_slash = false, show_hidden_files_by_default = true } },
       },
     },
     keymap = {
