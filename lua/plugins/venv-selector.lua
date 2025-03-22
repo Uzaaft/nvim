@@ -1,10 +1,7 @@
 ---@type LazySpec
 return {
-  -- TODO: revert after merge: https://github.com/linux-cultist/venv-selector.nvim/pull/188
-  -- "linux-cultist/venv-selector.nvim",
-  -- branch = "regexp",
-  "stefanboca/venv-selector.nvim",
-  branch = "sb/push-rlpxsqmllxtz",
+  "linux-cultist/venv-selector.nvim",
+  branch = "regexp",
   cmd = "VenvSelect",
   opts = function()
     local opts = {
