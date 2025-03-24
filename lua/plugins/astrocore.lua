@@ -102,8 +102,6 @@ return {
           ["<C-S>"] = false,
           ["q:"] = ":",
           -- better buffer navigation
-          ["]b"] = false,
-          ["[b"] = false,
           ["L"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
           ["H"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
           -- better search
