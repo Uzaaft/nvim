@@ -16,11 +16,5 @@ return {
         },
       },
     },
-    {
-      "hrsh7th/nvim-cmp",
-      optional = true,
-      dependencies = "jc-doyle/cmp-pandoc-references",
-      opts = { sources = { { name = "pandoc_references", priority = 725 } } },
-    },
   },
 }

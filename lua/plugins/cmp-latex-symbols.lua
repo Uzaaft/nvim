@@ -16,11 +16,5 @@ return {
         },
       },
     },
-    {
-      "hrsh7th/nvim-cmp",
-      optional = true,
-      dependencies = "kdheepak/cmp-latex-symbols",
-      opts = { sources = { { name = "latex_symbols", priority = 700 } } },
-    },
   },
 }

@@ -8,7 +8,7 @@ return {
     default_integrations = false,
     integrations = {
       aerial = true,
-      cmp = true,
+      blink_cmp = true,
       dap = true,
       dap_ui = true,
       gitsigns = true,
