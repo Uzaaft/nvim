@@ -1,17 +1,15 @@
 return {
-  "jc-doyle/cmp-pandoc-references",
+  "jmbuhr/cmp-pandoc-references",
   lazy = true,
   specs = {
     {
       "Saghen/blink.cmp",
       optional = true,
-      dependencies = "jc-doyle/cmp-pandoc-references",
-      specs = { "Saghen/blink.compat", version = "*", lazy = true, opts = {} },
       opts = {
         sources = {
           default = { "pandoc" },
           providers = {
-            pandoc = { name = "pandoc_references", module = "blink.compat.source", score_offset = 10 },
+            pandoc = { name = "pandoc_references", module = "cmp-pandoc-references.blink", score_offset = 10 },
           },
         },
       },
