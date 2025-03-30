@@ -25,6 +25,7 @@ return {
       },
       options = {
         opt = {
+          shell = "/etc/profiles/per-user/uzaaft/bin/zsh",
           conceallevel = 1, -- enable conceal
           list = true, -- show whitespace characters
           listchars = { tab = "│→", extends = "⟩", precedes = "⟨", trail = "·", nbsp = "␣" },
