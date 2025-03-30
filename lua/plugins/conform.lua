@@ -28,6 +28,7 @@ return {
       sh = { "shfmt" },
       sql = { "sqlfluff" },
       python = { "isort", "black" },
+      nix = { "alejandra" },
       ["_"] = function(bufnr)
         return buf_utils.is_valid(bufnr)
             and buf_utils.has_filetype(bufnr)
