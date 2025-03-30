@@ -26,10 +26,9 @@ return {
       puppet = { "puppet-lint" },
       rego = { "opa_fmt" },
       sh = { "shfmt" },
-      python = { "ruff" },
+      sql = { "sqlfluff" },
+      python = { "isort", "black" },
       nix = { "alejandra" },
-      sql = { "pgformatter" },
-      nginx = { "nginxfmt" },
       ["_"] = function(bufnr)
         if #vim.lsp.get_clients { bufnr = bufnr, method = "textDocument/formatting" } then
           return { lsp_format = "last" }
