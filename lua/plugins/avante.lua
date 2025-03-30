@@ -2,6 +2,7 @@ local prefix = "<Leader>A"
 return {
   "yetone/avante.nvim",
   build = "make",
+  lazy = true,
   event = "User AstroFile",
   cmd = {
     "AvanteAsk",
