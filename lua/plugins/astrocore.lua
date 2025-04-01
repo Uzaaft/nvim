@@ -90,7 +90,7 @@ return {
         },
         pattern = {
           ["%.env%.[%w_.-]+"] = "sh",
-          [".*%.pkr%.hcl"] = "hcl.packer",
+          [".*%.pkr.*%.hcl"] = "hcl.packer",
           [".*/kitty/.+%.conf"] = "bash",
           ["/tmp/neomutt.*"] = "markdown",
         },
