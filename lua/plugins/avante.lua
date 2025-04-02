@@ -19,13 +19,19 @@ return {
     { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
-    provider = "copilot_claude",
-    auto_suggestions_provider = "copilot_claude",
+    provider = "glados",
+    auto_suggestions_provider = "glados",
     vendors = {
       copilot_claude = {
         __inherited_from = "copilot",
         api_key_name = "GITHUB_TOKEN",
         model = "claude-3.5-sonnet",
+      },
+      glados = {
+        __inherited_from = "openai",
+        endpoint = "https://glados.ctisl.gtri.org/v1",
+        model = "meta-llama/Llama-3.3-70B-Instruct",
+        api_key_name = "GLADOS_API_KEY",
       },
     },
     hints = { enabled = false },
