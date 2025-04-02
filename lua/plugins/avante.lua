@@ -97,7 +97,6 @@ return {
         },
       },
     },
-    { "zbirenbaum/copilot.lua", cmd = "Copilot", opts = { panel = { enabled = false }, suggestion = { false } } },
     {
       "MeanderingProgrammer/render-markdown.nvim",
       optional = true,
