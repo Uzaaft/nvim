@@ -40,6 +40,7 @@ return {
       edit = prefix .. "e",
       refresh = prefix .. "r",
       focus = prefix .. "f",
+      stop = prefix .. "S",
       toggle = {
         default = prefix .. "t",
         debug = prefix .. "d",
@@ -53,7 +54,10 @@ return {
       },
       files = {
         add_current = prefix .. ".",
+        add_all_buffers = prefix .. "B",
       },
+      select_model = prefix .. "m",
+      select_history = prefix .. "h",
     },
     windows = {
       width = 45,
