@@ -65,37 +65,33 @@ return {
   },
   specs = {
     {
-      "Saghen/blink.compat",
+      "Saghen/blink.cmp",
       optional = true,
-      specs = {
-        {
-          "Saghen/blink.cmp",
-          optional = true,
-          opts_extend = { "sources.default" },
-          dependencies = { "yetone/avante.nvim" },
-          opts = {
-            sources = {
-              default = { "avante_commands", "avante_mentions", "avante_files" },
-              providers = {
-                avante_commands = {
-                  name = "avante_commands",
-                  module = "blink.compat.source",
-                  score_offset = 90, -- show at a higher priority than lsp
-                  opts = {},
-                },
-                avante_files = {
-                  name = "avante_commands",
-                  module = "blink.compat.source",
-                  score_offset = 100, -- show at a higher priority than lsp
-                  opts = {},
-                },
-                avante_mentions = {
-                  name = "avante_mentions",
-                  module = "blink.compat.source",
-                  score_offset = 1000, -- show at a higher priority than lsp
-                  opts = {},
-                },
-              },
+      dependencies = { "yetone/avante.nvim" },
+      specs = { "Saghen/blink.compat", version = "*", lazy = true, opts = {} },
+      opts = {
+        sources = {
+          per_filetype = {
+            AvanteInput = { "avante_commands", "avante_mentions", "avante_files" },
+          },
+          providers = {
+            avante_commands = {
+              name = "avante_commands",
+              module = "blink.compat.source",
+              score_offset = 90, -- show at a higher priority than lsp
+              opts = {},
+            },
+            avante_files = {
+              name = "avante_commands",
+              module = "blink.compat.source",
+              score_offset = 100, -- show at a higher priority than lsp
+              opts = {},
+            },
+            avante_mentions = {
+              name = "avante_mentions",
+              module = "blink.compat.source",
+              score_offset = 1000, -- show at a higher priority than lsp
+              opts = {},
             },
           },
         },
