@@ -32,6 +32,7 @@ return {
         endpoint = "https://glados.ctisl.gtri.org/v1",
         model = "meta-llama/Llama-3.3-70B-Instruct",
         api_key_name = "GLADOS_API_KEY",
+        disable_tools = true,
       },
     },
     hints = { enabled = false },
