@@ -41,6 +41,18 @@ return {
         BqfSign = { text = " " .. require("astroui").get_icon "Selected", texthl = "BqfSign" },
       },
       autocmds = {
+        always_enable_folding = {
+          {
+            event = "FileType",
+            callback = function()
+              if require("astrocore.buffer").is_valid() then
+                if vim.wo[0][0].foldexpr ~= "v:lua.require'astroui.folding'.foldexpr()" then
+                  vim.wo[0][0].foldexpr = "v:lua.require'astroui.folding'.foldexpr()"
+                end
+              end
+            end,
+          },
+        },
         auto_spell = {
           {
             event = "FileType",
