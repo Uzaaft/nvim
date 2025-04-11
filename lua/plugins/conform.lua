@@ -27,8 +27,9 @@ return {
       puppet = { "puppet-lint" },
       sh = { "shfmt" },
       sql = { "sqlfluff" },
-      python = { "isort", "black" },
+      python = { "ruff"  },
       nix = { "alejandra" },
+      sql = { "pgformatter"},
       ["_"] = function(bufnr)
         return buf_utils.is_valid(bufnr)
             and buf_utils.has_filetype(bufnr)
