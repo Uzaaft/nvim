@@ -27,8 +27,9 @@ return {
       rego = { "opa_fmt" },
       sh = { "shfmt" },
       sql = { "sqlfluff" },
-      python = { "isort", "black" },
+      python = { "ruff"  },
       nix = { "alejandra" },
+      sql = { "pgformatter"},
       ["_"] = function(bufnr)
         if #vim.lsp.get_clients { bufnr = bufnr, method = "textDocument/formatting" } then
           return { lsp_format = "last" }
