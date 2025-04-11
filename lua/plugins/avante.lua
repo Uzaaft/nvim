@@ -1,6 +1,7 @@
 local prefix = "<Leader>A"
 return {
   "yetone/avante.nvim",
+  enabled = false, -- test out CodeCompanion
   build = "make",
   event = "User AstroFile",
   cmd = {
