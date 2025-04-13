@@ -1,6 +1,7 @@
 return {
   "kdheepak/cmp-latex-symbols",
   lazy = true,
+  enabled = false,
   specs = {
     {
       "Saghen/blink.cmp",
