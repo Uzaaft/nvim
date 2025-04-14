@@ -1,6 +1,7 @@
 return {
   "olimorris/codecompanion.nvim",
   event = "User AstroFile",
+  enabled = false, -- test out Avante
   cmd = {
     "CodeCompanion",
     "CodeCompanionActions",
@@ -64,6 +65,7 @@ return {
         opts.mappings.n[prefix] = { desc = " AI" }
         opts.mappings.v[prefix] = { desc = " AI" }
         opts.mappings.n[prefix .. "<CR>"] = { function() vim.cmd.CodeCompanionChat "Toggle" end, desc = "AI Chat" }
+        opts.mappings.v[prefix .. "<CR>"] = { function() vim.cmd.CodeCompanionChat "Add" end, desc = "Add to AI Chat" }
         opts.mappings.n[prefix .. "A"] = { function() vim.cmd.CodeCompanionActions() end, desc = "AI Actions" }
         opts.mappings.v[prefix .. "A"] = { function() vim.cmd.CodeCompanionActions() end, desc = "AI Actions" }
       end,
