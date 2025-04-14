@@ -68,10 +68,6 @@ return {
     enabled = false,
     manual = true,
     silent = true,
-    filetypes = {
-      snacks_picker_input = false,
-      TelescopePrompt = false,
-      ["dap-repl"] = false,
-    },
+    filte = function(bufnr) return require("astrocore.buffer").is_valid(bufnr) end,
   },
 }
