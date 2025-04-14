@@ -27,6 +27,9 @@ return {
       inline = {
         adapter = "glados",
       },
+      cmd = {
+        adapter = "glados",
+      },
     },
     adapters = {
       opts = { show_defaults = false },
