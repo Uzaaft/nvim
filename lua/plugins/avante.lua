@@ -22,10 +22,17 @@ return {
   opts = {
     provider = "glados",
     auto_suggestions_provider = "glados",
+    copilot = { api_key_name = "GITHUB_TOKEN" },
+    bedrock = { hide_in_model_selector = true },
+    claude = { hide_in_model_selector = true },
+    cohere = { hide_in_model_selector = true },
+    gemini = { hide_in_model_selector = true },
+    openai = { hide_in_model_selector = true },
+    vertex = { hide_in_model_selector = true },
+    vertex_claude = { hide_in_model_selector = true },
     vendors = {
       copilot_claude = {
         __inherited_from = "copilot",
-        api_key_name = "GITHUB_TOKEN",
         model = "claude-3.5-sonnet",
       },
       glados = {
@@ -35,6 +42,11 @@ return {
         api_key_name = "GLADOS_API_KEY",
         disable_tools = true,
       },
+      ["claude-haiku"] = { hide_in_model_selector = true },
+      ["claude-opus"] = { hide_in_model_selector = true },
+      ["openai-gpt-4o-mini"] = { hide_in_model_selector = true },
+      ["aihubmix"] = { hide_in_model_selector = true },
+      ["aihubmix-claude"] = { hide_in_model_selector = true },
     },
     hints = { enabled = false },
     mappings = {
