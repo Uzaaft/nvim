@@ -29,10 +29,12 @@ return {
       sql = { "sqlfluff" },
       python = { "isort", "black" },
       ["_"] = function(bufnr)
-        return buf_utils.is_valid(bufnr)
-            and buf_utils.has_filetype(bufnr)
-            and { "trim_whitespace", "trim_newlines", "squeeze_blanks", lsp_format = "prefer" }
-          or {}
+        if #vim.lsp.get_clients { bufnr = bufnr, method = "textDocument/formatting" } then
+          return { lsp_format = "last" }
+        elseif buf_utils.is_valid(bufnr) and buf_utils.has_filetype(bufnr) then
+          return { "trim_whitespace", "trim_newlines", "squeeze_blanks" }
+        end
+        return {}
       end,
     }
 
