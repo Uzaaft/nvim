@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "Kaiser-Yang/blink-cmp-git",
   lazy = true,

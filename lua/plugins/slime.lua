@@ -19,6 +19,7 @@ local nav_cell = function(dir)
     end
   end
 end
+---@type LazySpec
 return {
   "jpalardy/vim-slime",
   cmd = { "SlimeConfig", "SlimeSend", "SlimeSend0", "SlimeSend1", "SlimeSendCurrentLine" },

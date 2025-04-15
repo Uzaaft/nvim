@@ -1,4 +1,5 @@
 local prefix = "<Leader>A"
+---@type LazySpec
 return {
   "yetone/avante.nvim",
   -- enabled = false, -- test out CodeCompanion

@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "kdheepak/cmp-latex-symbols",
   lazy = true,

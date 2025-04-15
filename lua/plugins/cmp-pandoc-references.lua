@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "jmbuhr/cmp-pandoc-references",
   lazy = true,

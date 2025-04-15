@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "moyiz/blink-emoji.nvim",
   lazy = true,

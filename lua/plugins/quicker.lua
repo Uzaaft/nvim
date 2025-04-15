@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "stevearc/quicker.nvim",
   event = "VeryLazy",
