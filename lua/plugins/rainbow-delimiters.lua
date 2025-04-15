@@ -1,6 +1,7 @@
 ---@type LazySpec
 return {
   "HiPhish/rainbow-delimiters.nvim",
+  submodules = false,
   dependencies = { "nvim-treesitter/nvim-treesitter" },
   event = "User AstroFile",
   main = "rainbow-delimiters.setup",
