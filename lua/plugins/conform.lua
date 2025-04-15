@@ -31,7 +31,7 @@ return {
       ["_"] = function(bufnr)
         return buf_utils.is_valid(bufnr)
             and buf_utils.has_filetype(bufnr)
-            and { "trim_whitespace", "trim_newlines", "squeeze_blanks" }
+            and { "trim_whitespace", "trim_newlines", "squeeze_blanks", lsp_format = "prefer" }
           or {}
       end,
     }
