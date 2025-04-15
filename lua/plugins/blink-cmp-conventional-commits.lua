@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "disrupted/blink-cmp-conventional-commits",
   lazy = true,

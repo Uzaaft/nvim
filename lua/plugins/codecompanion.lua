@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "olimorris/codecompanion.nvim",
   event = "User AstroFile",

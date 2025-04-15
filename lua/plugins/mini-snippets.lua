@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "echasnovski/mini.snippets",
   dependencies = "rafamadriz/friendly-snippets",

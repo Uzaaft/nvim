@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "machakann/vim-sandwich",
   dependencies = {

@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
   "monkoose/neocodeium",
   cmd = "NeoCodeium",
