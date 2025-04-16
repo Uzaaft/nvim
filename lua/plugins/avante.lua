@@ -48,6 +48,7 @@ return {
       ["openai-gpt-4o-mini"] = { hide_in_model_selector = true },
       ["aihubmix"] = { hide_in_model_selector = true },
       ["aihubmix-claude"] = { hide_in_model_selector = true },
+      ["bedrock-claude-3.7-sonnet"] = { hide_in_model_selector = true },
     },
     hints = { enabled = false },
     mappings = {
