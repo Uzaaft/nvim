@@ -10,6 +10,7 @@ return {
       rego = { "opa_check" },
       ansible = { "ansible_lint" },
       cfn = { "cfn_lint" },
+      sh = { "shellcheck" },
       sql = { "sqlfluff" },
     },
     linters = {
