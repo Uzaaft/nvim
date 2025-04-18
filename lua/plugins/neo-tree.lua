@@ -86,6 +86,7 @@ return {
     event_handlers = {
       { -- hide cursor in normal mode for neo-tree window
         event = "neo_tree_buffer_enter",
+        id = "hide_cursor",
         handler = function(_)
           -- save old values
           old_guicursor = vim.go.guicursor
@@ -97,6 +98,7 @@ return {
       },
       { -- restore cursor visibility when leaving neo-tree buffer
         event = "neo_tree_buffer_leave",
+        id = "hide_cursor",
         handler = function(_)
           if old_guicursor then -- if old value found, use it
             vim.go.guicursor = old_guicursor
