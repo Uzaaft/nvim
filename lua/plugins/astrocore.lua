@@ -138,7 +138,7 @@ return {
           ["+"] = { "g<C-a>", desc = "Increment number" },
           ["-"] = { "g<C-x>", desc = "Descrement number" },
         },
-        ia = vim.fn.has "nvim-0.10" == 1 and {
+        ia = {
           mktmpl = { function() return "<++>" end, desc = "Insert <++>", expr = true },
           ldate = { function() return os.date "%Y/%m/%d %H:%M:%S -" end, desc = "Y/m/d H:M:S -", expr = true },
           ndate = { function() return os.date "%Y-%m-%d" end, desc = "Y-m-d", expr = true },
@@ -146,7 +146,7 @@ return {
           fdate = { function() return os.date "%B %d, %Y" end, desc = "B d, Y", expr = true },
           Xdate = { function() return os.date "%H:%M" end, desc = "H:M", expr = true },
           Fdate = { function() return os.date "%H:%M:%S" end, desc = "H:M:S", expr = true },
-        } or nil,
+        },
       },
     } --[[@as AstroCoreOpts]]) --[[@as AstroCoreOpts]]
 
