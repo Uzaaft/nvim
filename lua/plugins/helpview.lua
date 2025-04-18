@@ -2,7 +2,6 @@
 return {
   "OXY2DEV/helpview.nvim",
   ft = "help",
-  enabled = vim.fn.has "nvim-0.10" == 1,
   opts = {
     preview = {
       icon_provider = "mini",
