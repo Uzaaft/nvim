@@ -34,7 +34,7 @@ Config.options.defaults.cond = function(plugin) return enabled[plugin.name] end
 return {
   {
     "AstroNvim/astrocore",
-    ---@type AstroCoreOpts
+    ---@param opts AstroCoreOpts
     opts = function(_, opts)
       local maps = assert(opts.mappings)
 
@@ -102,6 +102,5 @@ return {
       maps.n["<Leader>lf"] = function() require("vscode-neovim").action "editor.action.formatDocument" end
     end,
   },
-  { "AstroNvim/astroui", opts = { colorscheme = false } },
   { "nvim-treesitter/nvim-treesitter", opts = { highlight = { enable = false } } },
 }
