@@ -23,21 +23,24 @@ return {
     { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
-    provider = "glados",
-    auto_suggestions_provider = "glados",
-    providers = {
-      copilot = { api_key_name = "GITHUB_TOKEN", hide_in_model_selector = false },
-      openai = { hide_in_model_selector = true },
-      vertex = { hide_in_model_selector = true },
-      vertex_claude = { hide_in_model_selector = true },
-      glados = {
-        __inherited_from = "openai",
-        endpoint = "https://glados.ctisl.gtri.org/v1",
-        model = "meta-llama/Llama-3.3-70B-Instruct",
-        api_key_name = "GLADOS_API_KEY",
-        disable_tools = true,
-        hide_in_model_selector = false,
+    provider = "claude",
+    auto_suggestions_provider = "claude",
+    copilot = { api_key_name = base_cmd .. "/CopilotNeovim/credential" },
+    bedrock = { hide_in_model_selector = true },
+    claude = { hide_in_model_selector = true, api_key_name = base_cmd .. "/AnthropicNeovim/credential" },
+    cohere = { hide_in_model_selector = true },
+    gemini = { hide_in_model_selector = true },
+    openai = { hide_in_model_selector = true },
+    vertex = { hide_in_model_selector = true },
+    vertex_claude = { hide_in_model_selector = true },
+    vendors = {
+      copilot_claude = {
+        __inherited_from = "copilot",
+        model = "claude-3.5-sonnet",
       },
+      ["aihubmix"] = { hide_in_model_selector = true },
+      ["aihubmix-claude"] = { hide_in_model_selector = true },
+      ["bedrock-claude-3.7-sonnet"] = { hide_in_model_selector = true },
     },
     hints = { enabled = false },
     mappings = {
