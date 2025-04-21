@@ -1,4 +1,5 @@
 local prefix = "<Leader>A"
+local base_cmd = "cmd:op read op://Personal"
 ---@type LazySpec
 return {
   "yetone/avante.nvim",
@@ -22,11 +23,11 @@ return {
     { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
-    provider = "glados",
-    auto_suggestions_provider = "glados",
-    copilot = { api_key_name = "GITHUB_TOKEN" },
+    provider = "claude",
+    auto_suggestions_provider = "claude",
+    copilot = { api_key_name = base_cmd .. "/CopilotNeovim/credential" },
     bedrock = { hide_in_model_selector = true },
-    claude = { hide_in_model_selector = true },
+    claude = { hide_in_model_selector = true, api_key_name = base_cmd .. "/AnthropicNeovim/credential" },
     cohere = { hide_in_model_selector = true },
     gemini = { hide_in_model_selector = true },
     openai = { hide_in_model_selector = true },
@@ -37,16 +38,6 @@ return {
         __inherited_from = "copilot",
         model = "claude-3.5-sonnet",
       },
-      glados = {
-        __inherited_from = "openai",
-        endpoint = "https://glados.ctisl.gtri.org/v1",
-        model = "meta-llama/Llama-3.3-70B-Instruct",
-        api_key_name = "GLADOS_API_KEY",
-        disable_tools = true,
-      },
-      ["claude-haiku"] = { hide_in_model_selector = true },
-      ["claude-opus"] = { hide_in_model_selector = true },
-      ["openai-gpt-4o-mini"] = { hide_in_model_selector = true },
       ["aihubmix"] = { hide_in_model_selector = true },
       ["aihubmix-claude"] = { hide_in_model_selector = true },
       ["bedrock-claude-3.7-sonnet"] = { hide_in_model_selector = true },
