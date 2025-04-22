@@ -73,7 +73,7 @@ return {
         },
       },
       julials = {
-        on_new_config = function(new_config)
+        before_init = function(_, config)
           -- check for nvim-lspconfig julia sysimage shim
           local found_shim
           for _, depot in
@@ -90,9 +90,9 @@ return {
             end
           end
           if found_shim then
-            new_config.cmd[1] = found_shim
+            config.cmd[1] = found_shim
           else
-            new_config.autostart = false -- only auto start if sysimage is available
+            config.autostart = false -- only auto start if sysimage is available
           end
         end,
         on_attach = function(client)
