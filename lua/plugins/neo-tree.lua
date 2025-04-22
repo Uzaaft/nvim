@@ -83,35 +83,5 @@ return {
         files = { ".rtx.toml" },
       },
     },
-    event_handlers = {
-      { -- hide cursor in normal mode for neo-tree window
-        event = "neo_tree_buffer_enter",
-        id = "hide_cursor",
-        handler = function(_)
-          -- save old values
-          old_guicursor = vim.go.guicursor
-          old_cursor = vim.api.nvim_get_hl(0, { name = "Cursor", create = false })
-          -- make cursor invisible
-          vim.opt.guicursor:append { "n:Cursor/lCursor" }
-          vim.cmd "highlight Cursor blend=100"
-        end,
-      },
-      { -- restore cursor visibility when leaving neo-tree buffer
-        event = "neo_tree_buffer_leave",
-        id = "hide_cursor",
-        handler = function(_)
-          if old_guicursor then -- if old value found, use it
-            vim.go.guicursor = old_guicursor
-          else -- if not, revert original operation directly
-            vim.opt.guicursor:remove { "n:Cursor/lCursor" }
-          end
-          if old_cursor then -- if old value found, use it
-            vim.api.nvim_set_hl(0, "Cursor", old_cursor)
-          else -- if not, fallback to no blend
-            vim.cmd "highlight Cursor blend=0"
-          end
-        end,
-      },
-    },
   },
 }
