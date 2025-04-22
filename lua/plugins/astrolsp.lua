@@ -10,6 +10,7 @@ return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
+    native_lsp_config = true,
     autocmds = {
       no_insert_inlay_hints = {
         cond = vim.lsp.inlay_hint and "textDocument/inlayHint" or false,
