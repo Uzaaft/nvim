@@ -137,7 +137,10 @@ return {
           },
         },
       },
-      typos_lsp = { single_file_support = false },
+      typos_lsp = {
+        single_file_support = false, -- TODO: remove when dropping support for Neovim v0.10
+        workspace_required = true,
+      },
       volar = { init_options = { vue = { hybridMode = true } } },
       vtsls = {
         filetypes = {
