@@ -61,7 +61,7 @@ return {
         filetype = false,
         hl = status.hl.get_attributes("winbar", true),
         surround = false,
-        update = { "BufEnter", "BufFilePost" },
+        update = { "BufEnter", "BufFilePost", "BufWritePost" },
       },
       status.component.breadcrumbs {
         icon = { hl = true },
