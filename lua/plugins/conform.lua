@@ -40,7 +40,7 @@ return {
     }
 
     -- prettier filetypes
-    vim.tbl_map(function(ft) opts.formatters_by_ft[ft] = { "prettier" } end, {
+    vim.tbl_map(function(ft) opts.formatters_by_ft[ft] = { "biome" } end, {
       "javascript",
       "javascriptreact",
       "typescript",
