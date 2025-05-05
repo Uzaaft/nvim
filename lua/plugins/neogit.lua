@@ -10,6 +10,9 @@ return {
         ["<S-Tab>"] = "Close",
       },
     },
+    integrations = {
+      snacks = true,
+    },
   },
   specs = {
     {
