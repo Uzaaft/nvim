@@ -24,6 +24,7 @@ return {
       toml = { "taplo" },
       lua = { "stylua" },
       puppet = { "puppet-lint" },
+      rego = { "opa_fmt" },
       sh = { "shfmt" },
       python = { "ruff" },
       nix = { "alejandra" },

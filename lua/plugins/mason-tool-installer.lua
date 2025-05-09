@@ -21,7 +21,6 @@ return {
       "lua-language-server",
       "markdown-oxide",
       "neocmakelsp",
-      "regols",
       "sqls",
       "svelte-language-server",
       "tailwindcss-language-server",
@@ -31,6 +30,8 @@ return {
       "vtsls",
       "vue-language-server",
       "yaml-language-server",
+
+      "opa",
 
       -- Linters
       "ansible-lint",
