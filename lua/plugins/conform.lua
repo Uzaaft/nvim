@@ -28,6 +28,7 @@ return {
       python = { "ruff" },
       nix = { "alejandra" },
       sql = { "pgformatter" },
+      nginx = { "nginxfmt" },
       ["_"] = function(bufnr)
         if #vim.lsp.get_clients { bufnr = bufnr, method = "textDocument/formatting" } then
           return { lsp_format = "last" }
