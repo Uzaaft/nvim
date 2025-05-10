@@ -1,5 +1,11 @@
 local servers = {
-  "nixd", "basedpyright", "zls", "vtsls"
+  "nixd",
+  "basedpyright",
+  "zls",
+  "vtsls",
+  "nginx_language_server",
+  "docker_compose_language_service",
+  "dockerls",
 } -- only add local servers if their commands are available
 for server, cmd in pairs { julials = "julia" } do
   if vim.fn.executable(cmd) == 1 then table.insert(servers, server) end
