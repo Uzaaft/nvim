@@ -2,7 +2,6 @@
 return {
   "Kaiser-Yang/blink-cmp-git",
   lazy = true,
-  dependencies = "nvim-lua/plenary.nvim",
   specs = {
     {
       "Saghen/blink.cmp",
@@ -21,7 +20,6 @@ return {
               git = {
                 name = "Git",
                 module = "blink-cmp-git",
-                async = true,
                 score_offset = 100,
               },
             },
