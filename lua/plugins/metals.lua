@@ -4,16 +4,16 @@ return {
   enabled = function() return vim.fn.executable "cs" == 1 or vim.fn.executable "coursier" == 1 end,
   ft = { "scala", "sbt", "java" },
   opts = function()
-    local metals = require "metals"
-    local user_config = require("astrolsp").lsp_opts "metals"
-    local astrocore = require "astrocore"
+    vim.lsp.enable("metals", false) -- make sure metals is not enabled
+    local metals, astrocore = require "metals", require "astrocore"
+    local opts = astrocore.extend_tbl(metals.bare_config(), vim.lsp.config.metals)
     if astrocore.is_available "nvim-dap" then
-      user_config.on_attach = astrocore.patch_func(user_config.on_attach, function(orig, ...)
+      opts.on_attach = astrocore.patch_func(opts.on_attach, function(orig, ...)
         orig(...)
         metals.setup_dap()
       end)
     end
-    return require("astrocore").extend_tbl(metals.bare_config(), user_config)
+    return opts
   end,
   config = function(self, opts)
     vim.api.nvim_create_autocmd("FileType", {
@@ -24,7 +24,6 @@ return {
     })
   end,
   specs = {
-    { "AstroNvim/astrolsp", opts = { handlers = { metals = false } } },
     {
       "mfussenegger/nvim-dap",
       optional = true,
