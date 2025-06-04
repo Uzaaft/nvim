@@ -23,6 +23,9 @@ return {
     { "AstroNvim/astrocore", opts = function(_, opts) opts.mappings.n[prefix] = { desc = " Avante" } end },
   },
   opts = {
+    rag_service = {
+      enabled = true,
+    },
     provider = "claude",
     auto_suggestions_provider = "claude",
     copilot = { api_key_name = base_cmd .. "/CopilotNeovim/credential" },
